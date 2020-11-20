@@ -102,7 +102,17 @@ body{
     margin-top: 0.7em;
     margin-bottom: 1em;
 }
+
 .login-flags img:hover{
+    box-shadow: 0 0px 16px 0 rgba(255,255,255,0.2), 0 0px 20px 0 rgba(255, 255, 255, 0.19);
+}
+
+
+.login-flags-mobile{
+    display: none;
+}
+
+.login-flags-mobile img:hover{
     box-shadow: 0 0px 16px 0 rgba(255,255,255,0.2), 0 0px 20px 0 rgba(255, 255, 255, 0.19);
 }
 
@@ -140,7 +150,7 @@ body{
     border-radius: 10px;
     padding-left: 70px;
     text-align: left;
-    font: normal normal bold 22px/30px Segoe UI;
+    font: normal normal bold 1.4rem Segoe UI;
     letter-spacing: 0px;
 
     margin-top: 50px;
@@ -188,4 +198,62 @@ body{
 .login-form button:focus{
     outline: none;
     background-color: #4DA8DA;
+}
+
+#login-to-signup-text-mobile{
+    display: none;
+}
+
+@media only screen and (max-device-width: 953px) {
+    .login-container{
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .login-img{
+        display: none;
+    }
+    .login-img-shadow{
+        display: none;
+    }
+    .login-form{
+        border-radius: 20px;
+        position: relative;
+        width: 100%;
+    }
+    .logo{
+        width: 70%;
+    }
+    
+    .login-form input{
+        width: 65%;
+        height: 60px;
+        background-color: #EEFBFB;
+        padding-left: 50px;
+        padding-right: 10px;
+        font: normal normal bold 1.2rem Segoe UI;
+        margin-top: 30px;
+    }
+
+    .login-form button{
+        width: 60%;
+        height: 65px;
+        font-size: 1.4rem;
+        margin-top: 30px;
+    }
+      
+    #login-to-signup-text-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 1em;
+    }
+    .login-flags-mobile{
+        width: 60vw;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1em;
+        margin-top: 2em;
+        justify-content: space-around;
+    }
 }
