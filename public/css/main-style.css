@@ -1,0 +1,236 @@
+:root{
+    --very-dark-blue: #203647;
+    --dark-blue: #203647;
+    --medium-blue: #007CC7;
+    --light-blue: #4DA8DA;
+    --light-white: #FFFAFA;
+}
+
+body{
+    margin: 0;
+    background-color: var(--very-dark-blue);
+}
+
+#main-header{
+    background-image: url("../img/main-page/paper.jpg");
+    background-position:  left;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100vw;
+    height: 90vh;
+}
+
+.main-header-shadow{
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 124, 199, 0.17) 0% 0% no-repeat padding-box;
+}
+
+.topnav{
+    width: 100vw;
+    height: 8vh;
+    background: rgba(18,35,46,0.3) 0% 0% no-repeat padding-box;
+    display: grid;
+    grid-template-columns: 20vw 38vw 32vw 8vw;
+    grid-template-rows: 8vh;
+    justify-items: center;
+    align-items: center;
+
+    font-size: 50px;
+}
+
+.logo{
+    grid-column: 1/2;
+}
+
+.logo img{
+    width: 14vw;
+}
+
+.search-button{
+    grid-column: 3/4;
+    align-self: center;
+    height: 60%;
+    display: flex;
+    border-radius: 10px;
+}
+
+.search-button:hover{
+    box-shadow: 0px 0px 18px rgba(255,255,255,1);
+}
+
+.search-button input[type=text]{
+    width: 22vw;
+    background: #FFFAFA;
+    border: 0;
+    border-radius: 10px 0 0 10px;
+    align-items: center;
+    font-size: 0.4em;
+    padding-left: 1vw;
+}
+
+.search-button input[type=text]:hover{
+    background-color: whitesmoke;
+}
+
+.search-button button{
+    float: left;
+    width: 4vw;
+    background-color: var(--medium-blue);
+    color: var(--light-white);
+    font-size: 0.4em;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.search-button button:hover{
+    background-color: var(--light-blue);
+    font-size: 0.45em;
+}
+
+.change-language{
+    grid-column: 4/5;
+    width: 10vw;
+    justify-self: start;
+    display: flex;
+}
+
+.change-language img{
+    align-self: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+    border: 0;
+    transition: all ease-in-out 0.15s;
+}
+
+.change-language img:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(0,0,0,1);
+}
+
+.header-motto{
+    background: transparent radial-gradient(closest-side at 50% 50%, rgba(77,168,218,0.2) 0%, rgb(104,147,170,0.2) 50%, rgba(128,128,128,0) 100%) 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50vw;
+    height: 60vh;
+    margin-top: 10vh;
+    margin-left: 2vw;
+    color: #FFFAFA;
+}
+
+.header-motto h1{
+    font: normal normal normal 5em Thames;
+    letter-spacing: 2px;
+    margin: 0;
+    margin-top: 1em;
+    line-height: 0.7em;
+}
+.header-motto h2{
+    font: normal normal normal 4em Thames;
+    letter-spacing: 8px;
+    margin: 0;
+    
+
+}
+.header-motto h3{
+    font: normal normal normal 3em Thames;
+    letter-spacing: 8px;
+    margin-top: 0;
+    line-height: 0.7em;
+
+}
+
+.header-motto a{
+    width: 10vw;
+    height: 5vh;
+
+    font-weight: 700;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--dark-blue);
+    background-color: var(--light-white);
+    border-radius: 20px;
+    box-shadow: 5px 5px 12px rgba(0,0,0,0.38);
+
+    transition: all ease-in-out 0.2s;
+}
+
+.header-motto a:hover{
+    background-color: rgb(230, 230, 230);
+    box-shadow: 5px 5px 12px rgba(0,0,0,0.60);
+}
+
+@media only screen and (max-device-width: 1140px) {
+    #main-header{
+        background-position: -30vw;
+    }
+    
+    .topnav{
+        grid-template-columns: 23vw 57vw 10vw;
+        font-size: 50px;
+    }
+    
+    .logo img{
+        width: 20vw;
+    }
+
+    .search-button{
+        grid-column: 2/3;
+    }
+    
+    .search-button input[type=text]{
+        width: 42vw;
+        font-size: 0.5em;
+        padding-left: 1.5vw;
+    }
+    
+    .search-button button{
+        width: 7vw;
+        font-size: 0.5em;
+    }
+    
+    .change-language{
+        grid-column: 3/4;
+        width: 7vw;
+    }
+    
+    .header-motto{
+        position: relative;
+        margin-top: 8vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .header-motto h1{
+        font: normal normal normal 7em Thames;
+
+        line-height: 0.7em;
+    }
+    .header-motto h2{
+        font: normal normal normal 6em Thames;
+    }
+    .header-motto h3{
+        font: normal normal normal 5em Thames;
+        line-height: 0.7em;
+    }
+    
+    .header-motto a{
+        width: 30vw;
+        height: 6vh;
+    
+        font-weight: 900;
+        font-size: 2em;
+        box-shadow: 5px 5px 18px rgba(0, 0, 0, 0.78);
+    }
+
+}
