@@ -234,3 +234,40 @@ body{
     }
 
 }
+
+/* Materials */
+
+.materials{
+    width: 100%;
+
+    background-color: var(--light-white);
+    text-align: center;
+    padding-top: 2vh;
+    font: normal normal normal 2em Segoe UI;
+
+    color: #12232E;
+}
+
+.materials h1{
+    margin: 0;
+
+    border-bottom: 3px solid var(--medium-blue);
+    display: inline-block;
+    line-height: 1;
+    text-shadow:
+      2px 2px white,
+      2px -2px white,
+      -2px 2px white,
+      -2px -2px white;
+}
+
+.owl-carousel{
+    width: 80px;
+}
+.item-raports{
+    width: 22vw;
+    height: 40vh;
+    border-radius: 10px 10px 0 0;
+    background-color: #01D2D6;
+}
+
