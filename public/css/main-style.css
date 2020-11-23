@@ -17,22 +17,20 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 
-    width: 100vw;
     height: 90vh;
 }
 
 .main-header-shadow{
-    width: 100vw;
     height: 100%;
     background: rgba(0, 124, 199, 0.17) 0% 0% no-repeat padding-box;
 }
 
 .topnav{
-    width: 100vw;
+    width: 100%;
     height: 8vh;
     background: rgba(18,35,46,0.3) 0% 0% no-repeat padding-box;
     display: grid;
-    grid-template-columns: 20vw 38vw 32vw 8vw;
+    grid-template-columns: 20vw 37vw 32vw 8vw;
     grid-template-rows: 8vh;
     justify-items: center;
     align-items: center;
@@ -266,7 +264,7 @@ body{
 }
 .item-raports{
     width: 22vw;
-    height: 40vh;
+    height: 20;
     border-radius: 10px 10px 0 0;
     background-color: #01D2D6;
 }
