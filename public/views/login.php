@@ -11,14 +11,6 @@
 
 <body>
     <div class="login-container">
-        <div class="message">
-            <?php if (isset($messages)) {
-                foreach ($messages as $message){
-                    echo $message;
-                }
-            }
-            ?>
-        </div>
         <div class="login-box">
             <div class="login-img">
                 <img src="public/img/login/login_img.jpg">
@@ -46,12 +38,19 @@
                     <img src="public/img/login/logo.svg" alt="logo">
                 </div>
         
-                <form>
+                <form action="login_user" method="POST">
                     <input id="login-user" name="username" type="text" placeholder="Nazwa użytkownika">
                     <input id="login-password" name="password" type="password" placeholder="Hasło">
-                    <button>Zaloguj się</button>
+                    <button type="submit">Zaloguj się</button>
                 </form>
-
+                <div class="message" style="color: darkred;">
+                    <?php if (isset($messages)) {
+                        foreach ($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
                 <div id="login-to-signup-text-mobile">
                     Nie masz jeszcze konta?<a href="register">Dołącz do nas teraz</a>
                 </div>
