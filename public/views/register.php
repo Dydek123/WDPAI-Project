@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
 	<title>Sign Up</title>
 </head>
@@ -13,12 +13,12 @@
     <div class="login-container">
         <div class="login-box">
             <div class="login-img">
-                <img src="../img/login/login_img.jpg">
+                <img src="public/img/login/login_img.jpg">
             </div>
 
             <div id="signup-form" class="login-form">
                 <div class="logo">
-                    <img src="../img/login/logo.svg">
+                    <img src="public/img/login/logo.svg">
                 </div>
         
                 <form>
@@ -30,7 +30,7 @@
                 </form>
 
                 <div id="signup-to-login-text-mobile">
-                    Posiadasz już konto?<a href="../views/login.html">Zaloguj się teraz</a>
+                    Posiadasz już konto?<a href="login">Zaloguj się teraz</a>
                 </div>
             </div>
             
@@ -40,21 +40,21 @@
                     Aby przejść do dalszej sekcji zaloguj się ponownie
                 </div>
 
-                <a class="login-register-switch-button" href="../views/login.html"><p>Zaloguj się</p></a>
+                <a class="login-register-switch-button" href="login"><p>Zaloguj się</p></a>
 
                 <div class="login-change-language">
                     Zmień język / Change language
                     <div class="login-flags">
-                        <img alt="polish" src="../img/login/Polish_flag.png">
-                        <img alt="english" src="../img/login/english_flag.png">
+                        <img alt="polish" src="public/img/login/Polish_flag.png">
+                        <img alt="english" src="public/img/login/english_flag.png">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="signup-flags-mobile">
-            <img alt="polish" src="../img/login/Polish_flag.png">
-            <img alt="english" src="../img/login/english_flag.png">
+            <img alt="polish" src="public/img/login/Polish_flag.png">
+            <img alt="english" src="public/img/login/english_flag.png">
         </div>
     </div>
 </body>

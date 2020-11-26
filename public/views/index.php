@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" type="text/css" href="../css/main-style.css">
+        <link rel="stylesheet" type="text/css" href="public/css/main-style.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
@@ -16,14 +16,14 @@
             <div class="main-header-shadow">
                 <nav class="topnav">
                     <div class="logo">
-                        <a href="index.html"><img alt="logo" src="../img/main-page/logo.svg"></a>
+                        <a href=""><img alt="logo" src="public/img/main-page/logo.svg"></a>
                     </div>
                     <form class="search-button">
                         <input type="text" placeholder="Szukaj..." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     <div class="change-language">
-                        <img src="../img/main-page/Polish_flag.png">
+                        <img src="public/img/main-page/Polish_flag.png">
                     </div>
                 </nav>
 
@@ -33,7 +33,7 @@
                         <h2>OUTSIDE</h2>
                         <h3>THE BOX</h3>
                     </div>
-                    <a href="../views/login.html">Zaloguj się</a>
+                    <a href="login">Zaloguj się</a>
                 </div>
             </div>
         </header>
@@ -113,7 +113,7 @@
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
                     <a href="#">O nas</a>
                 </article>
-                <div class="about-us-container-img"><img alt="Our team" src="../img/main-page/Our-team.jpg"></div>
+                <div class="about-us-container-img"><img alt="Our team" src="public/img/main-page/Our-team.jpg"></div>
             </div>
         </section>
         
