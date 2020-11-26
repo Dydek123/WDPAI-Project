@@ -388,6 +388,12 @@ body{
 
     display: flex;
     align-items: center;
+    transition: all ease-in-out 0.3s;
+}
+
+#other-left:hover{
+    box-shadow: 5px 5px 24px rgba(0, 0, 0, 0.98);
+    opacity: 0.8;
 }
 
 #other-left i{
@@ -405,6 +411,12 @@ body{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    transition: all ease-in-out 0.3s;
+}
+
+#other-right:hover{
+    box-shadow: 5px 5px 24px rgba(0, 0, 0, 0.98);
+    opacity: 0.8;
 }
 
 #other-right i{
