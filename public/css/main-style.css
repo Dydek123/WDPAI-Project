@@ -520,6 +520,7 @@ body{
         width: 40vw;
         height: 7vh;
         margin-top: 3vh;
+    }
 }
 
 @media only screen and (max-device-width: 512px) {
@@ -553,4 +554,195 @@ body{
         height: 9vh;
     }
 
+}
+
+.get-in-touch{
+    width: 100%;
+    height: 60vh;
+    background-image: url("../img/main-page/get-in-touch.jpg");
+    background-position:  0px -100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.get-in-touch-shadow{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 12, 15, 0.9);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.get-in-touch h1{
+    margin: 0 auto;
+    padding-top: 5vh;
+    font: normal normal bold 2.8rem Segoe UI;
+    color: var(--light-white);
+    border-bottom: 3px solid var(--medium-blue);
+    display: inline-block;
+    line-height: 1;
+}
+
+.get-in-touch-container{
+    display:flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.get-in-touch-item{
+    width: 20%;
+    height: 40vh;
+    color: var(--light-white);
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.get-in-touch-item i{
+    font-size: 3em;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+}
+
+.get-in-touch-item p{
+    margin: 1vh;
+    font: normal normal bold 1.3rem Segoe UI;
+}
+
+.get-in-touch-item iframe{
+    width: 100%;
+    height: 90%;
+    box-shadow: 0px 0px 30px rgba(204, 199, 199, 0.7);
+}
+
+.get-in-touch-item iframe:hover{
+    width: 100%;
+    height: 90%;
+    box-shadow: 0px 0px 30px rgba(204, 199, 199, 1);
+}
+
+.social-links{
+    width: 10%;
+    padding-top: 1vh;
+    margin: auto;
+    margin-bottom: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 2rem;
+    color: var(--light-white);
+    border-top: 3px solid var(--medium-blue);
+}
+
+.fab{
+    transition: all ease-in-out 0.3s;
+}
+.fa-facebook-square:hover{
+    color: #4267B2;
+    transform: scale(1.2);
+}
+
+.fa-twitter-square:hover{
+    color: #1DA1F2;
+    transform: scale(1.2);
+}
+
+.fa-linkedin-square:hover{
+    color: #2867B2;
+    transform: scale(1.2);
+}
+
+@media only screen and (max-device-width: 1140px) {
+    .get-in-touch{
+        height: 60vh;
+        background-position:  0px 0px;
+    }
+    
+    .get-in-touch h1{
+        padding-top: 3vh;
+        font: normal normal bold 3rem Segoe UI;
+    }
+    
+    .get-in-touch-container{
+        width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .get-in-touch-item{
+        width: 30%;
+        height: 20vh;
+        font-size: 1.2rem;
+    }
+    .get-in-touch-item:last-child{
+        width: 90%;
+    }
+    
+    .get-in-touch-item p{
+        margin: 0.5vh;
+        font: normal normal bold 1.1rem Segoe UI;
+    }
+    
+    .get-in-touch-item iframe{
+        width: 100%;
+        margin-bottom: 1.3vh;
+    }
+    
+    .social-links{
+        width: 25%;
+        font-size: 2.6rem;
+    }
+}
+
+@media only screen and (max-device-width: 512px) {
+    .get-in-touch{
+        height: 100vh;
+        background-position:  0px 0px;
+    }
+    
+    .get-in-touch h1{
+        padding-top: 1vh;
+        font: normal normal bold 3rem Segoe UI;
+    }
+    
+    .get-in-touch-container{
+        width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .get-in-touch-item{
+        width: 50%;
+        height: 23vh;
+        font-size: 1.1rem;
+    }
+    .get-in-touch-item:last-child{
+        width: 90%;
+    }
+    
+    .get-in-touch-item p{
+        margin: 0.3vh;
+        font: normal normal bold 1rem Segoe UI;
+    }
+    
+    .get-in-touch-item iframe{
+        width: 100%;
+        margin-bottom: 0vh;
+        height: 100%;
+    }
+    
+    .social-links{
+        width: 50%;
+        font-size: 2.6rem;
+    }
 }
