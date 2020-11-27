@@ -758,3 +758,181 @@ body{
         font-size: 2.6rem;
     }
 }
+
+
+
+/* ###################### RAPORTS ################## */
+#raport-header{
+    height: 45vh;
+}
+
+.raport-topnav{
+    height: 8vh;
+    width: 100%;
+    position: fixed;
+    top:0;
+    background: rgb(18,35,46) 0% 0% no-repeat padding-box;
+    display: grid;
+    grid-template-columns: 20vw 37vw 32vw 8vw;
+    grid-template-rows: 8vh;
+    justify-items: center;
+    align-items: center;
+    font-size: 50px;
+    z-index: 2;
+}
+
+.raport-header-img{
+    background-image: url('../img/documentation.jpg');
+    background-position:  bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 45vh;
+    color: var(--light-white);
+}
+
+.raport-header-img h2{
+    width: 40%;
+    position: relative;
+    top: 70%;
+    left: 10vw;
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.raport-header-img h3{
+    width: 40%;
+    position: relative;
+    top: 70%;
+    left: 10vw;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+.raports-cotainer{
+    background-color: var(--light-white);
+    text-align: center;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.raports-cotainer h1{
+    margin: 0 auto;
+    padding-top: 3vh;
+    font: normal normal bold 2.8rem Segoe UI;
+    color: var(--dark-blue);
+    border-bottom: 3px solid var(--medium-blue);
+    display: inline-block;
+    line-height: 1;
+    text-shadow:
+      2px 2px white,
+      2px -2px white,
+      -2px 2px white,
+      -2px -2px white;
+}
+
+.raports-content{
+    align-self: center;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.raports-card{
+    width: 21%;
+    margin-top: 5vh;
+    background-color: var(--medium-blue);
+    border-radius: 20px 20px 0 0;
+    height: 35vh;
+    box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.48);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.raports-card-img{
+    height: 20vh;
+    background-image: url('../img/documentation.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px 20px 0 0;
+    color: var(--light-white);
+}
+
+.raports-card-img h2{
+    position: relative;
+    top: -5%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 5%;
+}
+
+
+.raports-card-img h3{
+    position: relative;
+    top: -5%;
+    margin: 0;
+    margin-top: 1vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 8%;
+}
+
+.raports-card-icon{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #2DCCC5;
+    border: 4px solid #2DCCC5;
+
+    position: relative;
+    top: -30px;
+    left: -30px;
+}
+
+.raports-links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5%;
+}
+
+.raports-links a{
+    color: var(--light-white);
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.raports-links a:first-child{
+    padding-top: 1rem;
+}
+
+.raports-comments{
+    color: var(--light-white);
+    font-size: 1.2rem;
+    align-self: center;
+    padding-bottom: 1vh;
+}
+
+#finance{
+    height: 40vh;
+}
