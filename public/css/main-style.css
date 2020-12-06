@@ -16,7 +16,8 @@ body{
     background-position:  left;
     background-repeat: no-repeat;
     background-size: cover;
-
+    background-attachment: fixed;
+    top: -20vh;
     height: 90vh;
 
     box-shadow: inset 0 0 20px 2px #282a2d;
@@ -38,9 +39,11 @@ body{
     display: none;
 }
 .topnav{
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 8vh;
-    background: rgba(18,35,46,0.3) 0% 0% no-repeat padding-box;
+    background: rgba(18,35,46,0.8) 0% 0% no-repeat padding-box;
     display: grid;
     grid-template-columns: 20% 37% 32% 8%;
     grid-template-rows: 8vh;
@@ -137,7 +140,7 @@ body{
     text-align: center;
     width: 50vw;
     height: 60vh;
-    margin-top: 10vh;
+    padding-top: 10vh;
     margin-left: 2vw;
     color: #FFFAFA;
 }
@@ -882,9 +885,10 @@ body{
     width: 100%;
     height: 60vh;
     background-image: url("../img/main-page/get-in-touch.jpg");
-    background-position:  0px -100px;
+    background-position:  0px 250px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .get-in-touch-shadow{
