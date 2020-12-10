@@ -32,9 +32,20 @@ function scrollFunction() {
     }
 }
 
-function dropDownFunction(x,y) {
-    let name = document.querySelector(".span1")
-    let listElements = document.querySelector('.nested');
-    listElements.classList.toggle("expand");
-    name.classList.toggle("bold");
+const linkCollapse = document.getElementsByClassName('collapse__link')
+const buttonCollapse = document.getElementsByClassName('nav__link')
+var i
+
+function collapseMenu(){
+    for(i=0;i<linkCollapse.length;i++){
+        linkCollapse[i].addEventListener('click', function(){
+            const collapseMenu = this.nextElementSibling;
+            collapseMenu.classList.toggle('showCollapse');
+
+            const rotateDiv = collapseMenu.previousElementSibling;
+            const rotateElement = rotateDiv.childNodes;
+            rotateElement[3].classList.toggle('rotate');
+        })
+    }
 }
+collapseMenu();
