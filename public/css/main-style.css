@@ -1073,3 +1073,146 @@ body{
         font-size: 2.6rem;
     }
 }
+
+/* ###################### FINANCES ############################ */
+#finances-header{
+    background-image: url("../img/coinsv2.jpg");
+    background-position:  left top ;
+    background-repeat: no-repeat;
+    background-size: 100% 80vh;
+    background-attachment: fixed;
+    height: 80vh;
+    width: 100%;
+
+    box-shadow: inset 0 0 10px 5px #282a2d88;
+}
+
+#finances-header-shadow{
+    background: rgba(0, 124, 199, 0.07) 0% 0% no-repeat padding-box;
+}
+
+.documentation-box{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--light-white);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.57);
+    border-radius: 10px;
+
+    position: relative;
+    top: -25vh;
+    text-align: center;
+    padding-top: 2vh;
+    font: normal normal normal 2em Segoe UI;
+    color: #12232E;
+}
+
+.documentation-box h1{
+    margin: 0;
+    margin-top: 2vh;
+    
+    border-bottom: 3px solid var(--medium-blue);
+    display: inline-block;
+    line-height: 1;
+    text-shadow:
+      2px 2px white,
+      2px -2px white,
+      -2px 2px white,
+      -2px -2px white;
+}
+
+.documentation-content{
+    margin-top: 4vh;
+    padding-bottom: 4vh;
+    width: 93%;
+    display: flex;
+    flex-direction: row;
+}
+
+.documentation-menu{
+    width: 23%;
+    text-align: right;
+}
+
+.documentation-menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding-right: 1vw;
+    font-size: 1.2rem;
+    border-right: 2px solid var(--very-dark-blue);
+    position: sticky;
+    position: -webkit-sticky;
+    top: 10vh;
+}
+
+.documentation-menu ul span{
+    display: block;
+    cursor: pointer;
+    color: #12232E;
+}
+
+.documentation-menu ol{
+    list-style-type: none;
+    margin: 0;
+    padding-right: 0.2vw;
+    font-size: 1.2rem;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 10vh;
+}
+
+.nested{
+    display: none;
+}
+.nested a{
+    display: block;
+    font-weight: 400;
+    color: var(--light-blue);
+    text-decoration: none;
+}
+
+.nested.expand{
+    display: block;
+}
+
+.span1{
+    font-weight: 400;
+}
+.span1.bold{
+    font-weight: 500;
+}
+
+
+.documentation-text{
+    font-size: 1.2rem;
+    text-align: justify;
+    width: 77%;
+    padding-left: 2vw;
+}
+
+.documentation-text h2{
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.documentation-text p{
+    padding-left: 1vw;
+    width: 100%;
+}
+
+.documentation-text img{
+    margin-left: 1vw;
+    width: 100%;
+}
+
+.previous-version a{
+    display: block;
+    color: var(--medium-blue);
+    padding-left: 1vw;
+    padding-top: 0.2vh;
+}
+
+.previous-version a:first-child{
+    padding-top: 1vh;
+}
+

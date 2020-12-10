@@ -31,3 +31,10 @@ function scrollFunction() {
         document.getElementById("main-topnav").style.backgroundColor =  'rgba(18,35,46,0.8)';
     }
 }
+
+function dropDownFunction(x,y) {
+    let name = document.querySelector(".span1")
+    let listElements = document.querySelector('.nested');
+    listElements.classList.toggle("expand");
+    name.classList.toggle("bold");
+}
