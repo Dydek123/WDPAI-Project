@@ -32,6 +32,8 @@ function scrollFunction() {
     }
 }
 
+
+// COLLAPSE MENU RAPORTS
 const linkCollapse = document.getElementsByClassName('collapse__link')
 const buttonCollapse = document.getElementsByClassName('nav__link')
 var i
@@ -45,6 +47,7 @@ function collapseMenu(){
             const rotateDiv = collapseMenu.previousElementSibling;
             const rotateElement = rotateDiv.childNodes;
             rotateElement[3].classList.toggle('rotate');
+            rotateElement[1].classList.toggle('bold');
         })
     }
 }
