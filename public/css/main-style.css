@@ -815,7 +815,7 @@ body{
     background-color: var(--light-white);
     text-align: center;
     width: 100%;
-
+    padding-bottom: 7vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -935,4 +935,53 @@ body{
 
 #finance{
     height: 40vh;
+}
+
+@media(max-device-width: 1140px) {
+    .raports-card{
+        width: 30%;
+        height: 30vh;
+    }
+}
+
+
+@media (max-device-width: 886px) {
+    .raports-card {
+        width: 45%;
+        height: 50vh;
+    }
+
+    .raports-card-img {
+        height: 30vh;
+    }
+
+    .raport-header-img h2 {
+        width: 50%;
+    }
+
+    .raport-header-img h3 {
+        width: 50%;
+    }
+}
+
+
+@media (max-device-width: 512px) {
+    .raports-card {
+        width: 90%;
+        height: 50vh;
+    }
+
+    .raports-card-img {
+        height: 30vh;
+    }
+
+    .raport-header-img h2 {
+        width: 80%;
+        top: 40%;
+    }
+
+    .raport-header-img h3 {
+        width: 80%;
+        top: 40%;
+    }
 }
