@@ -1248,7 +1248,7 @@ a{
     font-weight: 500;
 }
 
-@media only screen and (max-device-width: 512px) {
+@media only screen and (max-device-width: 632px) {
     #finances-header{
         height: 79vh;
     }
