@@ -14,10 +14,28 @@
     <body>
         <header id="main-header">
             <div class="main-header-shadow">
-                <nav class="topnav">
-                    <div class="logo">
-                        <a href=""><img alt="logo" src="public/img/main-page/logo.svg"></a>
+
+                <nav id ="main-topnav" class="topnav">
+                    <div class="hamburger">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
                     </div>
+                    <div class="logo">
+                        <a href="index"><img alt="logo" src="public/img/main-page/logo.svg"></a>
+                    </div>
+
+                    <div class="nav-links-mobile-only">
+                        <a href="#" class="navigation-back-arrow nav-links-item">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <form id="search-button-mobile" class="search-button nav-links-item">
+                            <input type="text" placeholder="Szukaj..." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    
+
                     <form class="search-button">
                         <input type="text" placeholder="Szukaj..." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
@@ -76,7 +94,7 @@
                         <h2>Raporty</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <a href="#">
+                    <a href="raports">
                         <span>
                             Read more
                         </span>    
@@ -111,9 +129,9 @@
             <div class="about-us-container">
                 <article class="about-us-text">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                    <a href="#">O nas</a>
+                    <a href="https://intersys.pl/#o-nas" target="_blank">O nas</a>
                 </article>
-                <div class="about-us-container-img"><img alt="Our team" src="public/img/main-page/Our-team.jpg"></div>
+                <a href="https://intersys.pl/#o-nas" target="_blank" class="about-us-container-img"><img alt="Our team" src="public/img/main-page/Our-team.jpg"></a>
             </div>
         </section>
         
@@ -149,5 +167,7 @@
 
             </div>
         </section>
+
+        <script src="public/scripts/app.js"></script>
     </body>
 </html>

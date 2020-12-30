@@ -13,7 +13,7 @@ body{
     height: 100vh;
     margin: 0%;
     background: transparent radial-gradient(closest-side at 50% 50%, #4DA8DA42 0%, var(--light-blue) 100%) 0% 0% no-repeat padding-box;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -181,12 +181,12 @@ body{
 
 /* #login-password{
     background: url(../img/lock.svg) no-repeat scroll 20px 50%;
-    
+
 }
 
 #login-user{
     background: url(../img/peson.svg) no-repeat scroll 20px 50%;
-    
+
 } */
 .login-form button{
     background: var(--medium-blue) 0% 0% no-repeat padding-box;
@@ -212,6 +212,12 @@ body{
     background-color: var(--light-blue);
 }
 
+.message{
+    font-size: 1.2rem;
+    color: darkred;
+    padding-top: 0.3rem;
+}
+
 #login-to-signup-text-mobile{
     display: none;
 }
@@ -235,7 +241,7 @@ body{
     .logo{
         width: 70%;
     }
-    
+
     .login-form input{
         width: 65%;
         height: 6.5vh;
@@ -252,7 +258,7 @@ body{
         font-size: 1.4rem;
         margin-top: 30px;
     }
-      
+
     #login-to-signup-text-mobile{
         display: flex;
         flex-direction: column;
@@ -316,7 +322,7 @@ body{
     .signup{
         width: 70%;
     }
-    
+
     .signup-form input{
         width: 65%;
         height: 60px;
@@ -333,7 +339,7 @@ body{
         font-size: 1.4rem;
         margin-top: 30px;
     }
-      
+
     #signup-to-login-text-mobile{
         display: flex;
         flex-direction: column;
@@ -372,7 +378,7 @@ body{
         font-size: 1rem;
         margin-top: 1rem;
     }
-      
+
     #signup-to-login-text-mobile{
         display: flex;
         flex-direction: column;

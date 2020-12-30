@@ -18,7 +18,7 @@
 
             <div id="signup-form" class="login-form">
                 <div class="logo">
-                    <img src="public/img/login/logo.svg">
+                    <a href="index"><img src="public/img/login/logo.svg"></a>
                 </div>
         
                 <form>
