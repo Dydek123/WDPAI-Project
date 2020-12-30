@@ -11,6 +11,9 @@ body{
     background-color: var(--very-dark-blue);
 }
 
+a{
+    color: #12232E;
+}
 #main-header{
     background-image: url("../img/main-page/paper.jpg");
     background-position:  left;
@@ -262,7 +265,7 @@ body{
     }
 
     .topnav{
-        position: sticky;
+        position: fixed;
         top: 0;
         height: 10vh;
         background: rgba(18,35,46,0.8) 0% 0% no-repeat padding-box;
@@ -318,7 +321,8 @@ body{
         width: 100%;
         z-index: 3;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+        padding: 2vh 0vh;
         align-items: center;
         flex-direction: column;
         /* display: none; */
@@ -368,6 +372,7 @@ body{
 
     #search-button-mobile{
         display: flex;
+        margin-bottom: 0;
     }
 
     .search-button input[type=text]{
@@ -385,9 +390,7 @@ body{
     }
 
     .change-language{
-        padding-bottom: 30vh;
         width: 70%;
-        display: none;
         flex-direction: row;
         justify-content: space-around;
     }
@@ -396,6 +399,7 @@ body{
     }
     .change-language img{
         box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+        width: 80%;
     }
 
     .change-language > #english_flag{
@@ -1072,4 +1076,292 @@ body{
         width: 50%;
         font-size: 2.6rem;
     }
+}
+
+/* ###################### FINANCES ############################ */
+#finances-header{
+    background-image: url("../img/coinsv2.jpg");
+    background-position:  left top ;
+    background-repeat: no-repeat;
+    background-size: 100% 80vh;
+    background-attachment: fixed;
+    height: 80vh;
+}
+
+#finances-header-shadow{
+    background: rgba(0, 124, 199, 0.07) 0% 0% no-repeat padding-box;
+}
+
+.documentation-box{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--light-white);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.57);
+    border-radius: 10px;
+
+    position: relative;
+    top: -25vh;
+    text-align: center;
+    padding-top: 2vh;
+    font: normal normal normal 2em Segoe UI;
+    color: #12232E;
+}
+
+.documentation-box h1{
+    margin: 0;
+    margin-top: 2vh;
+    
+    border-bottom: 3px solid var(--medium-blue);
+    display: inline-block;
+    line-height: 1;
+    text-shadow:
+      2px 2px white,
+      2px -2px white,
+      -2px 2px white,
+      -2px -2px white;
+}
+
+.documentation-content{
+    margin-top: 4vh;
+    padding-bottom: 4vh;
+    width: 93%;
+    display: flex;
+    flex-direction: row;
+}
+
+.documentation-menu{
+    width: 23%;
+}
+
+.documentation-menu div{
+    margin: 0;
+    padding-right: 1vw;
+    top: 10vh;
+}
+
+.documentation-menu a{
+    text-decoration: none;
+}
+
+.documentation-text{
+    font-size: 1.2rem;
+    text-align: justify;
+    width: 77%;
+    padding-left: 2vw;
+}
+
+.documentation-text h2{
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.documentation-text p{
+    padding-left: 1vw;
+    width: 100%;
+}
+
+.documentation-text img{
+    margin-left: 1vw;
+    width: 100%;
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+
+.previous-version a{
+    display: block;
+    color: var(--medium-blue);
+    padding-left: 1vw;
+    padding-top: 0.2vh;
+}
+
+.previous-version a:first-child{
+    padding-top: 1vh;
+}
+#nav__sticky{
+    position: sticky;
+    position: -webkit-sticky;
+}
+.nav__link{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding: .35rem;
+    color: #12232E;
+    border-right: 2px solid var(--very-dark-blue);
+    margin-bottom: 1rem;
+    transition: .3s;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: sticky;
+    position: -webkit-sticky;
+}
+  
+.nav__link ul{
+    margin-bottom: 0.5rem;
+}
+
+.nav__link:hover{
+    background-color: #f3f9fb;
+}
+  
+.collapse__link{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: .5s;
+    margin: 0;
+}
+.fa-caret-down{
+    padding-top: 0.3rem;
+    padding-left: 0.3rem;
+    transition: all .4s ease-in-out;
+}
+.collapse__menu{
+    display: none;
+    padding: .75rem 1.25rem 0 .75rem;
+}
+
+.collapse__sublink{
+    color: #929aab;
+    font-size: 1.2rem;
+}
+.collapse__sublink:hover{
+    color: #6d747f;
+}
+
+.showCollapse{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    padding-right: 0.3rem;
+    padding-top: 0.1rem;
+    margin-right: -0.3rem;
+}
+
+.bold{
+    font-weight: 500;
+}
+
+@media only screen and (max-device-width: 632px) {
+    #finances-header{
+        height: 79vh;
+    }
+    
+    .documentation-box{
+        top: -25vh;
+        font: normal normal normal 1.8em Segoe UI;
+    }
+    
+    .documentation-content{
+        margin-top: 4vh;
+        padding-bottom: 4vh;
+        width: 93%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .documentation-menu{
+        display: none;
+    }
+    
+    .documentation-menu div{
+        margin: 0;
+        padding-right: 1vw;
+        top: 10vh;
+    }
+    
+    .documentation-menu a{
+        text-decoration: none;
+    }
+    
+    .documentation-text{
+        width: 90%;
+        font-size: 1rem;
+    }
+    
+    .documentation-text img{
+        margin-left: 1vw;
+        width: 100%;
+    }
+    
+    .previous-version a{
+        display: block;
+        color: var(--medium-blue);
+        padding-left: 1vw;
+        padding-top: 0.2vh;
+    }
+    
+    .previous-version a:first-child{
+        padding-top: 1vh;
+    }
+
+    .nav__link{
+        width: 100%;
+        text-align: center;
+        color: var(--light-white);
+        border-right: 0px;
+        border: 1px solid #425869;
+        font-size: 1.7rem;
+        margin-bottom: 3vh;
+    }
+      
+    .nav__link ul{
+        margin-bottom: 0rem;
+    }
+    
+    .nav__link:hover{
+        background-color: #314758;
+    }
+
+    .nav__link a{
+        text-decoration: none;
+        color: var(--light-white);
+    }
+      
+    .collapse__link{
+        justify-content: center;
+        margin: 1vh;
+    }
+    .fa-caret-down{
+        padding-top: 0.2rem;
+    }
+    .collapse__menu{
+        display: none;
+        padding: .75rem 1.25rem 0 .75rem;
+    }
+    
+    .collapse__sublink{
+        color: #929aab;
+        font-size: 1.3rem;
+        padding: 0.2rem 0;
+    }
+
+    .collapse__menu a{
+        color: #929aab;
+    }
+
+    .collapse__sublink:hover{
+        color: #6d747f;
+    }
+    
+    .showCollapse{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    
+    .rotate{
+        transform: rotate(180deg);
+        padding-right: 0.3rem;
+        padding-top: 0.1rem;
+        margin-right: -0.3rem;
+    }
+    
 }
