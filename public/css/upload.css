@@ -157,7 +157,7 @@ form{
 
 .file-upload::-webkit-file-upload-button {
     margin-top: 1rem;
-    width: 4rem;
+    width: 4.2rem;
     visibility: hidden;
 }
 
