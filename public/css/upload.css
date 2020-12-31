@@ -75,8 +75,6 @@ form{
 
 .login-content .input-div{
 	position: relative;
-    display: grid;
-    grid-template-columns: 50% 50%;
     margin: 2rem 0;
     padding: 5px 0;
     border-bottom: 2px solid #d9d9d9;
@@ -156,9 +154,14 @@ form{
 }
 
 .file-upload::-webkit-file-upload-button {
-    margin-top: 1rem;
+    margin-top: 0.6rem;
     width: 4.2rem;
     visibility: hidden;
+}
+
+.input-div.focus .file-upload::-webkit-file-upload-button {
+	content: '';
+	width: 0;
 }
 
 a{
@@ -197,41 +200,80 @@ a:hover{
 }
 
 
-@media screen and (max-width: 1050px){
-	.container{
-		grid-gap: 5rem;
-	}
-}
-
-@media screen and (max-width: 1000px){
-	form{
-		width: 290px;
+@media screen and (max-width: 1130px){
+	form {
+		width: 80%;
 	}
 
 	.login-content h2{
-        font-size: 2.4rem;
+        font-size: 1.5rem;
         margin: 8px 0;
-	}
-
-	.img img{
-		width: 400px;
 	}
 }
 
-@media screen and (max-width: 900px){
-	.container{
-		grid-template-columns: 1fr;
+@media screen and (max-width: 660px){
+	.upload-box{
+        width: 90vw;
+        height: 90vh;
+	}
+	
+	form {
+		width: 90%;
 	}
 
-	.img{
-		display: none;
+	.login-content h2{
+        font-size: 1.2rem;
+        margin: 0;
 	}
 
-	.wave{
-		display: none;
+	.login-content .input-div {
+		margin: 0.5rem 0;
+		padding: 5px 0;
 	}
+}
 
-	.login-content{
-		justify-content: center;
-	}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	border: 0 !important;
+	background: var(--light-white);
+	font-size: 1.2rem;
+	font-weight: 700;
+	flex: 1;
+	padding: 0 .8rem;
+	color: #999;
+	cursor: pointer;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+.select {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 3rem;
+	line-height: 3;
+	overflow: hidden;
+	border-bottom: 2px solid #999;
+}
+
+.select::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background: #34495e;
+	cursor: pointer;
+	pointer-events: none;
+	-webkit-transition: .25s all ease;
+	-o-transition: .25s all ease;
+	transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+	color: var(--light-blue);
 }

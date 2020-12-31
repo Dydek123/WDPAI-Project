@@ -27,17 +27,19 @@
 
                     <div class="input-div">
                         <div>
-                            <h5>Opis</h5>
-                            <input type="password" class="input">
+                            <h5>Krótki opis</h5>
+                            <input type="text" class="input">
                         </div>
                     </div>
 
-                    <div class="input-div">
-                        <div>
-                            <h5>Kategoria</h5>
-                            <input type="password" class="input">
-                        </div>
-                    </div>
+                    <div class="select">
+                        <select name="slct" id="slct" onchange="changeMe(this)">
+                          <option selected disabled>Wybierz kategorie</option>
+                          <option value="raports">Raporty</option>
+                          <option value="documentation">Dokumentacja</option>
+                          <option value="faq">FAQ</option>
+                        </select>
+                      </div>
 
                     <div class="input-div">
                         <div>
