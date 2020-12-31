@@ -22,4 +22,5 @@ class DefaultController extends AppController{
     public function raports() {
         $this -> render('raports');
     }
+
 }

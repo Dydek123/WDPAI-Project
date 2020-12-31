@@ -1,6 +1,4 @@
 
 *.xml
 *.iml
-public/css/loginv2.css
-public/views/loginv2.html
-public/views/registerv2.html
+public/uploads

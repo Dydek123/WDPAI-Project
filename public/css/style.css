@@ -390,3 +390,8 @@ a:hover{
 		padding: 5px 0;
 	}
 }
+
+.message{
+    color: darkred;
+    font-size: 1.1rem;
+}

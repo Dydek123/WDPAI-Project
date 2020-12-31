@@ -56,8 +56,8 @@
                 <div class="raports-card">
                     <div class="raports-card-img">
                         <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
+                        <h2><?= $newCategory->getCategory() ?></h2>
+                        <h3><?= $newCategory->getDescription() ?></h3>
                     </div>
                     <div class="raports-links">
                         <a href="#">link1</a>

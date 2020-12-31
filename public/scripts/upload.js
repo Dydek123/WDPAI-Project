@@ -19,8 +19,7 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
-const border = document.querySelector('.select');
 function changeMe(sel){
 	sel.style.color = "var(--medium-blue)";
-	border.style.borderBottom  = "2px solid var(--light-blue)";
+	sel.parentNode.style.borderBottom  = "2px solid var(--light-blue)";
 }

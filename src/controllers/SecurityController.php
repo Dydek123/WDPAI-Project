@@ -7,9 +7,9 @@ class SecurityController extends AppController{
     public function login_user(){
         $user = new User('admin','admin','admin@wp.pl');
 
-//        if ($this->isPost()){
-//            return $this->login_user('login_user');
-//        }
+        if (!$this->isPost()){
+            return $this->login_user('login_user');
+        }
 
         $username = $_POST["username"];
         $password = $_POST["password"];
