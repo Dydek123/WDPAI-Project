@@ -20,33 +20,21 @@
                 <h2>Nowy dokument</h2>
 
                 <div class="select">
-                    <select name="category" id="slct" class="slct-content" onchange="changeMe(this); checkNew();">
+                    <select name="category" id="slct" onchange="changeMe(this); showDocumentsType();">
                         <option selected disabled>Wybierz dokument</option>
-                        <option value="new">Stwórz nowy</option>
-                        <optgroup label="Obsługa podatku VAT">
-                            <option value="VAT;raports">Raporty</option>
-                            <option value="VAT;documentation">Dokumentacja</option>
-                            <option value="VAT;faq">FAQ</option>
-                        </optgroup>
-                        <optgroup label="Obsługa księgi głównej">
-                            <option value="VAT;raports">Raporty</option>
-                            <option value="VAT;documentation">Dokumentacja</option>
-                            <option value="VAT;faq">FAQ</option>
-                        </optgroup>
-                        <optgroup label="Obsługa należności">
-                            <option value="VAT;raports">Raporty</option>
-                            <option value="VAT;documentation">Dokumentacja</option>
-                            <option value="VAT;faq">FAQ</option>
-                        </optgroup>
+                        <option value="VAT">Obsługa podatku VAT</option>
+                        <option value="VAT;documentation">Obsługa księgi głównej</option>
+                        <option value="VAT;faq">FAQ</option>
                     </select>
                 </div>
 
                 <div class="select select-new">
-                    <select name="category" id="slct" onchange="changeMe(this)">
+                    <select name="documentType" id="slct" class="slct-content" onchange="changeMe(this); checkNew();">
                       <option selected disabled>Wybierz kategorie</option>
                       <option value="raports">Raporty</option>
                       <option value="documentation">Dokumentacja</option>
                       <option value="faq">FAQ</option>
+                      <option value="new">Stwórz nowy dokument</option>
                     </select>
                 </div>
 

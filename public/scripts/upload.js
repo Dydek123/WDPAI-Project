@@ -25,18 +25,20 @@ function changeMe(sel){
 }
 
 // Content
+function showDocumentsType(){
+	const newDocument = document.querySelector(".select-new");
+	newDocument.style.display = "flex";
+}
+
 function checkNew(){
 	const val = document.querySelectorAll(".slct-content");
-	const newDocument = document.querySelector(".select-new");
 	const newInput = document.querySelector(".new-input");
 
 	if (val[0].value === "new"){
-		newDocument.style.display = "flex";
 		newInput.style.display = "block";
 	}
 
 	else{
-		newDocument.style.display = "none";
 		newInput.style.display = "none";
 	}
 }

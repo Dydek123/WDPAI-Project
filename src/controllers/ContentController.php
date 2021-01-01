@@ -18,8 +18,14 @@ class ContentController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $type = explode(';', $_POST['category']);
-            $newContent = new Content($type[0], $type[1], $_POST['file']['name']);
+            if($_POST['documentType'] === "new"){
+                $type = $_POST['title'];
+            }
+            else{
+                $type = $_POST['documentType'];
+            }
+
+            $newContent = new Content($_POST['category'], $type, $_POST['file']['name']);
 
             return $this->render("finances", ['messages' => $this -> message, 'newContent' => $newContent]);
         }
