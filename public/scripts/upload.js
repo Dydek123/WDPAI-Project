@@ -23,3 +23,20 @@ function changeMe(sel){
 	sel.style.color = "var(--medium-blue)";
 	sel.parentNode.style.borderBottom  = "2px solid var(--light-blue)";
 }
+
+// Content
+function checkNew(){
+	const val = document.querySelectorAll(".slct-content");
+	const newDocument = document.querySelector(".select-new");
+	const newInput = document.querySelector(".new-input");
+
+	if (val[0].value === "new"){
+		newDocument.style.display = "flex";
+		newInput.style.display = "block";
+	}
+
+	else{
+		newDocument.style.display = "none";
+		newInput.style.display = "none";
+	}
+}
