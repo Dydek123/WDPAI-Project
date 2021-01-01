@@ -14,5 +14,6 @@ Routing::get('raports','DefaultController');
 
 Routing::post('login_user', 'SecurityController');
 Routing::post('addCategory', 'CategoryController');
+Routing::post('addContent', 'ContentController');
 
 Routing::run($path);

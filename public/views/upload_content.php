@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="../css/upload.css">
+    <link rel="stylesheet" type="text/css" href="public/css/upload.css">
 
     <title>Login Page</title>
 </head>
@@ -15,7 +15,7 @@
         <div class="login-content">
             <form action="addContent" method="POST" ENCTYPE="multipart/form-data">
                 <div class="logo">
-                    <a href="index"><img src="../img/login/logo.svg"></a>
+                    <a href="index"><img src="public/img/login/logo.svg"></a>
                 </div>
                 <h2>Nowy dokument</h2>
 
@@ -24,19 +24,19 @@
                         <option selected disabled>Wybierz dokument</option>
                         <option value="new">Stwórz nowy</option>
                         <optgroup label="Obsługa podatku VAT">
-                            <option value="raports">Raporty</option>
-                            <option value="documentation">Dokumentacja</option>
-                            <option value="faq">FAQ</option>
+                            <option value="VAT;raports">Raporty</option>
+                            <option value="VAT;documentation">Dokumentacja</option>
+                            <option value="VAT;faq">FAQ</option>
                         </optgroup>
                         <optgroup label="Obsługa księgi głównej">
-                            <option value="raports">Raporty</option>
-                            <option value="documentation">Dokumentacja</option>
-                            <option value="faq">FAQ</option>
+                            <option value="VAT;raports">Raporty</option>
+                            <option value="VAT;documentation">Dokumentacja</option>
+                            <option value="VAT;faq">FAQ</option>
                         </optgroup>
                         <optgroup label="Obsługa należności">
-                            <option value="raports">Raporty</option>
-                            <option value="documentation">Dokumentacja</option>
-                            <option value="faq">FAQ</option>
+                            <option value="VAT;raports">Raporty</option>
+                            <option value="VAT;documentation">Dokumentacja</option>
+                            <option value="VAT;faq">FAQ</option>
                         </optgroup>
                     </select>
                 </div>
@@ -64,19 +64,19 @@
                     </div>
                 </div>
 
-                <!-- <div class="message">
+                <div class="message">
                     <?php if (isset($messages)) {
                         foreach ($messages as $message){
                             echo $message;
                         }
                     }
                     ?>
-                </div> -->
-
+                </div>
+                
                 <button type="submit" class="btn">Prześlij</button>
             </form>
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../scripts/upload.js"></script>
+<script type="text/javascript" src="public/scripts/upload.js"></script>
 </body>
