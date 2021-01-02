@@ -110,7 +110,13 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet massa felis, eu tincidunt nibh tincidunt nec. Aliquam vitae elit vestibulum, pharetra ipsum nec, aliquam tortor. Donec eleifend nibh quis dui aliquam varius. Pellentesque porta tincidunt tortor id fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam ornare justo. Integer suscipit bibendum elit, at tincidunt risus fringilla at. Suspendisse velit ex, feugiat vel lacinia et, sodales ut odio. Fusce tristique sapien mattis viverra pellentesque. Mauris sodales, massa id vulputate condimentum, elit ex cursus lacus, et ornare nibh libero vitae libero. Nam iaculis ligula sit amet vulputate vulputate. Quisque faucibus felis scelerisque euismod dignissim. Praesent id tempor sem. Etiam id nisi quam. Duis sed sem id massa cursus luctus vitae id nunc.</p>
                     <p>Pellentesque maximus mauris vitae orci ullamcorper fringilla. Maecenas in imperdiet elit, non rhoncus urna. In eu libero ut erat rutrum hendrerit in quis tortor. Cras iaculis ex quis commodo euismod. Pellentesque risus libero, efficitur eu fermentum eu, posuere at turpis. Donec congue libero in risus laoreet, ut sagittis ante porttitor. Donec ornare, erat in sollicitudin bibendum, nunc ligula maximus quam, in cursus tellus tortor ac enim. Sed gravida neque sodales, vehicula tortor at, ornare orci. Vestibulum nec fringilla justo. Donec at enim eu arcu ullamcorper ultricies.</p>
                     <p>Morbi leo ligula, ullamcorper vel feugiat ac, auctor quis massa. Suspendisse non massa nulla. Fusce nec purus ut purus rutrum tincidunt. Aliquam justo metus, bibendum ac lectus at, molestie semper erat. Nulla magna nisi, tincidunt sit amet tincidunt sed, ultricies at tortor. Vestibulum commodo luctus tempus. Donec non orci magna. Proin ut lacinia ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam ac nisi ut purus ullamcorper placerat. Phasellus eu consectetur lectus, a bibendum tortor. Aliquam convallis maximus purus et accumsan. Mauris sed velit sodales elit vestibulum auctor eget eu diam. Cras sodales diam nec lacus condimentum, ut convallis lectus accumsan. Suspendisse pharetra dolor a mauris hendrerit, sed mattis ante malesuada. Donec fermentum est tincidunt nulla gravida cursus.</p>
-                    <img src="public/img/login/login_img.jpg" alt="1">
+                    <a href="#img1-active">
+                        <img src="public/img/login/login_img.jpg" id="img1" alt="1">
+                    </a>
+
+                    <a href="#img1" class="lightbox" id="img1-active">
+                        <span style="background-image: url('public/img/login/login_img.jpg')"></span>
+                    </a>
 
                     <h2>Poprzednie wersje</h2>
                     <div class="previous-version">
