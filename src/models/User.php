@@ -2,25 +2,38 @@
 
 class User
 {
-    private $username;
+    private $name;
+    private $surname;
     private $password;
     private $email;
 
-    public function __construct(string $username, string $password, string $email)
+    public function __construct($name, $surname, $password, $email)
     {
-        $this->username = $username;
+        $this->name = $name;
+        $this->surname = $surname;
         $this->password = $password;
         $this->email = $email;
     }
 
-    public function getUsername(): string
+
+    public function getName(): string
     {
-        return $this->username;
+        return $this->name;
     }
 
-    public function setUsername(string $username)
+    public function setName(string $name)
     {
-        $this->username = $username;
+        $this->name = $name;
+    }
+
+    public function getSurname() :string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname)
+    {
+        $this->surname = $surname;
     }
 
     public function getPassword(): string

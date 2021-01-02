@@ -2,3 +2,5 @@
 *.xml
 *.iml
 public/uploads
+config.php
+.idea
