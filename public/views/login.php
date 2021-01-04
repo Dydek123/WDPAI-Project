@@ -38,7 +38,7 @@
             <div id="login-content" class="content">
                 <form action="login_user" method="POST">
                     <div class="logo">
-                        <a href="index"><img src="public/img/login/logo.svg"></a>
+                        <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                     </div>
                     <h2>Logowanie</h2>
                        <div class="input-div">

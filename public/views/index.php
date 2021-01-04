@@ -22,7 +22,7 @@
                         <div class="line"></div>
                     </div>
                     <div class="logo">
-                        <a href="index"><img alt="logo" src="public/img/main-page/logo.svg"></a>
+                        <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
                     </div>
 
                     <div class="nav-links-mobile-only">
