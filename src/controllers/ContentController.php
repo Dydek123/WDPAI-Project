@@ -2,14 +2,25 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Content.php';
+require_once __DIR__.'/../repository/ContentRepository.php';
+require_once __DIR__.'/../repository/VersionRepository.php';
 
 class ContentController extends AppController{
 
     const MAX_FILE_SIZE = 1024*1024;
     const SUPPORTED_TYPES = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    const UPLOAD_DIRECTORY = '/../public/uploads/';
+    const UPLOAD_DIRECTORY = '/../public/uploads/Documents/';
 
     private $message = [];
+    private $contentRepository;
+    private $versionRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->contentRepository = new ContentRepository();
+        $this->versionRepository = new VersionRepository();
+    }
 
     public function addContent(){
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
@@ -18,14 +29,14 @@ class ContentController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            if($_POST['documentType'] === "new"){
-                $type = $_POST['title'];
+            if($_POST['document-name'] === "new" || $this->contentValidate()){
+                $newContent = new Content($_POST['document-type'], $_POST['public'], $_POST['title']);
+                $this->contentRepository->addNewContent($newContent);
             }
             else{
-                $type = $_POST['documentType'];
+                $newVersion = new Version($_POST['document-name'],$_FILES['file']['name']);
+                $this->versionRepository->addNewVersion($newVersion);
             }
-
-            $newContent = new Content($_POST['category'], $type, $_POST['file']['name']);
 
             return $this->render("finances", ['messages' => $this -> message, 'newContent' => $newContent]);
         }
@@ -45,4 +56,13 @@ class ContentController extends AppController{
             return false;
         }
         return true;
-    }}
+    }
+
+    private function contentValidate()
+    {
+        if (!isset($_POST['public']) || !isset($_POST['category']) || !isset($_POST['document-type']) || !isset($_POST['title'])){
+            return false;
+        }
+        return true;
+    }
+}

@@ -1,15 +1,23 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__.'/../models/Category.php';
+require_once __DIR__.'/../models/Document.php';
+require_once __DIR__.'/../repository/DocumentsRepository.php';
 
 class CategoryController extends AppController{
 
     const MAX_FILE_SIZE = 1024*1024;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
-    const UPLOAD_DIRECTORY = '/../public/uploads/';
+    const UPLOAD_DIRECTORY = '/../public/uploads/Category/';
 
     private $message = [];
+    private $documentRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->documentRepository = new DocumentsRepository();
+    }
 
     public function addCategory(){
         if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])){
@@ -18,7 +26,10 @@ class CategoryController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['background']['name']
             );
 
-            $newCategory = new Category($_POST['title'], $_POST['description'], $_POST['category'], $_POST['icon'], $_POST['background']['name']);
+//            die($_FILES['background']['name']);
+//
+            $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
+            $this->documentRepository->addDocument($newCategory);
 
             return $this->render("raports", ['messages' => $this -> message, 'newCategory' => $newCategory]);
         }

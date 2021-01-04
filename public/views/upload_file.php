@@ -15,9 +15,10 @@
             <div class="login-content">
                 <form action="addCategory" method="POST" ENCTYPE="multipart/form-data">
                     <div class="logo">
-                        <a href="index"><img src="public/img/login/logo.svg"></a>
+                        <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                     </div>
                     <h2>Utwórz nową kategorie</h2>
+
                     <div class="input-div">
                         <div>
                             <h5>Tytuł</h5>
@@ -30,6 +31,14 @@
                             <h5>Krótki opis</h5>
                             <input name="description"  type="text" class="input">
                         </div>
+                    </div>
+
+                    <div class="select">
+                        <select name="category" id="slct2" onchange="changeMe(this)">
+                            <option selected disabled>Wybierz kategorie</option>
+                            <option value="raports">Raporty</option>
+                            <option value="documentation">Dokumentacja</option>
+                        </select>
                     </div>
 
                     <div class="select">

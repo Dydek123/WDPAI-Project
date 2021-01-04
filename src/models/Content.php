@@ -2,25 +2,16 @@
 
 class Content{
     private $category;
+    private $is_public;
     private $title;
-    private $file;
 
-    public function __construct($category, $title, $file)
+    public function __construct($category,bool $is_public, $title)
     {
         $this->category = $category;
-        $this->title = $title;
-        $this->file = $file;
-    }
-
-    public function getTitle() : string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title)
-    {
+        $this->is_public = $is_public;
         $this->title = $title;
     }
+
 
     public function getCategory() : string
     {
@@ -32,14 +23,27 @@ class Content{
         $this->category = $category;
     }
 
-    public function getFile() : string
+    public function isIsPublic(): bool
     {
-        return $this->file;
+        return $this->is_public;
+    }
+
+    public function setIsPublic(bool $is_public): void
+    {
+        $this->is_public = $is_public;
     }
 
 
-    public function setFile(string $file)
+    public function getTitle()
     {
-        $this->file = $file;
+        return $this->title;
     }
+
+    public function setTitle($title): void
+    {
+        $this->title = $title;
+    }
+
+
+
 }
