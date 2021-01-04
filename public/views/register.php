@@ -29,7 +29,7 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="div">
-                                <h5>Login</h5>
+                                <h5>Imię i nazwisko</h5>
                                 <input type="text" class="input">
                             </div>
                         </div>

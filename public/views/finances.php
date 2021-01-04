@@ -28,13 +28,13 @@
                     <div class="nav-links-mobile-only">
                         <div class="nav__link">
                             <p class="collapse__link">
-                                <span><?= $newContent->getCategory() ?></span>
+                                <span>Obługi podatku VAT</span>
                                 <i class="fas fa-caret-down"></i>
                             </p>
                             <ul class="collapse__menu">
                                 <a href="#" class="collapse__sublink">VAT 1</a>
                                 <a href="#" class="collapse__sublink">Group</a>
-                                <a href="#" class="collapse__sublink"><?= $newContent->getTitle() ?></a>
+                                <a href="#" class="collapse__sublink">123</a>
                             </ul>
                         </div>
 

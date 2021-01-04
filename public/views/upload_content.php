@@ -38,6 +38,14 @@
                     </select>
                 </div>
 
+                <div class="select">
+                    <select name="public" id="slct" onchange="changeMe(this);">
+                        <option selected disabled>Wybierz widoczność</option>
+                        <option value="1">Publiczne</option>
+                        <option value="0">Prywatne</option>
+                    </select>
+                </div>
+
                 <div class="input-div new-input">
                     <div>
                         <h5>Tytuł</h5>

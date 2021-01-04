@@ -56,8 +56,6 @@
             </div>
         </header>
 
-        <!-- ########################## PRZEMYŚLEĆ TOPNAVA ######################## -->
-
         <article class="materials">
             <h1>Materiały</h1>
 

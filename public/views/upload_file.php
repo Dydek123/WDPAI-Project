@@ -33,15 +33,6 @@
                     </div>
 
                     <div class="select">
-                        <select name="category" id="slct" onchange="changeMe(this)">
-                          <option selected disabled>Wybierz kategorie</option>
-                          <option value="raports">Raporty</option>
-                          <option value="documentation">Dokumentacja</option>
-                          <option value="faq">FAQ</option>
-                        </select>
-                    </div>
-
-                    <div class="select">
                         <select name="icon" id="slct2" onchange="changeMe(this)">
                             <option selected disabled>Wybierz ikonke</option>
                             <option value="dolar">Dolar</option>
