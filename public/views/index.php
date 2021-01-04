@@ -53,10 +53,15 @@
                     </div>
                     <a href="login">Zaloguj się</a>
                 </div>
+
+                <section id="main-scroll" class="scroll">
+                    <a href="#to-scroll"><span></span>Scroll</a>
+                </section>
             </div>
         </header>
 
         <article class="materials">
+            <span id="to-scroll"></span>
             <h1>Materiały</h1>
             
             <div class="materials_box">
