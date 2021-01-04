@@ -58,20 +58,15 @@
 
         <article class="materials">
             <h1>Materiały</h1>
-
-            <div class="carousel">
-                
-                <div id="other-left" class="carousel-item">
-                    <i class="fas fa-arrow-circle-left"></i>
-                </div>
-
-                <div id="documentation" class="carousel-item">
-                    <div id="documentation-img" class="carousel-img">
-                        <div class="carousel-circle">
+            
+            <div class="materials_box">
+                <div class="materials-item">
+                    <div id="documentation-img" class="materials-img">
+                        <div class="materials-circle">
                             <i class="fas fa-book-open"></i>
                         </div>
                     </div>
-                    <div class="carousel-text">
+                    <div class="materials-text">
                         <h2>Dokumentacja</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
@@ -82,13 +77,13 @@
                     </a>
                 </div>
 
-                <div id="raports" class="carousel-item">
-                    <div id="raports-img" class="carousel-img">
-                        <div class="carousel-circle">
+                <div class="materials-item">
+                    <div id="raports-img" class="materials-img">
+                        <div class="materials-circle">
                             <i class="fas fa-file"></i>
                         </div>
                     </div>
-                    <div class="carousel-text">
+                    <div class="materials-text">
                         <h2>Raporty</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
@@ -99,13 +94,13 @@
                     </a>
                 </div>
 
-                <div id="faq" class="carousel-item">
-                    <div id="faq-img" class="carousel-img">
-                        <div class="carousel-circle">
+                <div class="materials-item">
+                    <div id="faq-img" class="materials-img">
+                        <div class="materials-circle">
                             <i class="fas fa-question"></i>
                         </div>
                     </div>
-                    <div class="carousel-text">
+                    <div class="materials-text">
                         <h2>FAQ</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
@@ -114,10 +109,6 @@
                             Read more
                         </span>    
                     </a>
-                </div>
-
-                <div id="other-right" class="carousel-item">
-                    <i class="fas fa-arrow-circle-right"></i>
                 </div>
             </div>
         </article>
