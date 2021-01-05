@@ -47,16 +47,19 @@ class ContentController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
+            $date = new DateTime();
             if($_POST['document-name'] === "new" || $this->contentValidate()){
                 $newContent = new Content($_POST['document-type'], $_POST['public'], $_POST['title']);
                 $this->contentRepository->addNewContent($newContent);
+                $newVersion = new Version($_POST['title'],$_FILES['file']['name'], $date->format('Y-m-d'));
+                $this->versionRepository->addNewVersion($newVersion);
             }
             else{
-                $newVersion = new Version($_POST['document-name'],$_FILES['file']['name']);
+                $newVersion = new Version($_POST['document-name'],$_FILES['file']['name'], $date->format('Y-m-d'),);
                 $this->versionRepository->addNewVersion($newVersion);
             }
 
-            return $this->render("finances", ['messages' => $this -> message, 'newContent' => $newContent]);
+            return $this->render("index");
         }
 
         return $this->render('upload_content', ['messages' => $this->message]);

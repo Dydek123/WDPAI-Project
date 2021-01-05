@@ -35,7 +35,8 @@ class VersionRepository extends Repository
         ');
 
         $date = new DateTime();
-        $id_contents = $this->getContentID('Jak liczyć podatek VAT');
+        $id_contents = $this->getContentID($version->getDocument());
+//        die(strval($id_contents)." ".$date->format('Y-m-d')." ".$version->getFile());
         $stmt->execute([
             $id_contents,
             $date->format('Y-m-d'),
