@@ -110,7 +110,9 @@
                     <div class="previous-version">
                         <?php foreach ($versions as $version): ?>
                             <?php if(explode(';',$_GET['category'])[1] === $version->getDocument()): ?>
-                                <a href="#"><?= $version->getDatetime()?></a>
+                                <a href="public/uploads/Documents/<?= $version->getFile()?>" download>
+                                    <?= $version->getDatetime()?>
+                                </a>
                             <?php endif; ?>
                         <? endforeach; ?>
                     </div>
