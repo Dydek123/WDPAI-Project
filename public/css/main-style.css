@@ -1368,16 +1368,18 @@ hr {
     flex-direction: column;
     align-items: flex-start;
     padding-left: 1.5rem;
+    padding-top: 1rem;
 }
 
-.raports-links a{
+.get-raports-button{
+    outline: none;
+    border: none;
+    background: transparent;
     color: var(--light-white);
     font-size: 1.1rem;
     line-height: 1.5rem;
-}
-
-.raports-links a:first-child{
-    padding-top: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .raports-comments{

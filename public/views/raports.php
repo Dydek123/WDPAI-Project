@@ -60,13 +60,13 @@
                                 <h2><?= $category->getTitle() ?></h2>
                                 <h3><?= $category->getDescription() ?></h3>
                             </div>
-                            <div class="raports-links">
+                            <form class="raports-links" method="get" action="finances">
                                 <?php foreach ($links as $link): ?>
                                     <?php if ($link->getCategory() === $category->getTitle()):?>
-                                        <a href="#"><?= $link->getTitle() ?></a>
+                                            <input type="submit" name="category" value="<?= $link->getCategory() ?>;<?= $link->getTitle() ?>" class="get-raports-button">
                                     <?php endif; ?>
                                 <?php endforeach; ?>
-                            </div>
+                            </form>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>

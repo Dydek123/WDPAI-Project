@@ -22,7 +22,8 @@ class VersionRepository extends Repository
 
         return new Version(
             $version['id_contents'],
-            $version['file']
+            $version['file'],
+            $version['datetime']
         );
     }
 
@@ -51,5 +52,26 @@ class VersionRepository extends Repository
 
         $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
         return $tmp['id_contents'];
+    }
+
+    public function getVersions(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT datetime, file, title FROM "Versions" LEFT JOIN "Contents" C on C.id_contents = "Versions".id_contents;
+        ');
+        $stmt->execute();
+        $versions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($versions as $version){
+            $result[] = new Version(
+                $version['title'],
+                $version['file'],
+                $version['datetime']
+            );
+        }
+
+        return $result;
     }
 }

@@ -24,8 +24,9 @@ class ContentController extends AppController{
 
     public function finances() {
         $contents = $this->contentRepository->getContents();
+        $versions = $this->versionRepository->getVersions();
         $categoryList = $this->createUniqueCategoryList($contents);
-        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList]);
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions]);
     }
 
     private function createUniqueCategoryList($contents): array

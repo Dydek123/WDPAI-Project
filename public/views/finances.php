@@ -26,31 +26,25 @@
                     </div>
 
                     <div class="nav-links-mobile-only">
+                        <?php foreach ($categoryList as $category): ?>
+                            <?php if(explode(';',$_GET['category'])[0] === $category): ?>
+                                <div class="nav__link">
+                                    <p class="collapse__link">
+                                        <span><?= $category?></span>
+                                        <i class="fas fa-caret-down"></i>
+                                    </p>
+                                    <ul class="collapse__menu">
+                                        <?php foreach ($contents as $content): ?>
+                                            <?php if($content->getCategory() === $category): ?>
+                                                <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
+                                            <? endif; ?>
+                                        <? endforeach; ?>
+                                    </ul>
+                                </div>
+                            <? endif; ?>
+                        <? endforeach; ?>
                         <div class="nav__link">
-                            <p class="collapse__link">
-                                <span>Obługi podatku VAT</span>
-                                <i class="fas fa-caret-down"></i>
-                            </p>
-                            <ul class="collapse__menu">
-                                <a href="#" class="collapse__sublink">VAT 1</a>
-                                <a href="#" class="collapse__sublink">Group</a>
-                                <a href="#" class="collapse__sublink">123</a>
-                            </ul>
-                        </div>
-
-                        <div class="nav__link">
-                            <p class="collapse__link">
-                                <span>Obsługa księgi głównej</span>
-                                <i class="fas fa-caret-down"></i>
-                            </p>
-                            <ul class="collapse__menu">
-                                <a href="#" class="collapse__sublink">Data</a>
-                                <a href="#" class="collapse__sublink">Group</a>
-                                <a href="#" class="collapse__sublink">Members</a>
-                            </ul>
-                        </div>
-                        <div class="nav__link">
-                            <a href="#"><span>Obsługa należności</span></a>
+                            <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
                         </div>
 
                         <form id="search-button-mobile" class="search-button nav-links-item">
@@ -78,19 +72,21 @@
                 <form class="documentation-menu" action="raports.php" method="GET">
                     <div id="nav__sticky">
                         <?php foreach ($categoryList as $category): ?>
-                            <div class="nav__link">
-                                <p class="collapse__link">
-                                    <span><?= $category?></span>
-                                    <i class="fas fa-caret-down"></i>
-                                </p>
-                                <ul class="collapse__menu">
-                                    <?php foreach ($contents as $content): ?>
-                                        <?php if($content->getCategory() === $category): ?>
-                                            <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
-                                        <? endif; ?>
-                                    <? endforeach; ?>
-                                </ul>
-                            </div>
+                            <?php if(explode(';',$_GET['category'])[0] === $category): ?>
+                                <div class="nav__link">
+                                    <p class="collapse__link">
+                                        <span><?= $category?></span>
+                                        <i class="fas fa-caret-down"></i>
+                                    </p>
+                                    <ul class="collapse__menu">
+                                        <?php foreach ($contents as $content): ?>
+                                            <?php if($content->getCategory() === $category): ?>
+                                                <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
+                                            <? endif; ?>
+                                        <? endforeach; ?>
+                                    </ul>
+                                </div>
+                            <? endif; ?>
                         <? endforeach; ?>
                         <div class="nav__link">
                             <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
@@ -112,9 +108,11 @@
 
                     <h2>Poprzednie wersje</h2>
                     <div class="previous-version">
-                        <a href="#">10.10.2020(opis)</a>
-                        <a href="#">8.10.2020(opis)</a>
-                        <a href="#">6.10.2020(opis)</a>
+                        <?php foreach ($versions as $version): ?>
+                            <?php if(explode(';',$_GET['category'])[1] === $version->getDocument()): ?>
+                                <a href="#"><?= $version->getDatetime()?></a>
+                            <?php endif; ?>
+                        <? endforeach; ?>
                     </div>
                 </div>
             </div>
