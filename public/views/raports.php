@@ -52,135 +52,22 @@
         <article class="raports-cotainer">
             <h1>Raporty</h1>
             <div class="raports-content">
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2><?= $newCategory->getCategory() ?></h2>
-                        <h3><?= $newCategory->getDescription() ?></h3>
+                <?php foreach ($categories as $category): ?>
+                    <div class="raports-card">
+                        <div class="raports-card-img" style="background-image: url('public/uploads/Category/<?= $category->getBackground() ?>');">
+                            <div class="raports-card-icon"><i class="fas <?= $category->getIcon() ?>"></i></div>
+                            <h2><?= $category->getTitle() ?></h2>
+                            <h3><?= $category->getDescription() ?></h3>
+                        </div>
+                        <div class="raports-links">
+                            <?php foreach ($links as $link): ?>
+                                <?php if ($link->getCategory() === $category->getTitle()):?>
+                                    <a href="#"><?= $link->getTitle() ?></a>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-users"></i></div>
-                        <h2>HR</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
-                <div class="raports-card">
-                    <div class="raports-card-img">
-                        <div class="raports-card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <h2>Finanse</h2>
-                        <h3>Exceptur sint occaecantcapidatat non prident, sunt in culpa qui officia deserunt</h3>
-                    </div>
-                    <div class="raports-links">
-                        <a href="#">link1</a>
-                        <a href="#">link2</a>
-                        <a href="#">link3</a>
-                    </div>
-                    <div class="raports-comments">
-                        <i class="far fa-comments"></i> 123
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </article>
 

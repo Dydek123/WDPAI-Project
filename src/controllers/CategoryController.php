@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Document.php';
 require_once __DIR__.'/../repository/DocumentsRepository.php';
+require_once __DIR__.'/../repository/ContentRepository.php';
 
 class CategoryController extends AppController{
 
@@ -12,11 +13,19 @@ class CategoryController extends AppController{
 
     private $message = [];
     private $documentRepository;
+    private $contentRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->documentRepository = new DocumentsRepository();
+        $this->contentRepository = new ContentRepository();
+    }
+
+    public function raports() {
+        $categories = $this->documentRepository->getDocuments();
+        $links = $this->contentRepository->getContents();
+        $this -> render('raports', ['categories' => $categories, 'links' => $links]);
     }
 
     public function addCategory(){

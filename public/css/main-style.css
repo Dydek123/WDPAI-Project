@@ -1255,7 +1255,7 @@ a{
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .raports-card-img{
@@ -1313,7 +1313,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 5%;
+    padding-left: 1.5rem;
 }
 
 .raports-links a{

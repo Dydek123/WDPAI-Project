@@ -65,4 +65,28 @@ class DocumentsRepository extends Repository
         }
     }
 
+    public function getDocuments(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM documents d LEFT JOIN "Categories" C on C.id_categories = d.id_documents;
+        ');
+
+        $stmt->execute();
+        $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($documents as $document){
+            $result[] = new Document(
+                $document['icon'],
+                $document['background'],
+                $document['title'],
+                $document['description'],
+                $document['name']
+            );
+        }
+
+        return $result;
+    }
+
 }

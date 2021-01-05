@@ -18,9 +18,4 @@ class DefaultController extends AppController{
     public function error() {
         $this -> render('error');
     }
-
-    public function raports() {
-        $this -> render('raports');
-    }
-
 }
