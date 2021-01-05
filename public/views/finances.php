@@ -22,7 +22,7 @@
                         <div class="line"></div>
                     </div>
                     <div class="logo">
-                        <a href="index.php"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
+                        <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
                     </div>
 
                     <div class="nav-links-mobile-only">
@@ -75,36 +75,28 @@
         <section class="documentation-box">
             <h1>Finanse</h1>
             <div class="documentation-content">
-                <nav class="documentation-menu">
+                <form class="documentation-menu" action="raports.php" method="GET">
                     <div id="nav__sticky">
+                        <?php foreach ($categoryList as $category): ?>
+                            <div class="nav__link">
+                                <p class="collapse__link">
+                                    <span><?= $category?></span>
+                                    <i class="fas fa-caret-down"></i>
+                                </p>
+                                <ul class="collapse__menu">
+                                    <?php foreach ($contents as $content): ?>
+                                        <?php if($content->getCategory() === $category): ?>
+                                            <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
+                                        <? endif; ?>
+                                    <? endforeach; ?>
+                                </ul>
+                            </div>
+                        <? endforeach; ?>
                         <div class="nav__link">
-                            <p class="collapse__link">
-                                <span>Obsługa podatku VAT</span>
-                                <i class="fas fa-caret-down"></i>
-                            </p>
-                            <ul class="collapse__menu">
-                                <a href="#" class="collapse__sublink">VAT 1</a>
-                                <a href="#" class="collapse__sublink">Group</a>
-                                <a href="#" class="collapse__sublink">Members</a>
-                            </ul>
-                        </div>
-
-                        <div class="nav__link">
-                            <p class="collapse__link">
-                                <span>Obsługa księgi głównej</span>
-                                <i class="fas fa-caret-down"></i>
-                            </p>
-                            <ul class="collapse__menu">
-                                <a href="#" class="collapse__sublink">Data</a>
-                                <a href="#" class="collapse__sublink">Group</a>
-                                <a href="#" class="collapse__sublink">Members</a>
-                            </ul>
-                        </div>
-                        <div class="nav__link">
-                        <span> <a href="#">Obsługa należności</a></span>
+                            <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
                         </div>
                     </div>
-                </nav>
+                </form>
                 <div class="documentation-text">
                     <h2>Lorem ipsum</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet massa felis, eu tincidunt nibh tincidunt nec. Aliquam vitae elit vestibulum, pharetra ipsum nec, aliquam tortor. Donec eleifend nibh quis dui aliquam varius. Pellentesque porta tincidunt tortor id fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam ornare justo. Integer suscipit bibendum elit, at tincidunt risus fringilla at. Suspendisse velit ex, feugiat vel lacinia et, sodales ut odio. Fusce tristique sapien mattis viverra pellentesque. Mauris sodales, massa id vulputate condimentum, elit ex cursus lacus, et ornare nibh libero vitae libero. Nam iaculis ligula sit amet vulputate vulputate. Quisque faucibus felis scelerisque euismod dignissim. Praesent id tempor sem. Etiam id nisi quam. Duis sed sem id massa cursus luctus vitae id nunc.</p>

@@ -64,7 +64,7 @@
             <span id="to-scroll"></span>
             <h1>Materiały</h1>
             
-            <div class="materials_box">
+            <form class="materials_box" method="get" action="raports">
                 <div class="materials-item">
                     <div id="documentation-img" class="materials-img">
                         <div class="materials-circle">
@@ -75,11 +75,10 @@
                         <h2>Dokumentacja</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <a href="#">
-                        <span>
-                            Read more
-                        </span>    
-                    </a>
+                    <span>
+                        <hr>
+                        <input type="submit" name="type" value="Dokumentacja" class="get-category-button">
+                    </span>
                 </div>
 
                 <div class="materials-item">
@@ -92,11 +91,10 @@
                         <h2>Raporty</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <a href="raports">
-                        <span>
-                            Read more
-                        </span>    
-                    </a>
+                    <span>
+                        <hr>
+                        <input type="submit" name="type" value="Raporty" class="get-category-button">
+                    </span>
                 </div>
 
                 <div class="materials-item">
@@ -109,13 +107,12 @@
                         <h2>FAQ</h2>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <a href="#">
-                        <span>
-                            Read more
-                        </span>    
-                    </a>
+                    <span>
+                        <hr>
+                        <input type="submit" name="type" value="FAQ" class="get-category-button">
+                    </span>
                 </div>
-            </div>
+            </form>
         </article>
 
         <section class="about-us">

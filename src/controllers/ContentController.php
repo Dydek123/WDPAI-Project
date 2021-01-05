@@ -22,6 +22,23 @@ class ContentController extends AppController{
         $this->versionRepository = new VersionRepository();
     }
 
+    public function finances() {
+        $contents = $this->contentRepository->getContents();
+        $categoryList = $this->createUniqueCategoryList($contents);
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList]);
+    }
+
+    private function createUniqueCategoryList($contents): array
+    {
+        $categoryList = array();
+        foreach ($contents as $content){
+            if (!in_array($content->getCategory(), $categoryList)){
+                $categoryList[] = $content->getCategory();
+            }
+        }
+        return $categoryList;
+    }
+
     public function addContent(){
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
             move_uploaded_file(

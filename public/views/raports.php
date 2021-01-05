@@ -20,7 +20,7 @@
                     <div class="line"></div>
                 </div>
                 <div class="logo">
-                    <a href="index.php"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
+                    <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
                 </div>
 
                 <div class="nav-links-mobile-only">
@@ -53,21 +53,32 @@
             <h1>Raporty</h1>
             <div class="raports-content">
                 <?php foreach ($categories as $category): ?>
-                    <div class="raports-card">
-                        <div class="raports-card-img" style="background-image: url('public/uploads/Category/<?= $category->getBackground() ?>');">
-                            <div class="raports-card-icon"><i class="fas <?= $category->getIcon() ?>"></i></div>
-                            <h2><?= $category->getTitle() ?></h2>
-                            <h3><?= $category->getDescription() ?></h3>
+                    <?php if ($category->getCategory() === $_GET['type']): ?>
+                        <div class="raports-card">
+                            <div class="raports-card-img" style="background-image: url('public/uploads/Category/<?= $category->getBackground() ?>');">
+                                <div class="raports-card-icon"><i class="fas <?= $category->getIcon() ?>"></i></div>
+                                <h2><?= $category->getTitle() ?></h2>
+                                <h3><?= $category->getDescription() ?></h3>
+                            </div>
+                            <div class="raports-links">
+                                <?php foreach ($links as $link): ?>
+                                    <?php if ($link->getCategory() === $category->getTitle()):?>
+                                        <a href="#"><?= $link->getTitle() ?></a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
-                        <div class="raports-links">
-                            <?php foreach ($links as $link): ?>
-                                <?php if ($link->getCategory() === $category->getTitle()):?>
-                                    <a href="#"><?= $link->getTitle() ?></a>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <a href="addCategory" class="raports-card">
+                    <div id="new-raports" class="raports-card-img">
+                        <div class="raports-card-icon"><i class="fas fa-plus"></i></div>
+                        <div id="add-new-raports">
+                            <h2>Dodaj nową kategorię</h2>
+                            <i class="fas fa-plus"></i>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </a>
             </div>
         </article>
 

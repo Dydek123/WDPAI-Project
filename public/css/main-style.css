@@ -636,9 +636,10 @@ a{
     margin-bottom: 0;
 }
 
-.materials a{
+.materials input{
     height: 100%;
     width: 100%;
+    cursor: pointer;
     text-decoration: none;
     color: var(--light-white);
     font: normal normal bold 1.1rem Arial;
@@ -646,19 +647,34 @@ a{
     align-items: flex-start;
     justify-content: center;
     transition: all ease-in-out 0.2s;
+    background-color: transparent;
+    border: none;
 }
 
-.materials a:hover{
+hr {
+    display: block;
+    margin: 0em auto;
+    border-color: var(--very-dark-blue);
+    border-style: inset;
+    border-width: 1px;
+    width: 80%;
+}
+
+.get-category-button:hover{
     font: normal normal bold 1.3rem Arial;
 }
 
-.materials a>span{
+.get-category-button{
     width: 80%;
     height: 100%;
-    border-top: 2px solid var(--very-dark-blue);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-self: center;
+}
+
+.get-category-button:focus{
+    border: none;
+    outline: none;
 }
 
 #raports-img{
@@ -1256,6 +1272,7 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-decoration: none;
 }
 
 .raports-card-img{
@@ -1265,6 +1282,43 @@ a{
     background-size: cover;
     border-radius: 20px 20px 0 0;
     color: var(--light-white);
+}
+
+#new-raports{
+    height: 100%;
+    background-image: none;
+    transition: .3s;
+}
+
+#add-new-raports{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding-top: 2rem;
+}
+
+#add-new-raports h2{
+    text-align: center;
+    padding: 2rem 0;
+    transition: .3s;
+}
+
+#add-new-raports i{
+    font-size: 2rem;
+    transition: .3s;
+}
+
+#new-raports:hover{
+    background-image: none;
+    background-color: var(--light-blue);
+}
+#new-raports:hover #add-new-raports h2{
+    font-size: 1.6rem;
+}
+
+#new-raports:hover #add-new-raports i{
+    font-size: 2.2rem;
 }
 
 .raports-card-img h2{
@@ -1509,7 +1563,25 @@ a{
 .nav__link:hover{
     background-color: #f3f9fb;
 }
-  
+
+#new-content-link{
+    color: #929aab;
+}
+
+#new-content-link:hover{
+    color: #6d747f;
+}
+
+#new-content-link i{
+    font-size: 0.8rem;
+    position: relative;
+    top: -1px;
+}
+
+#new-content-link:hover i{
+    color: var(--light-blue);
+}
+
 .collapse__link{
     display: flex;
     flex-direction: row;
@@ -1528,6 +1600,10 @@ a{
 }
 
 .collapse__sublink{
+    text-align: right;
+    outline: none;
+    border: none;
+    background: transparent;
     color: #929aab;
     font-size: 1.2rem;
 }
