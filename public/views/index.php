@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="public/css/main-style.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
         <title>Login Page</title>
     </head>
@@ -51,7 +53,11 @@
                         <h2>OUTSIDE</h2>
                         <h3>THE BOX</h3>
                     </div>
-                    <a href="login">Zaloguj się</a>
+                    <?php if(!isset($_COOKIE['user'])):?>
+                        <a href="login">Zaloguj się</a>
+                    <?php else: ?>
+                        <h5>Witaj ponownie</h5>
+                    <?php endif; ?>
                 </div>
 
                 <section id="main-scroll" class="scroll">

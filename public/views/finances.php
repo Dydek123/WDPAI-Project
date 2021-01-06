@@ -67,9 +67,9 @@
         </header>
 
         <section class="documentation-box">
-            <h1>Finanse</h1>
+            <h1><?php echo explode(';',$_GET['category'])[1] ?></h1>
             <div class="documentation-content">
-                <form class="documentation-menu" action="raports.php" method="GET">
+                <form class="documentation-menu" action="finances" method="GET">
                     <div id="nav__sticky">
                         <?php foreach ($categoryList as $category): ?>
                             <?php if(explode(';',$_GET['category'])[0] === $category): ?>
@@ -81,7 +81,8 @@
                                     <ul class="collapse__menu">
                                         <?php foreach ($contents as $content): ?>
                                             <?php if($content->getCategory() === $category): ?>
-                                                <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
+<!--                                                <input type="submit" value="--><?//= $content->getTitle()?><!--" class="collapse__sublink">-->
+                                                <button name="category" value="<?= $category ?>;<?= $content->getTitle() ?>" class="collapse__sublink"><?= $content->getTitle()?></button>
                                             <? endif; ?>
                                         <? endforeach; ?>
                                     </ul>

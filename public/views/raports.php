@@ -63,7 +63,7 @@
                             <form class="raports-links" method="get" action="finances">
                                 <?php foreach ($links as $link): ?>
                                     <?php if ($link->getCategory() === $category->getTitle()):?>
-                                            <input type="submit" name="category" value="<?= $link->getCategory() ?>;<?= $link->getTitle() ?>" class="get-raports-button">
+                                        <button name="category" value="<?= $link->getCategory() ?>;<?= $link->getTitle() ?>" class="get-raports-button"><?= $link->getTitle()?></button>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </form>

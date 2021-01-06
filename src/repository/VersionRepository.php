@@ -60,7 +60,7 @@ class VersionRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT datetime, file, title FROM "Versions" LEFT JOIN "Contents" C on C.id_contents = "Versions".id_contents;
+            SELECT datetime, file, title FROM "Versions" LEFT JOIN "Contents" C on C.id_contents = "Versions".id_contents ORDER BY datetime DESC ;
         ');
         $stmt->execute();
         $versions = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -19,7 +19,7 @@
             </div>
 
             <div id="signup-content" class="content">
-                <form action="index.html">
+                <form method="POST" action="addUser">
                     <div class="logo">
                         <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                     </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="div">
                                 <h5>Imię i nazwisko</h5>
-                                <input type="text" class="input">
+                                <input name='name' type="text" class="input">
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                             </div>
                             <div class="div">
                                <h5>E-mail</h5>
-                               <input type="email" class="input">
+                               <input name="email" type="email" class="input">
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                             </div>
                             <div class="div">
                                 <h5>Hasło</h5>
-                                <input type="password" class="input">
+                                <input name="password" type="password" class="input">
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@
                             </div>
                             <div class="div">
                                 <h5>Powtórz hasło</h5>
-                                <input type="password" class="input">
+                                <input name="repeat-password" type="password" class="input">
                             </div>
                         </div>
                         <div id="signup-to-login-text-mobile">
