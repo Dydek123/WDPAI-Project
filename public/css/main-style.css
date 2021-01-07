@@ -1467,12 +1467,20 @@ h5{
     flex-direction: row;
 }
 
-.documentation-menu{
+.menu{
     width: 23%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu div{
+    top: 10vh;
+    position: sticky;
+    position: -webkit-sticky;
+    transition: .4s;
 }
 
 .documentation-menu div{
-    margin: 0;
     padding-right: 1vw;
     top: 10vh;
 }
@@ -1486,6 +1494,7 @@ h5{
     text-align: justify;
     width: 77%;
     padding-left: 2vw;
+    font-family: 'Lato', sans-serif;
 }
 
 .documentation-text h2{
@@ -1552,10 +1561,9 @@ h5{
     display: flex;
     flex-direction: column;
     text-align: right;
-    padding: .35rem;
     color: #12232E;
     border-right: 2px solid var(--very-dark-blue);
-    margin-bottom: 1rem;
+    padding: .35rem .35rem 1rem;
     transition: .3s;
     cursor: pointer;
     font-size: 1.2rem;
@@ -1756,11 +1764,40 @@ h5{
 .search-btn{
     outline: none;
     background: transparent;
-    width: 80%;
+    width: 60%;
     text-align: right;
     border: none;
     border-bottom: 2px solid gray;
-    flex-direction: flex-end;
     align-self: flex-end;
-    font-size: 1.1rem
+    font-size: 1.1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--light-blue);
+}
+
+.search-btn:focus{
+    font-size: 1.2rem;
+    color: var(--light-blue);
+    border-bottom: 2px solid var(--light-blue);
+}
+
+.search-btn:hover .fa-search{
+    color: var(--light-blue);
+}
+
+.fa-search{
+    position: absolute;
+    top: 1.4rem;
+    right: 2.4rem;
+    font-size: 0.9rem;
+}
+
+.nav__link-document{
+    color: #A3ABBC;
+    margin-right: 1vw;
+    font-family: 'Josefin Sans', sans-serif;
 }

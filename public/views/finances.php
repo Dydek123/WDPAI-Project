@@ -9,6 +9,10 @@
         <script type="text/javascript" src="public/scripts/search.js" defer></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap" rel="stylesheet">
+
         <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
         <title>Login Page</title>
     </head>
@@ -56,10 +60,10 @@
                     </div>
 
 
-                    <div class="search-button">
-                        <input type="text" placeholder="Szukaj..." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
+<!--                    <div class="search-button">-->
+<!--                        <input type="text" placeholder="Szukaj..." name="search">-->
+<!--                        <button type="submit"><i class="fa fa-search"></i></button>-->
+<!--                    </div>-->
 
                     <div class="change-language">
                         <img src="public/img/main-page/Polish_flag.png">
@@ -72,32 +76,38 @@
         <section class="documentation-box">
             <h1><?php echo explode(';',$_GET['category'])[1] ?></h1>
             <div class="documentation-content">
-                <form class="documentation-menu" action="finances" method="GET">
-                    <div id="nav__sticky">
-                        <?php foreach ($categoryList as $category): ?>
-                            <?php if(explode(';',$_GET['category'])[0] === $category): ?>
-                                <div class="nav__link">
-                                    <p class="collapse__link">
-                                        <span><?= $category?></span>
-                                        <i class="fas fa-caret-down"></i>
-                                    </p>
-                                    <ul class="collapse__menu">
-                                        <?php foreach ($contents as $content): ?>
-                                            <?php if($content->getCategory() === $category): ?>
-<!--                                                <input type="submit" value="--><?//= $content->getTitle()?><!--" class="collapse__sublink">-->
-                                                <button name="category" value="<?= $category ?>;<?= $content->getTitle() ?>" class="collapse__sublink"><?= $content->getTitle()?></button>
-                                            <? endif; ?>
-                                        <? endforeach; ?>
-                                    </ul>
-                                </div>
-                            <? endif; ?>
-                        <? endforeach; ?>
-                        <div class="nav__link">
-                            <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
+                <div class="menu">
+                    <div>
+                        <form class="documentation-menu" action="finances" method="GET">
+                            <div id="nav__sticky">
+                                <?php foreach ($categoryList as $category): ?>
+                                    <?php if(explode(';',$_GET['category'])[0] === $category): ?>
+                                        <div class="nav__link">
+                                            <p class="collapse__link">
+                                                <span><?= $category?></span>
+                                                <i class="fas fa-caret-down"></i>
+                                            </p>
+                                            <ul class="collapse__menu">
+                                                <?php foreach ($contents as $content): ?>
+                                                    <?php if($content->getCategory() === $category): ?>
+                                                        <button name="category" value="<?= $category ?>;<?= $content->getTitle() ?>" class="collapse__sublink"><?= $content->getTitle()?></button>
+                                                    <? endif; ?>
+                                                <? endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <? endif; ?>
+                                <? endforeach; ?>
+                            </div>
+                            <div class="nav__link nav__link-document">
+                                <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
+                            </div>
+                        </form>
+                        <div class="search-div">
+                            <input type="text" placeholder="Szukaj..." class="search-btn">
+                            <i class="fas fa-search"></i>
                         </div>
-
                     </div>
-                </form>
+                </div>
                 <div class="documentation-text">
                     <h2>Lorem ipsum</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet massa felis, eu tincidunt nibh tincidunt nec. Aliquam vitae elit vestibulum, pharetra ipsum nec, aliquam tortor. Donec eleifend nibh quis dui aliquam varius. Pellentesque porta tincidunt tortor id fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam ornare justo. Integer suscipit bibendum elit, at tincidunt risus fringilla at. Suspendisse velit ex, feugiat vel lacinia et, sodales ut odio. Fusce tristique sapien mattis viverra pellentesque. Mauris sodales, massa id vulputate condimentum, elit ex cursus lacus, et ornare nibh libero vitae libero. Nam iaculis ligula sit amet vulputate vulputate. Quisque faucibus felis scelerisque euismod dignissim. Praesent id tempor sem. Etiam id nisi quam. Duis sed sem id massa cursus luctus vitae id nunc.</p>
@@ -134,9 +144,6 @@
         </p>
         <ul class="collapse__menu">
         </ul>
-    </div>
-    <div class="nav__link">
-        <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
     </div>
 </template>
 
