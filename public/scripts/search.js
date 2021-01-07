@@ -1,23 +1,43 @@
 const search = document.querySelector('input[placeholder="Szukaj..."]');
 const contentContainer = document.querySelector('#nav__sticky');
 
-function loadContents(contents) {
-    contents.forEach(content => {
-        console.log(content);
-        createContent(content);
+let existCategory = [];
+
+function getUniqueCategories(contents){
+    contents.forEach(content=> {
+        if (!existCategory.includes(content.name)){
+            existCategory.push(content.name)
+        }
     });
 }
 
+function loadContents(contents) {
+    getUniqueCategories(contents)
+    existCategory.forEach(category => {
+        createContent(contents, category);
+    });
+    collapseMenu()
+}
 
-function createContent(searchContent) {
+
+function createContent(searchContent, category) {
     const template = document.querySelector('#content-template');
     const clone = template.content.cloneNode(true);
 
-    const button = clone.querySelector("button");
-    console.log(searchContent);
-    button.innerHTML = searchContent.title;
-    console.log(searchContent.title);
-    button.value = searchContent.name+";"+searchContent.title;
+    const templateCategory = clone.querySelector("span");
+    templateCategory.innerHTML = category;
+    searchContent.forEach(content =>{
+        if (content.name === category){
+            const buttonTemplate = document.querySelector('#content-template-list-element');
+            const cloneButton = buttonTemplate.content.cloneNode(true);
+
+            const button = cloneButton.querySelector("button");
+            button.innerHTML = content.title;
+            button.value = content.name+";"+content.title;
+            const menuContainer = clone.querySelector('.collapse__menu')
+            menuContainer.appendChild(cloneButton);
+        }
+    });
 
     contentContainer.appendChild(clone);
 }

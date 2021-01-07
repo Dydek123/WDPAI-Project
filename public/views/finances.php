@@ -126,7 +126,16 @@
 
 <template id="content-template">
     <div class="nav__link">
-        <button name="category" value="category;title" class="collapse__sublink">title</button>
+        <p class="collapse__link">
+            <span>category</span>
+            <i class="fas fa-caret-down"></i>
+        </p>
+        <ul class="collapse__menu">
+        </ul>
     </div>
+</template>
+
+<template id="content-template-list-element">
+    <button name="category" value="category;title" class="collapse__sublink">title</button>
 </template>
 </html>
