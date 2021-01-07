@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+<!--    <script type="text/javascript" src="public/scripts/login-script.js" defer></script>-->
+    <script type="text/javascript" src="public/scripts/validate.js" defer></script>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
     <title>Sign up</title>
@@ -92,5 +96,4 @@
             <img alt="english" src="public/img/login/english_flag.png">
         </div>
      </div>
-    <script type="text/javascript" src="public/scripts/loginv2.js"></script>
 </body>

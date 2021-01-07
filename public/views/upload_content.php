@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="public/css/upload.css">
-
+    <script type="text/javascript" src="public/scripts/upload.js" defer></script>
     <title>Login Page</title>
 </head>
 
@@ -81,5 +81,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="public/scripts/upload.js"></script>
 </body>

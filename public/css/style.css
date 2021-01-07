@@ -125,7 +125,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: var(--light-blue);
+	border-bottom: 2px solid var(--medium-blue);
 	transition: .4s;
 }
 
@@ -139,6 +139,7 @@ form{
 
 .input-div.focus:before, .input-div.focus:after{
 	width: 50%;
+    border-bottom: 2px solid var(--medium-blue);
 }
 
 .input-div.focus > div > h5{
@@ -149,6 +150,21 @@ form{
 
 .input-div.focus > .i > i{
 	color: var(--light-blue);
+}
+
+.input-div.no-valid:before, .input-div.no-valid:after{
+    width: 50%;
+    border-bottom: 2px solid red;
+}
+
+.input-div.no-valid > div > h5{
+    top: -23px;
+    font-size: 1.1rem;
+    color: red;
+}
+
+.input-div.no-valid > .i > i{
+    color: indianred;
 }
 
 .input-div > div > input{
