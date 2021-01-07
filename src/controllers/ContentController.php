@@ -29,15 +29,17 @@ class ContentController extends AppController{
         $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions]);
     }
 
-    private function createUniqueCategoryList($contents): array
-    {
-        $categoryList = array();
-        foreach ($contents as $content){
-            if (!in_array($content->getCategory(), $categoryList)){
-                $categoryList[] = $content->getCategory();
-            }
+    public function search(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if ($contentType === 'application/json') {
+            $content = (file_get_contents('php://input'));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->contentRepository->getContentByTitle($decoded['search']));
         }
-        return $categoryList;
     }
 
     public function addContent(){
@@ -63,6 +65,17 @@ class ContentController extends AppController{
         }
 
         return $this->render('upload_content', ['messages' => $this->message]);
+    }
+
+    private function createUniqueCategoryList($contents): array
+    {
+        $categoryList = array();
+        foreach ($contents as $content){
+            if (!in_array($content->getCategory(), $categoryList)){
+                $categoryList[] = $content->getCategory();
+            }
+        }
+        return $categoryList;
     }
 
     private function validate(array $file): bool

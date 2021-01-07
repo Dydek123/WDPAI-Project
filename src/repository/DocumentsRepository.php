@@ -52,19 +52,6 @@ class DocumentsRepository extends Repository
         ]);
     }
 
-    private function iconName($icon){
-        switch ($icon){
-            case 'dolar':
-                return 'fa-dollar-sign';
-            case 'user':
-                return 'fa-users';
-            case 'mail':
-                return 'fa-envelope';
-            case 'book':
-                return 'fa-book-open';
-        }
-    }
-
     public function getDocuments(): array
     {
         $result = [];
@@ -89,4 +76,16 @@ class DocumentsRepository extends Repository
         return $result;
     }
 
+    private function iconName($icon){
+        switch ($icon){
+            case 'dolar':
+                return 'fa-dollar-sign';
+            case 'user':
+                return 'fa-users';
+            case 'mail':
+                return 'fa-envelope';
+            case 'book':
+                return 'fa-book-open';
+        }
+    }
 }

@@ -44,17 +44,6 @@ class ContentRepository extends Repository
         ]);
     }
 
-    private function getDocumentID($name){
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.documents WHERE title = :title
-        ');
-        $stmt->bindParam(':title', $name, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $tmp['id_documents'];
-    }
-
     public function getContents(): array
     {
         $result = [];
@@ -74,5 +63,27 @@ class ContentRepository extends Repository
         }
 
         return $result;
+    }
+
+    public function getContentByTitle(string $searchString) {
+        $searchString = '%' . strtolower($searchString) . '%';
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM contents_details WHERE LOWER(title) LIKE :search OR LOWER(name) LIKE :search
+        ');
+        $stmt->bindParam(':search',$searchString,PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    private function getDocumentID($name){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.documents WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $name, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $tmp['id_documents'];
     }
 }

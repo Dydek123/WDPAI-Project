@@ -6,6 +6,7 @@
 
         <link rel="stylesheet" type="text/css" href="public/css/main-style.css">
         <script type="text/javascript" src="public/scripts/app.js" defer></script>
+        <script type="text/javascript" src="public/scripts/search.js" defer></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
@@ -48,17 +49,17 @@
                             <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
                         </div>
 
-                        <form id="search-button-mobile" class="search-button nav-links-item">
-                            <input type="text" placeholder="Szukaj..." name="search">
+                        <div id="search-button-mobile" class="search-button nav-links-item">
+                            <input type="text" placeholder="Szukaj.." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
+                        </div>
                     </div>
                     
 
-                    <form class="search-button">
+                    <div class="search-button">
                         <input type="text" placeholder="Szukaj..." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    </div>
                     <div class="change-language">
                         <img src="public/img/main-page/Polish_flag.png">
                     </div>
@@ -122,4 +123,10 @@
             </div>
         </section>
     </body>
+
+<template id="content-template">
+    <div class="nav__link">
+        <button name="category" value="category;title" class="collapse__sublink">title</button>
+    </div>
+</template>
 </html>

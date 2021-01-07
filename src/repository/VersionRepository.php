@@ -44,17 +44,6 @@ class VersionRepository extends Repository
         ]);
     }
 
-    private function getContentID($name){
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public."Contents" WHERE title = :title
-        ');
-        $stmt->bindParam(':title', $name, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $tmp['id_contents'];
-    }
-
     public function getVersions(): array
     {
         $result = [];
@@ -75,4 +64,16 @@ class VersionRepository extends Repository
 
         return $result;
     }
+
+    private function getContentID($name){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public."Contents" WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $name, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $tmp['id_contents'];
+    }
+
 }

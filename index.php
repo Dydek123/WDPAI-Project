@@ -17,5 +17,6 @@ Routing::post('addUser','SecurityController');
 Routing::post('login_user', 'SecurityController');
 Routing::post('addCategory', 'CategoryController');
 Routing::post('addContent', 'ContentController');
+Routing::post('search', 'ContentController');
 
 Routing::run($path);
