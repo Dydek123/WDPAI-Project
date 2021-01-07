@@ -1,7 +1,7 @@
 const search = document.querySelector('input[placeholder="Szukaj..."]');
 const contentContainer = document.querySelector('#nav__sticky');
 
-let existCategory = [];
+let existCategory;
 
 function getUniqueCategories(contents){
     contents.forEach(content=> {
@@ -12,6 +12,7 @@ function getUniqueCategories(contents){
 }
 
 function loadContents(contents) {
+    existCategory = [];
     getUniqueCategories(contents)
     existCategory.forEach(category => {
         createContent(contents, category);

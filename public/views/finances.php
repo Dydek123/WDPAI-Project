@@ -54,12 +54,13 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
-                    
+
 
                     <div class="search-button">
                         <input type="text" placeholder="Szukaj..." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
+
                     <div class="change-language">
                         <img src="public/img/main-page/Polish_flag.png">
                     </div>
@@ -94,6 +95,7 @@
                         <div class="nav__link">
                             <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
                         </div>
+
                     </div>
                 </form>
                 <div class="documentation-text">
@@ -132,6 +134,9 @@
         </p>
         <ul class="collapse__menu">
         </ul>
+    </div>
+    <div class="nav__link">
+        <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
     </div>
 </template>
 
