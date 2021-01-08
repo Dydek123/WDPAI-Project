@@ -33,7 +33,16 @@ class SecurityController extends AppController{
             return $this->render('login',['messages' => ['Nieprawidłowe dane']]);
         }
 
-        setcookie('user', $user->getEmail(), time() + (60*60*8)); //expires after 8 hours
+        setcookie('user', hash('sha512', $user->getEmail()), time() + (60*60*8)); //expires after 8 hours
+        setcookie('user_role', hash('sha512', $user->getRole()), time() + (60*60*8)); //expires after 8 hours
+        return $this->render('index');
+    }
+
+    public function logout(){
+        if (isset($_COOKIE['user']) && $_GET['logout']) {
+            setcookie('user', null, time() - 600); //delete cookies by set time in the past
+            setcookie('user_role', null, time() - 600); //delete cookies by set time in the past
+        }
         return $this->render('index');
     }
 

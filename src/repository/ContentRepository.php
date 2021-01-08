@@ -33,13 +33,13 @@ class ContentRepository extends Repository
             INSERT INTO "Contents" (id_raports, id_users, is_public, title)
             VALUES (?, ?, ?, ?)
         ');
-
         $id_user = 1;
+        $privateValue = (int)$content->isIsPublic();
         $id_raports = $this->getDocumentID($content->getCategory());
         $stmt->execute([
             $id_raports,
             $id_user,
-            $content->isIsPublic(),
+            (int)$content->isIsPublic(),
             $content->getTitle()
         ]);
     }

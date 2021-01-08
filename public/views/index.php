@@ -1,53 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <?php include "public/components/head_template.php"?>
         <link rel="stylesheet" type="text/css" href="public/css/main-style.css">
-        <script type="text/javascript" src="public/scripts/app.js" defer></script>
         <script type="text/javascript" src="public/scripts/scroll.js" defer></script>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/57045c6330.js" crossorigin="anonymous"></script>
-        <title>Login Page</title>
+        <title>Cboard</title>
     </head>
 
     <body>
         <header id="main-header">
             <div class="main-header-shadow">
 
-                <nav id ="main-topnav" class="topnav">
-                    <div class="hamburger">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                    <div class="logo">
-                        <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
-                    </div>
-
-                    <div class="nav-links-mobile-only">
-                        <a href="#" class="navigation-back-arrow nav-links-item">
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                        <form id="search-button-mobile" class="search-button nav-links-item">
-                            <input type="text" placeholder="Szukaj..." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                    
-
-                    <form class="search-button">
-                        <input type="text" placeholder="Szukaj..." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                    <div class="change-language">
-                        <img src="public/img/main-page/Polish_flag.png">
-                    </div>
-                </nav>
+                <?php include 'public/components/topnav.php'?>
 
                 <div class="header-motto">
                     <div class="motto">
@@ -85,7 +49,7 @@
                     </div>
                     <span>
                         <hr>
-                        <input type="submit" name="type" value="Dokumentacja" class="get-category-button">
+                        <button name="type" value="Dokumentacja" class="get-category-button">Zobacz więcej</button>
                     </span>
                 </div>
 
@@ -101,7 +65,7 @@
                     </div>
                     <span>
                         <hr>
-                        <input type="submit" name="type" value="Raporty" class="get-category-button">
+                        <button name="type" value="Raporty" class="get-category-button">Zobacz więcej</button>
                     </span>
                 </div>
 
@@ -117,7 +81,7 @@
                     </div>
                     <span>
                         <hr>
-                        <input type="submit" name="type" value="FAQ" class="get-category-button">
+                        <button name="type" value="FAQ" class="get-category-button">Zobacz więcej</button>
                     </span>
                 </div>
             </form>

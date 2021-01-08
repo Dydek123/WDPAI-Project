@@ -44,6 +44,11 @@ class Content{
         $this->title = $title;
     }
 
-
+    public function showCondition() : bool{
+        if (!isset($_COOKIE['user']) && !$this->isIsPublic()){
+            return false;
+        }
+        return true;
+    }
 
 }

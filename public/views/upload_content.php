@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <?php include "public/components/head_template.php"?>
     <link rel="stylesheet" type="text/css" href="public/css/upload.css">
     <script type="text/javascript" src="public/scripts/upload.js" defer></script>
-    <title>Login Page</title>
+    <title>Cboard - upload document</title>
 </head>
 
 <body>
@@ -22,8 +20,8 @@
                 <div class="select">
                     <select name="public" id="slct" onchange="changeMe(this);">
                         <option selected disabled>Wybierz widoczność</option>
-                        <option value="true">Publiczne</option>
-                        <option value="false">Prywatne</option>
+                        <option value="1">Publiczne</option>
+                        <option value="0">Prywatne</option>
                     </select>
                 </div>
 

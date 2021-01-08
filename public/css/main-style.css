@@ -19,6 +19,10 @@ body{
 a{
     color: #12232E;
 }
+
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+}
 #main-header{
     background-image: url("../img/main-page/paper.jpg");
     background-position:  left;
@@ -53,13 +57,17 @@ a{
     height: 8vh;
     background: rgba(18,35,46,0.8) 0% 0% no-repeat padding-box;
     display: grid;
-    grid-template-columns: 20% 37% 32% 8%;
+    grid-template-columns:  20% 65% 7% 7%;
     grid-template-rows: 8vh;
     justify-items: center;
     align-items: center;
     z-index: 5;
     font-size: 50px;
     box-shadow: 0px 6px 20px rgba(18,35,46,0.91);
+}
+
+.logout-mobile-icon{
+    display: none;
 }
 
 .logo{
@@ -118,7 +126,7 @@ a{
 }
 
 .change-language{
-    grid-column: 4/5;
+    grid-column: 3/4;
     width: 10vw;
     justify-self: start;
     display: flex;
@@ -140,8 +148,49 @@ a{
     box-shadow: 0px 0px 20px rgba(0,0,0,1);
 }
 
+.logout_form{
+    grid-column: 4/5;
+    width: 10vw;
+    justify-self: start;
+    display: flex;
+}
+
+.logout_button{
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #cac5c5;
+    font-size: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: .3s;
+}
+
+.logout_button:hover{
+    color: var(--light-white);
+}
+
+.topnav__login{
+    grid-column: 4/5;
+    width: 10vw;
+    justify-self: start;
+    display: flex;
+}
+
+.topnav__login{
+    text-decoration: none;
+    background: transparent;
+    color: #cac5c5;
+    font-size: 1.3rem;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: .3s;
+}
+
+.topnav__login:hover{
+    color: var(--light-white);
+}
+
 .header-motto{
-    background: transparent radial-gradient(closest-side at 50% 50%, rgba(77,168,218,0.2) 0%, rgb(104,147,170,0.2) 50%, rgba(128,128,128,0) 100%) 0% 0% no-repeat padding-box;
+    background: transparent radial-gradient(closest-side at 50% 50%, rgba(77,168,218,0.2) 0%, rgba(104,147,170,0.2) 50%, rgba(128,128,128,0) 100%) 0% 0% no-repeat padding-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -190,7 +239,7 @@ a{
     background-color: var(--light-white);
     border-radius: 20px;
     box-shadow: 5px 5px 12px rgba(0,0,0,0.38);
-
+    font-family: 'Poppins', sans-serif;
     transition: all ease-in-out 0.2s;
 }
 
@@ -290,7 +339,7 @@ a{
     }
     
     .topnav{
-        grid-template-columns: 23% 57% 10%;
+        grid-template-columns: 25% 47% 14% 12%;
         font-size: 50px;
     }
     
@@ -367,13 +416,25 @@ a{
         height: 10vh;
         background: rgba(18,35,46,0.8) 0% 0% no-repeat padding-box;
         display: grid;
-        grid-template-columns: 20% 60%;
+        grid-template-columns: 20% 60% 20%;
         grid-template-rows: 10vh;
         justify-items: center;
         align-items: center;
         font-size: 50px;
         z-index: 3;
         transition: 0.2s;
+    }
+
+    .logout-mobile-icon{
+        display: block;
+        grid-column: 1/2;
+        transform: rotate(180deg);
+        color: var(--light-white);
+        font-size: 2.5rem;
+    }
+
+    .logout_button{
+        display: none;
     }
 
     .hamburger{
@@ -636,15 +697,16 @@ a{
     margin-bottom: 0;
 }
 
-.materials input{
+.materials button{
     height: 100%;
     width: 100%;
     cursor: pointer;
     text-decoration: none;
     color: var(--light-white);
-    font: normal normal bold 1.1rem Arial;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     display: flex;
-    align-items: flex-start;
     justify-content: center;
     transition: all ease-in-out 0.2s;
     background-color: transparent;
@@ -661,7 +723,7 @@ hr {
 }
 
 .get-category-button:hover{
-    font: normal normal bold 1.3rem Arial;
+    font-size: 1.25rem;
 }
 
 .get-category-button{
@@ -813,7 +875,7 @@ hr {
     margin: 0;
     
     padding-top: 5vh;
-    font: normal normal bold 2.8rem Segoe UI;
+    font-size: 2.8rem;
     color: var(--light-white);
     border-bottom: 3px solid var(--medium-blue);
     display: inline-block;
@@ -833,7 +895,9 @@ hr {
 
 .about-us-text{
     width: 30%;
-    font: normal normal bold 1.5rem Segoe UI;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 500;
     text-align: justify;
     color: var(--light-white);
 }
@@ -860,7 +924,8 @@ hr {
     width: 10vw;
     height: 5vh;
     margin-top: 5vh;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: 'Segoe UI', sans-serif;
     font-size: 1.5em;
     display: flex;
     align-items: center;
@@ -887,7 +952,7 @@ hr {
     }
     
     .about-us h1{
-        font: normal normal bold 3rem Segoe UI;
+        font-size: 3rem;
     }
 
     .about-us-text{
@@ -911,7 +976,7 @@ hr {
 
 @media only screen and (max-device-width: 512px) {
     .about-us h1{ 
-        font: normal normal bold 3rem Segoe UI;
+        font-size: 3rem;
         color: var(--light-white);
     }
     
@@ -965,7 +1030,7 @@ hr {
 .get-in-touch h1{
     margin: 0 auto;
     padding-top: 5vh;
-    font: normal normal bold 2.8rem Segoe UI;
+    font-size: 2.8rem;
     color: var(--light-white);
     border-bottom: 3px solid var(--medium-blue);
     display: inline-block;
@@ -1001,7 +1066,8 @@ hr {
 
 .get-in-touch-item p{
     margin: 1vh;
-    font: normal normal bold 1.3rem Segoe UI;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.4rem;
 }
 
 .get-in-touch-item iframe{
@@ -1056,7 +1122,7 @@ hr {
     
     .get-in-touch h1{
         padding-top: 3vh;
-        font: normal normal bold 3rem Segoe UI;
+        font-size: 3rem;
     }
     
     .get-in-touch-container{
@@ -1076,7 +1142,8 @@ hr {
     
     .get-in-touch-item p{
         margin: 0.5vh;
-        font: normal normal bold 1.1rem Segoe UI;
+        font-size: 1.2rem;
+        font-family: 'Josefin Sans', sans-serif;
     }
     
     .get-in-touch-item iframe{
@@ -1097,8 +1164,8 @@ hr {
     }
     
     .get-in-touch h1{
-        padding-top: 1vh;
-        font: normal normal bold 3rem Segoe UI;
+        padding-top: 5vh;
+        font-size: 3rem;
     }
     
     .get-in-touch-container{
@@ -1119,7 +1186,8 @@ hr {
     
     .get-in-touch-item p{
         margin: 0.3vh;
-        font: normal normal bold 1rem Segoe UI;
+        font-size: 1.2rem;
+        font-family: 'Josefin Sans', sans-serif;
     }
     
     .get-in-touch-item iframe{
@@ -1197,7 +1265,7 @@ hr {
 .raports-cotainer h1{
     margin: 0 auto;
     padding-top: 3vh;
-    font: normal normal bold 2.8rem Segoe UI;
+    font-size: 2.8rem;
     color: var(--dark-blue);
       border-bottom: 3px solid var(--medium-blue);
     display: inline-block;
@@ -1800,4 +1868,8 @@ h5{
     color: #A3ABBC;
     margin-right: 1vw;
     font-family: 'Josefin Sans', sans-serif;
+}
+
+#guest-information{
+    padding-top: 5rem;
 }

@@ -51,7 +51,7 @@ class ContentController extends AppController{
 
             $date = new DateTime();
             if($_POST['document-name'] === "new" || $this->contentValidate()){
-                $newContent = new Content($_POST['document-type'], $_POST['public'], $_POST['title']);
+                $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title']);
                 $this->contentRepository->addNewContent($newContent);
                 $newVersion = new Version($_POST['title'],$_FILES['file']['name'], $date->format('Y-m-d'));
                 $this->versionRepository->addNewVersion($newVersion);

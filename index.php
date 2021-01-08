@@ -11,6 +11,7 @@ Routing::get('login','DefaultController');
 Routing::get('error','DefaultController');
 Routing::get('finances','ContentController');
 Routing::get('raports','CategoryController');
+Routing::get('logout','SecurityController');
 
 Routing::post('register','SecurityController');
 Routing::post('addUser','SecurityController');
