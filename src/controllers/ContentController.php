@@ -43,28 +43,31 @@ class ContentController extends AppController{
     }
 
     public function addContent(){
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
-            move_uploaded_file(
-                $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
-            );
+        if (isset($_COOKIE['user'])) {
+            if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+                move_uploaded_file(
+                    $_FILES['file']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
+                );
 
-            $date = new DateTime();
-            if($_POST['document-name'] === "new" || $this->contentValidate()){
-                $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title']);
-                $this->contentRepository->addNewContent($newContent);
-                $newVersion = new Version($_POST['title'],$_FILES['file']['name'], $date->format('Y-m-d'));
-                $this->versionRepository->addNewVersion($newVersion);
-            }
-            else{
-                $newVersion = new Version($_POST['document-name'],$_FILES['file']['name'], $date->format('Y-m-d'),);
-                $this->versionRepository->addNewVersion($newVersion);
+                $date = new DateTime();
+                if ($_POST['document-name'] === "new" || $this->contentValidate()) {
+                    $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title']);
+                    $this->contentRepository->addNewContent($newContent);
+                    $newVersion = new Version($_POST['title'], $_FILES['file']['name'], $date->format('Y-m-d'));
+                    $this->versionRepository->addNewVersion($newVersion);
+                } else {
+                    $newVersion = new Version($_POST['document-name'], $_FILES['file']['name'], $date->format('Y-m-d'),);
+                    $this->versionRepository->addNewVersion($newVersion);
+                }
+
+                return $this->render("index");
             }
 
-            return $this->render("index");
+            return $this->render('upload_content', ['messages' => $this->message]);
         }
-
-        return $this->render('upload_content', ['messages' => $this->message]);
+        echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        return $this->render("login");
     }
 
     private function createUniqueCategoryList($contents): array

@@ -29,21 +29,29 @@ class CategoryController extends AppController{
     }
 
     public function addCategory(){
-        if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])){
-            move_uploaded_file(
-                $_FILES['background']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['background']['name']
-            );
+        if (isset($_COOKIE['user'])) {
+            if($_COOKIE['user_role']===hash('sha512', 'user')){
+                echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
+                return $this->render("index");
+            }
+            if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
+                move_uploaded_file(
+                    $_FILES['background']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['background']['name']
+                );
 
-//            die($_FILES['background']['name']);
-//
-            $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
-            $this->documentRepository->addDocument($newCategory);
+                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
+                $this->documentRepository->addDocument($newCategory);
 
-            return $this->render("raports", ['messages' => $this -> message, 'newCategory' => $newCategory]);
+                return $this->render("raports", ['messages' => $this->message, 'newCategory' => $newCategory]);
+            }
+
+            return $this->render('upload_file', ['messages' => $this->message]);
         }
-
-        return $this->render('upload_file', ['messages' => $this->message]);
+        else{
+            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        }
+        return $this->render("login");
     }
 
     private function validate(array $file): bool
