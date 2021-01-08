@@ -287,3 +287,7 @@ select::-ms-expand {
 .new-input{
 	display: none;
 }
+
+.public-select{
+	display: none;
+}

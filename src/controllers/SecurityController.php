@@ -17,6 +17,12 @@ class SecurityController extends AppController{
     public function login_user(){
         $userRepository = new UserRepository();
 
+        if (isset($_COOKIE['user'])){
+            if (isset($_COOKIE['user'])){
+                header("location:javascript://history.go(-1)");
+            }
+        }
+
         if (!$this->isPost()) {
             return $this->render('login_user');
         }
@@ -47,6 +53,9 @@ class SecurityController extends AppController{
     }
 
     public function register() {
+        if (isset($_COOKIE['user'])){
+            header("location:javascript://history.go(-1)");
+        }
         $this -> render('register');
     }
 

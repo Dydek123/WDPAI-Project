@@ -18,14 +18,6 @@
                 <h2>Nowy dokument</h2>
 
                 <div class="select">
-                    <select name="public" id="slct" onchange="changeMe(this);">
-                        <option selected disabled>Wybierz widoczność</option>
-                        <option value="1">Publiczne</option>
-                        <option value="0">Prywatne</option>
-                    </select>
-                </div>
-
-                <div class="select">
                     <select name="category" id="slct" onchange="changeMe(this); showDocumentsType();">
                         <option selected disabled>Wybierz kategorie</option>
                         <option value="raports">Raporty</option>
@@ -48,6 +40,14 @@
                         <option value="Jak liczyć podatek VAT">Jak liczyć podatek VAT</option>
                         <option value="Rozliczenia podatku">Rozliczenia podatku</option>
                         <option value="new">Stwórz nowy dokument</option>
+                    </select>
+                </div>
+
+                <div class="select public-select">
+                    <select name="public" id="slct" onchange="changeMe(this);">
+                        <option selected disabled>Wybierz widoczność</option>
+                        <option value="1">Publiczne</option>
+                        <option value="0">Prywatne</option>
                     </select>
                 </div>
 

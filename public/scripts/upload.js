@@ -33,12 +33,15 @@ function showDocumentsType(){
 function checkNew(){
 	const val = document.querySelectorAll(".slct-content");
 	const newInput = document.querySelector(".new-input");
+	const publicInput = document.querySelector('.public-select');
 
 	if (val[0].value === "new"){
 		newInput.style.display = "block";
+		publicInput.style.display = "flex";
 	}
 
 	else{
 		newInput.style.display = "none";
+		publicInput.style.display = "none";
 	}
 }
