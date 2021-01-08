@@ -159,6 +159,7 @@ h1{
     border: none;
     outline: none;
     background: transparent;
+    cursor: pointer;
     color: #cac5c5;
     font-size: 1rem;
     font-family: 'Josefin Sans', sans-serif;
