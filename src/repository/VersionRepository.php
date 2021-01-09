@@ -8,7 +8,7 @@ class VersionRepository extends Repository
 
     public function getVersion(int $id): ?Version
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public."Versions" WHERE id_versions = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -29,7 +29,7 @@ class VersionRepository extends Repository
 
     public function addNewVersion(Version $version): void
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             INSERT INTO "Versions" (id_contents, datetime, file)
             VALUES (?, ?, ?)
         ');
@@ -47,7 +47,7 @@ class VersionRepository extends Repository
     {
         $result = [];
 
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT datetime, file, title FROM "Versions" LEFT JOIN "Contents" C on C.id_contents = "Versions".id_contents ORDER BY datetime DESC ;
         ');
         $stmt->execute();
@@ -65,7 +65,7 @@ class VersionRepository extends Repository
     }
 
     private function getContentID($name){
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public."Contents" WHERE title = :title
         ');
         $stmt->bindParam(':title', $name, PDO::PARAM_INT);

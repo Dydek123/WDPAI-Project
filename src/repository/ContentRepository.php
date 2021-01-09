@@ -2,13 +2,14 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Content.php';
+require_once __DIR__.'/../../Connection.php';
 
 class ContentRepository extends Repository
 {
 
     public function getContent(int $id): ?Content
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public."Contents" WHERE id_contents = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -29,7 +30,7 @@ class ContentRepository extends Repository
 
     public function addNewContent(Content $content): void
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             INSERT INTO "Contents" (id_raports, id_users, is_public, title)
             VALUES (?, ?, ?, ?)
         ');
@@ -47,8 +48,7 @@ class ContentRepository extends Repository
     public function getContents(): array
     {
         $result = [];
-
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT  d.title as category, c.title as content, is_public FROM "Contents" c LEFT JOIN documents d on d.id_documents = c.id_raports;
         ');
         $stmt->execute();
@@ -67,7 +67,7 @@ class ContentRepository extends Repository
 
     public function getContentByTitle(string $searchString) {
         $searchString = '%' . strtolower($searchString) . '%';
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM contents_details WHERE LOWER(title) LIKE :search OR LOWER(name) LIKE :search
         ');
         $stmt->bindParam(':search',$searchString,PDO::PARAM_STR);
@@ -77,7 +77,7 @@ class ContentRepository extends Repository
     }
 
     private function getDocumentID($name){
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public.documents WHERE title = :title
         ');
         $stmt->bindParam(':title', $name, PDO::PARAM_INT);

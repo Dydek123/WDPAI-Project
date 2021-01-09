@@ -8,8 +8,31 @@ class UserRepository extends Repository
 
     public function getUser(string $email): ?User
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public.users WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return null;
+        }
+
+        return new User(
+            $user['name'],
+            $user['surname'],
+            $user['password'],
+            $user['email'],
+            $user['id_role']
+        );
+    }
+
+    public function getUserFromCookie(string $email): ?User
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM public.users WHERE md5(email) = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -32,7 +55,7 @@ class UserRepository extends Repository
     public function addUser(User $newUser)
     {
         if ($this->validateEmail($newUser->getEmail())) {
-            $stmt = $this->database->connect()->prepare('
+            $stmt = Connection::getInstance()->getConnection()->prepare('
                 INSERT INTO users (password, email, id_role, id_user_details)
                 VALUES (?, ?, ?, ?)
             ');
@@ -50,7 +73,7 @@ class UserRepository extends Repository
 
     private function checkUserDetails($name, $surname)
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM "Users_details" WHERE name=:name AND surname=:surname;
         ');
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -71,7 +94,7 @@ class UserRepository extends Repository
             ]);
         }
 
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM "Users_details" WHERE name=:name AND surname=:surname;
         ');
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -84,7 +107,7 @@ class UserRepository extends Repository
     }
 
     private function validateEmail($email) : bool{
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT count(email) FROM users WHERE email= :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);

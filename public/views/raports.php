@@ -38,7 +38,7 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
 
-                <?php if(isset($_COOKIE['user_role'])):?>
+                <?php if(isset($_COOKIE['user'])):?>
                     <a href="addCategory" class="raports-card">
                         <div id="new-raports" class="raports-card-img">
                             <div class="raports-card-icon"><i class="fas fa-plus"></i></div>

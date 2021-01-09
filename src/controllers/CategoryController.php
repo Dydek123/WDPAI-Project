@@ -4,6 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/Document.php';
 require_once __DIR__.'/../repository/DocumentsRepository.php';
 require_once __DIR__.'/../repository/ContentRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class CategoryController extends AppController{
 
@@ -13,6 +14,7 @@ class CategoryController extends AppController{
 
     private $message = [];
     private $documentRepository;
+    private $userRepository;
     private $contentRepository;
 
     public function __construct()
@@ -20,6 +22,7 @@ class CategoryController extends AppController{
         parent::__construct();
         $this->documentRepository = new DocumentsRepository();
         $this->contentRepository = new ContentRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function raports() {
@@ -30,7 +33,8 @@ class CategoryController extends AppController{
 
     public function addCategory(){
         if (isset($_COOKIE['user'])) {
-            if($_COOKIE['user_role']===hash('sha512', 'user')){
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if($userRole===hash('sha512', 'user')){
                 echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
                 return $this->render("index");
             }

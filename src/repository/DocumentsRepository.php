@@ -8,7 +8,7 @@ class DocumentsRepository extends Repository
 
     public function getDocument(int $id): ?Document
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public.documents WHERE id_documents = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -31,7 +31,7 @@ class DocumentsRepository extends Repository
 
     public function addDocument(Document $document): void
     {
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             INSERT INTO documents (id_categories, icon, background, title, description)
             VALUES (?, ?, ?, ?, ?)
         ');
@@ -55,11 +55,9 @@ class DocumentsRepository extends Repository
     public function getDocuments(): array
     {
         $result = [];
-
-        $stmt = $this->database->connect()->prepare('
+        $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM documents d LEFT JOIN "Categories" C on C.id_categories = d.id_documents;
         ');
-
         $stmt->execute();
         $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
