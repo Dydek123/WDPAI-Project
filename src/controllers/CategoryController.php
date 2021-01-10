@@ -34,9 +34,9 @@ class CategoryController extends AppController{
     public function addCategory(){
         if (isset($_COOKIE['user'])) {
             $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
-            if($userRole===hash('sha512', 'user')){
+            if($userRole->getRole()==='1'){
                 echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
-                return $this->render("index");
+                return $this->render('index');
             }
             if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
                 move_uploaded_file(

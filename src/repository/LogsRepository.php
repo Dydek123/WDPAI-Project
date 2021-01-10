@@ -29,7 +29,6 @@ class LogsRepository extends Repository
         $stmt->execute();
 
         $log = $stmt->fetch(PDO::FETCH_ASSOC);
-        var_dump($log." ");
         $date = new DateTime();
         $stmt = Connection::getInstance()->getConnection()->prepare('
             UPDATE public.logs SET datetime = :date WHERE id_logs = :log;
@@ -37,9 +36,7 @@ class LogsRepository extends Repository
         $format = $date->format('Y-m-d H:i:s');
         $stmt->bindParam(':date', $format, PDO::PARAM_STR);
         $stmt->bindParam(':log', $log['id_logs'], PDO::PARAM_STR);
-        var_dump($log['id_logs']." ");
         $stmt->execute();
-        die();
     }
 
     private function isMobile() : string

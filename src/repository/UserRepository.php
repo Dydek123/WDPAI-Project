@@ -84,7 +84,7 @@ class UserRepository extends Repository
         $exist_user_details = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($exist_user_details == false) {
-            $stmt = $this->database->connect()->prepare('
+            $stmt = Connection::getInstance()->getConnection()->prepare('
                 INSERT INTO "Users_details" (name, surname)
                 VALUES (?, ?)
             ');

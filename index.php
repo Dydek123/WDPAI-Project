@@ -16,6 +16,8 @@ Routing::get('logout','SecurityController');
 Routing::post('register','SecurityController');
 Routing::post('addUser','SecurityController');
 Routing::post('login_user', 'SecurityController');
+Routing::post('setNewPassword','ResetPasswordController');
+Routing::post('forgotPassword','ResetPasswordController');
 Routing::post('addCategory', 'CategoryController');
 Routing::post('addContent', 'ContentController');
 Routing::post('search', 'ContentController');
