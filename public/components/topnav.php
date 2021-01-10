@@ -1,7 +1,7 @@
 <nav id ="main-topnav" class="topnav">
     <?php if(isset($_COOKIE['user'])):?>
         <form class="logout-mobile-icon" method="get" action="logout">
-            <i class="fas fa-sign-out-alt"></i>
+            <button name="logout" value="true" class="logout__icon"><i class="fas fa-sign-out-alt"></i></button>
         </form>
     <?php endif; ?>
     <div class="logo">

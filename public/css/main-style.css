@@ -30,14 +30,14 @@ h1{
     background-size: cover;
     background-attachment: fixed;
     top: -20vh;
-    height: 90vh;
+    height: 100vh;
 
     box-shadow: inset 0 0 20px 2px #282a2d;
 }
 
 .main-header-shadow{
     height: 100%;
-    background: rgba(0, 124, 199, 0.17) 0% 0% no-repeat padding-box;
+    background: rgba(0, 124, 199, 0.1) 0% 0% no-repeat padding-box;
 }
 
 .hamburger{
@@ -251,7 +251,7 @@ h1{
 
 #main-scroll{
     position: absolute;
-    bottom: 100px;
+    bottom: 0px;
     height: 8vh;
     left: 50%;
 }
@@ -399,9 +399,21 @@ h1{
 
     #main-scroll{
         position: absolute;
+        color: #282a2d;
         bottom: 8vh;
         height: 0vh;
         left: 47%;
+    }
+
+    .scroll a{
+        color: #282a2d;
+    }
+
+    #main-scroll a span {
+        border: 2px solid #282a2d;
+    }
+    #main-scroll a span::before {
+        background-color: #282a2d;
     }
 
 }
@@ -432,6 +444,14 @@ h1{
         transform: rotate(180deg);
         color: var(--light-white);
         font-size: 2.5rem;
+    }
+
+    .logout__icon{
+        border: none;
+        outline: none;
+        background: none;
+        color: var(--light-white);
+        font-size: 2rem;
     }
 
     .logout_button{
@@ -597,9 +617,21 @@ h1{
 
     #main-scroll{
         position: absolute;
+        color: #282a2d;
         bottom: 10vh;
         height: 0vh;
         left: 43%;
+    }
+
+    .scroll a{
+        color: #282a2d;
+    }
+
+    #main-scroll a span {
+        border: 2px solid #282a2d;
+    }
+    #main-scroll a span::before {
+        background-color: #282a2d;
     }
 
     #to-scroll{

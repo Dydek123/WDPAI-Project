@@ -3,14 +3,17 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/LogsRepository.php';
 
 class SecurityController extends AppController{
     private $userRepository;
+    private $logsRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->logsRepository = new LogsRepository();
     }
 
 
@@ -40,7 +43,7 @@ class SecurityController extends AppController{
         }
 
         setcookie('user', md5($user->getEmail()), time() + (60*60*8)); //expires after 8 hours
-//        setcookie('user_role', hash('sha512', $user->getRole()), time() + (60*60*8)); //expires after 8 hours
+        $this->logsRepository->setLogs($user->getEmail());
         return $this->render('index');
     }
 
@@ -48,7 +51,7 @@ class SecurityController extends AppController{
         if (isset($_COOKIE['user'])) {
             if ($_GET['logout']) {
                 setcookie('user', null, time() - 600); //delete cookies by set time in the past
-//            setcookie('user_role', null, time() - 600); //delete cookies by set time in the past
+                $this->logsRepository->editLogs($_COOKIE['user']);
             }
         }
         return $this->render('index');
@@ -79,4 +82,5 @@ class SecurityController extends AppController{
     {
         return $password1===$password2;
     }
+
 }
