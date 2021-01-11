@@ -11,10 +11,10 @@
 <div class="upload-container">
     <div class="upload-box">
         <div class="login-content">
-            <?php if (!isset($_POST['email'])): ?>
+            <?php if (isset($_POST['email'])): ?>
             <form action="setNewPassword" method="POST">
             <?php else: ?>
-            <form action="sendEmail" method="POST">
+            <form action="forgotPassword" method="POST">
             <?php endif; ?>
                 <div class="logo">
                     <a href="index"><img src="public/img/login/logo-dark.svg"></a>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <?php if (!isset($_POST['email'])): ?>
+                <?php if (isset($_POST['email'])): ?>
                     <div class="input-div">
                         <div>
                             <h5>Kod potwierdzający</h5>
@@ -62,7 +62,7 @@
                     ?>
                 </div>
 
-                <?php if (isset($_POST['email'])): ?>
+                <?php if (!isset($_POST['email'])): ?>
                     <button name="send-email" type="submit" class="btn">Wyślij email</button>
                 <?php else: ?>
                     <button name="new-password" type="submit" class="btn">Ustaw nowe hasło</button>

@@ -13,6 +13,10 @@ class ResetPasswordController extends AppController{
     }
 
     public function forgotPassword() {
+        if ($this->isPost()){
+            $this->resetPasswordRepository->setKey($_POST['email']);
+            return $this->render('forgot_password',['status' => ['keySet']]);
+        }
         $this->render('forgot_password');
     }
 
@@ -25,7 +29,6 @@ class ResetPasswordController extends AppController{
             }
             return $this->render("setNewPassword", ['messages' => ['Nie udało się zmienić hasła']]);
         }
-        die();
         return $this->render('setNewPassword', ['messages' => ['Nieprawidłowe dane']]);
     }
 

@@ -33,5 +33,40 @@ class ResetPasswordRepository
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
+
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            UPDATE public.password_reset SET status = :status WHERE email = :email;
+        ');
+        $status = 'done';
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function setKey($email){
+        $key = $this->random_str();
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            CALL public.recoverykey(?, ?);
+        ');
+        $stmt->bindValue(1, $email, PDO::PARAM_STR);
+        $stmt->bindValue(2, $key, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
+    private function random_str(
+        int $length = 10,
+        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        ): string
+        {
+            if ($length < 1) {
+                throw new \RangeException("Length must be a positive integer");
+            }
+            $pieces = [];
+            $max = mb_strlen($keyspace, '8bit') - 1;
+            for ($i = 0; $i < $length; ++$i) {
+                $pieces []= $keyspace[random_int(0, $max)];
+            }
+            return implode('', $pieces);
     }
 }

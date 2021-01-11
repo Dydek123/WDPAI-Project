@@ -52,7 +52,7 @@
 
                     </div>
 
-                    <a href="#">Zapomniałeś hasła?</a>
+                    <a href="forgotPassword">Zapomniałeś hasła?</a>
 
                     <input type="submit" class="btn" value="Login">
 
