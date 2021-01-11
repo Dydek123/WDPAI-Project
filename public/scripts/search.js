@@ -34,7 +34,7 @@ function createContent(searchContent, category) {
 
             const button = cloneButton.querySelector("button");
             button.innerHTML = content.title;
-            button.value = content.name+";"+content.title;
+            button.value = content.name+";"+content.title+";"+content.background;
             const menuContainer = clone.querySelector('.collapse__menu')
             menuContainer.appendChild(cloneButton);
         }
@@ -62,3 +62,10 @@ search.addEventListener('keyup', function (event){
         });
     }
 })
+
+const background = document.querySelector('#finances-header');
+
+function setBackground(image){
+    const url = "url('public/uploads/Category/" + image + "')";
+    background.style.backgroundImage = url;
+}

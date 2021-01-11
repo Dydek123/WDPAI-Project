@@ -8,7 +8,9 @@ class UserRepository extends Repository
 
     public function getUser(string $email): ?User
     {
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $conn = Connection::getInstance()->getConnection();
+//        die();
+        $stmt = $conn->prepare('
             SELECT * FROM public.users WHERE email = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);

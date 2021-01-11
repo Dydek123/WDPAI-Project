@@ -9,7 +9,7 @@
         <title>Cboard - <?=explode(';',$_GET['category'])[1]?></title>
     </head>
 
-    <body>
+    <body onload="setBackground('<?=explode(';',$_GET['category'])[2]?>')">
         <header id="finances-header">
             <div id="finances-header-shadow" class="main-header-shadow">
 
@@ -84,7 +84,7 @@
                                             <ul class="collapse__menu">
                                                 <?php foreach ($contents as $content): ?>
                                                     <?php if($content->getCategory() === $category): ?>
-                                                        <button name="category" value="<?= $category ?>;<?= $content->getTitle() ?>" class="collapse__sublink"><?= $content->getTitle()?></button>
+                                                        <button name="category" value="<?= $category ?>;<?= $content->getTitle() ?>;<?=$content->getBackground()?>" class="collapse__sublink"><?= $content->getTitle()?></button>
                                                     <? endif; ?>
                                                 <? endforeach; ?>
                                             </ul>

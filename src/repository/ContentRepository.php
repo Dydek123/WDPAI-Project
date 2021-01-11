@@ -10,7 +10,7 @@ class ContentRepository extends Repository
     public function getContent(int $id): ?Content
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT * FROM public."Contents" WHERE id_contents = :id
+            SELECT * FROM public."Contents" LEFT JOIN documents d on d.id_documents = "Contents".id_raports WHERE id_contents = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -22,9 +22,10 @@ class ContentRepository extends Repository
         }
 
         return new Content(
-            $content['documentType'],
-            $content['file'],
-            $content['public']
+            $content['category'],
+            $content['is_public'],
+            $content['content'],
+            $content['background']
         );
     }
 
@@ -49,7 +50,7 @@ class ContentRepository extends Repository
     {
         $result = [];
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT  d.title as category, c.title as content, is_public FROM "Contents" c LEFT JOIN documents d on d.id_documents = c.id_raports;
+            SELECT  d.title as category, d.background, c.title as content, is_public FROM "Contents" c LEFT JOIN documents d on d.id_documents = c.id_raports;
         ');
         $stmt->execute();
         $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +59,8 @@ class ContentRepository extends Repository
             $result[] = new Content(
                 $document['category'],
                 $document['is_public'],
-                $document['content']
+                $document['content'],
+                $document['background']
             );
         }
 

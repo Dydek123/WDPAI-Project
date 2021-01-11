@@ -4,12 +4,14 @@ class Content{
     private $category;
     private $is_public;
     private $title;
+    private $background;
 
-    public function __construct($category,bool $is_public, $title)
+    public function __construct($category,bool $is_public, $title, string $background)
     {
         $this->category = $category;
         $this->is_public = $is_public;
         $this->title = $title;
+        $this->background = $background;
     }
 
 
@@ -43,6 +45,18 @@ class Content{
     {
         $this->title = $title;
     }
+
+    public function getBackground(): string
+    {
+        return $this->background;
+    }
+
+    public function setBackground(string $background): void
+    {
+        $this->background = $background;
+    }
+
+
 
     public function showCondition() : bool{
         if (!isset($_COOKIE['user']) && !$this->isIsPublic()){

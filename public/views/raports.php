@@ -30,7 +30,7 @@
                             <form class="raports-links" method="get" action="finances">
                                 <?php foreach ($links as $link): ?>
                                     <?php if ($link->getCategory() === $category->getTitle()):?>
-                                        <button name="category" value="<?= $link->getCategory() ?>;<?= $link->getTitle() ?>" class="get-raports-button"><?= $link->getTitle()?></button>
+                                        <button name="category" value="<?= $link->getCategory() ?>;<?= $link->getTitle()?>;<?= $category->getBackground()?>" class="get-raports-button"><?= $link->getTitle()?></button>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </form>
