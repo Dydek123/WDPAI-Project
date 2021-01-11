@@ -4,7 +4,7 @@ require_once 'config.php';
 
 class Connection
 {
-    private static $instance = null;
+    private static $instance;
     private $conn;
 
     private $username = USERNAME;

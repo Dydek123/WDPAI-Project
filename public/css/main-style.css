@@ -773,7 +773,9 @@ hr {
 }
 
 #raports-img{
-    background-image: url(../img/main-page/paper.jpg);
+    background-image: url(../img/main-page/raports.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 #documentation-img{
@@ -781,7 +783,9 @@ hr {
 }
 
 #faq-img{
-    background-image: url(../img/main-page/paper.jpg);
+    background-image: url(../img/main-page/faq.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 
@@ -1043,8 +1047,8 @@ hr {
 .get-in-touch{
     width: 100%;
     height: 60vh;
-    background-image: url("../img/main-page/get-in-touch.jpg");
-    background-position:  0px 250px;
+    background-image: url("../img/main-page/footer.jpg");
+    background-position: 0px -270px;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -1367,7 +1371,7 @@ hr {
     margin-top: 5vh;
     background-color: var(--medium-blue);
     border-radius: 20px 20px 0 0;
-    height: 40vh;
+    min-height: 40vh;
     box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.48);
 
     display: flex;
@@ -1383,6 +1387,9 @@ hr {
     background-size: cover;
     border-radius: 20px 20px 0 0;
     color: var(--light-white);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 10%;
 }
 
 #new-raports{
@@ -1502,7 +1509,7 @@ h5{
 @media(max-device-width: 1140px) {
     .raports-card {
         width: 30%;
-        height: 42vh;
+        min-height: 42vh;
     }
 
     .raports-card-img {
@@ -1522,7 +1529,7 @@ h5{
 @media (max-device-width: 886px) {
     .raports-card {
         width: 45%;
-        height: 50vh;
+        min-height: 50vh;
     }
 
     .raports-card-img {
@@ -1542,7 +1549,7 @@ h5{
 @media (max-device-width: 512px) {
     .raports-card {
         width: 100%;
-        height: 50vh;
+        min-height: 50vh;
     }
 
     .raports-card-img {
