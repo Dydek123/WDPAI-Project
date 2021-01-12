@@ -126,7 +126,7 @@
                                     <?php foreach ($versions as $version): ?>
                                         <?php if(explode(';',$_GET['category'])[1] === $version->getDocument()): ?>
                                             <a id="enable-to-download" href="public/uploads/Documents/<?= $version->getFile()?>" download>
-                                                <?= $version->getDatetime()?>
+                                                <?= $version->getDatetime()?> (<?= $version->getAuthorName()?> <?= $version->getAuthorSurname()?>)
                                             </a>
                                         <?php endif; ?>
                                     <? endforeach; ?>

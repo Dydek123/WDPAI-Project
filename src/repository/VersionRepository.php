@@ -9,7 +9,7 @@ class VersionRepository extends Repository
     public function getVersion(int $id): ?Version
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT * FROM public."Versions" WHERE id_versions = :id
+            SELECT * FROM public.version_details WHERE id_versions = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -21,9 +21,11 @@ class VersionRepository extends Repository
         }
 
         return new Version(
-            $version['id_contents'],
+            $version['title'],
             $version['file'],
-            $version['datetime']
+            $version['datetime'],
+            $version['name'],
+            $version['surname']
         );
     }
 
@@ -51,7 +53,7 @@ class VersionRepository extends Repository
         $result = [];
 
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT datetime, file, title FROM "Versions" LEFT JOIN "Contents" C on C.id_contents = "Versions".id_contents ORDER BY datetime DESC ;
+            SELECT * FROM public.version_details ORDER BY datetime DESC ;
         ');
         $stmt->execute();
         $versions = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,7 +62,9 @@ class VersionRepository extends Repository
             $result[] = new Version(
                 $version['title'],
                 $version['file'],
-                $version['datetime']
+                $version['datetime'],
+                $version['name'],
+                $version['surname']
             );
         }
 

@@ -6,13 +6,16 @@ class Version
     private $document;
     private $file;
     private $datetime;
+    private $authorName;
+    private $authorSurname;
 
-
-    public function __construct($document, $file, $datetime)
+    public function __construct($document, $file, $datetime, string $authorName, string $authorSurname)
     {
         $this->document = $document;
         $this->file = $file;
         $this->datetime = $datetime;
+        $this->authorName = $authorName;
+        $this->authorSurname = $authorSurname ;
     }
 
     public function getDocument()
@@ -44,6 +47,27 @@ class Version
     {
         $this->datetime = $datetime;
     }
+
+    public function getAuthorName(): string
+    {
+        return $this->authorName;
+    }
+
+    public function setAuthorName(string $authorName): void
+    {
+        $this->authorName = $authorName;
+    }
+
+    public function getAuthorSurname(): string
+    {
+        return $this->authorSurname;
+    }
+
+    public function setAuthorSurname(string $authorSurname): void
+    {
+        $this->authorSurname = $authorSurname;
+    }
+
 
 
 }
