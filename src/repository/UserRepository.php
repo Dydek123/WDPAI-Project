@@ -53,6 +53,23 @@ class UserRepository extends Repository
         );
     }
 
+    public function getUserIDFromCookie(string $email): int
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM public.users WHERE md5(email) = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return 0;
+        }
+
+        return $user['id'];
+    }
+
     public function addUser(User $newUser)
     {
         if ($this->validateEmail($newUser->getEmail())) {

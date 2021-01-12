@@ -30,16 +30,19 @@ class VersionRepository extends Repository
     public function addNewVersion(Version $version): void
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            INSERT INTO "Versions" (id_contents, datetime, file)
-            VALUES (?, ?, ?)
+            INSERT INTO "Versions" (id_contents, datetime, file, id_user)
+            VALUES (?, ?, ?, ?)
         ');
 
         $date = new DateTime();
+        $author = new UserRepository();
+        $user = $author->getUserIDFromCookie($_COOKIE['user']);
         $id_contents = $this->getContentID($version->getDocument());
         $stmt->execute([
             $id_contents,
             $date->format('Y-m-d'),
-            $version->getFile()
+            $version->getFile(),
+            $user
         ]);
     }
 

@@ -29,10 +29,10 @@ class CategoryController extends AppController{
         $categories = $this->documentRepository->getDocuments();
         $links = $this->contentRepository->getContents();
         if (isset($_COOKIE['user']))
-            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
         else
             $userRole = '0';
-        $this -> render('raports', ['categories' => $categories, 'links' => $links, 'role' => $userRole->getRole()]);
+        $this -> render('raports', ['categories' => $categories, 'links' => $links, 'role' => $userRole]);
     }
 
     public function addCategory(){

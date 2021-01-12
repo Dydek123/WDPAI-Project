@@ -32,15 +32,13 @@ class ContentRepository extends Repository
     public function addNewContent(Content $content): void
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            INSERT INTO "Contents" (id_raports, id_users, is_public, title)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO "Contents" (id_raports, is_public, title)
+            VALUES (?, ?, ?)
         ');
-        $id_user = 1;
         $privateValue = (int)$content->isIsPublic();
         $id_raports = $this->getDocumentID($content->getCategory());
         $stmt->execute([
             $id_raports,
-            $id_user,
             (int)$content->isIsPublic(),
             $content->getTitle()
         ]);
