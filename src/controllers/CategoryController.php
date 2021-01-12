@@ -43,15 +43,15 @@ class CategoryController extends AppController{
                 return $this->render('index');
             }
             if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
+                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
+                $id = $this->documentRepository->addDocument($newCategory);
+
                 move_uploaded_file(
                     $_FILES['background']['tmp_name'],
-                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['background']['name']
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'.$_FILES['background']['name']
                 );
 
-                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
-                $this->documentRepository->addDocument($newCategory);
-
-                return $this->render("raports", ['messages' => $this->message, 'newCategory' => $newCategory]);
+                return $this->render("index");
             }
 
             return $this->render('upload_file', ['messages' => $this->message]);

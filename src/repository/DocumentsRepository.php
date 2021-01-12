@@ -29,9 +29,10 @@ class DocumentsRepository extends Repository
         );
     }
 
-    public function addDocument(Document $document): void
+    public function addDocument(Document $document): int
     {
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
             INSERT INTO documents (id_categories, icon, background, title, description)
             VALUES (?, ?, ?, ?, ?)
         ');
@@ -50,13 +51,15 @@ class DocumentsRepository extends Repository
             $document->getTitle(),
             $document->getDescription()
         ]);
+
+        return $conn->lastInsertId();
     }
 
     public function getDocuments(): array
     {
         $result = [];
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT * FROM documents d LEFT JOIN "Categories" C on C.id_categories = d.id_documents;
+            SELECT * FROM documents d LEFT JOIN "Categories" C on C.id_categories = d.id_categories;
         ');
         $stmt->execute();
         $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +67,7 @@ class DocumentsRepository extends Repository
         foreach ($documents as $document){
             $result[] = new Document(
                 $document['icon'],
-                $document['background'],
+                $document['id_documents'].'_'.$document['background'],
                 $document['title'],
                 $document['description'],
                 $document['name']
