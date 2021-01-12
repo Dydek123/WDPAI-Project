@@ -33,7 +33,9 @@ class UserRepository extends Repository
     public function getUserFromCookie(string $email): ?User
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT * FROM public.users WHERE md5(email) = :email
+            SELECT * FROM public.users u
+            LEFT JOIN "Users_details" Ud on Ud.id_users_details = u.id_user_details 
+            WHERE md5(email) = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();

@@ -4,6 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/Content.php';
 require_once __DIR__.'/../repository/ContentRepository.php';
 require_once __DIR__.'/../repository/VersionRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class ContentController extends AppController{
 
@@ -14,12 +15,14 @@ class ContentController extends AppController{
     private $message = [];
     private $contentRepository;
     private $versionRepository;
+    private $userRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->contentRepository = new ContentRepository();
         $this->versionRepository = new VersionRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function finances() {
@@ -45,21 +48,23 @@ class ContentController extends AppController{
     public function addContent(){
         if (isset($_COOKIE['user'])) {
             if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
-                move_uploaded_file(
-                    $_FILES['file']['tmp_name'],
-                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
-                );
+                $user = $this->userRepository->getUserFromCookie($_COOKIE['user']);
 
                 $date = new DateTime();
                 if ($_POST['document-name'] === "new" || $this->contentValidate()) {
                     $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title'], '');
                     $this->contentRepository->addNewContent($newContent);
-                    $newVersion = new Version($_POST['title'], $_FILES['file']['name'], $date->format('Y-m-d'));
-                    $this->versionRepository->addNewVersion($newVersion);
+                    $newVersion = new Version(0, $_POST['title'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
+                    $id = $this->versionRepository->addNewVersion($newVersion);
                 } else {
-                    $newVersion = new Version($_POST['document-name'], $_FILES['file']['name'], $date->format('Y-m-d'),);
-                    $this->versionRepository->addNewVersion($newVersion);
+                    $newVersion = new Version(0, $_POST['document-name'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
+                    $id = $this->versionRepository->addNewVersion($newVersion);
                 }
+
+                move_uploaded_file(
+                    $_FILES['file']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'. $_FILES['file']['name']
+                );
 
                 return $this->render("index");
             }

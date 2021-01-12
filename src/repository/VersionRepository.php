@@ -21,6 +21,7 @@ class VersionRepository extends Repository
         }
 
         return new Version(
+            $version['id_versions'],
             $version['title'],
             $version['file'],
             $version['datetime'],
@@ -29,12 +30,14 @@ class VersionRepository extends Repository
         );
     }
 
-    public function addNewVersion(Version $version): void
+    public function addNewVersion(Version $version): int
     {
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
             INSERT INTO "Versions" (id_contents, datetime, file, id_user)
             VALUES (?, ?, ?, ?)
         ');
+
 
         $date = new DateTime();
         $author = new UserRepository();
@@ -46,6 +49,8 @@ class VersionRepository extends Repository
             $version->getFile(),
             $user
         ]);
+
+        return $conn->lastInsertId();
     }
 
     public function getVersions(): array
@@ -60,6 +65,7 @@ class VersionRepository extends Repository
 
         foreach ($versions as $version){
             $result[] = new Version(
+                $version['id_versions'],
                 $version['title'],
                 $version['file'],
                 $version['datetime'],

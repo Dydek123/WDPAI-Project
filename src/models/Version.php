@@ -3,20 +3,33 @@
 
 class Version
 {
+    private $id;
     private $document;
     private $file;
     private $datetime;
     private $authorName;
     private $authorSurname;
 
-    public function __construct($document, $file, $datetime, string $authorName, string $authorSurname)
+    public function __construct(int $id, $document, $file, $datetime, string $authorName, string $authorSurname)
     {
+        $this->id = $id;
         $this->document = $document;
         $this->file = $file;
         $this->datetime = $datetime;
         $this->authorName = $authorName;
         $this->authorSurname = $authorSurname ;
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
 
     public function getDocument()
     {
