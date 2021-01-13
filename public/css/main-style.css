@@ -1661,6 +1661,29 @@ h5{
 .previous-version a:first-child{
     padding-top: 1vh;
 }
+
+.version-description{
+    display: flex;
+    flex-direction: row;
+}
+
+.version-description button{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.version-description i {
+    font-size: 1.2rem;
+    padding-top: .5rem;
+    padding-left: .8rem;
+    transition: .3s ease-in-out;
+}
+
+.version-description i:hover {
+    color: #e31414;
+}
+
 #nav__sticky{
     position: sticky;
     position: -webkit-sticky;

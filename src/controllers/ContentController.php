@@ -29,7 +29,8 @@ class ContentController extends AppController{
         $contents = $this->contentRepository->getContents();
         $versions = $this->versionRepository->getVersions();
         $categoryList = $this->createUniqueCategoryList($contents);
-        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions]);
+        $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole]);
     }
 
     public function search(){
@@ -73,6 +74,22 @@ class ContentController extends AppController{
         }
         echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
         return $this->render("login");
+    }
+
+    public function deleteVersion(){
+        if (isset($_COOKIE['user'])) {
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if($userRole->getRole()==='1'){
+                echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
+                return $this->render('index');
+            }
+            $this->versionRepository->deleteVersionFromID($_POST['version']);
+        }
+        else{
+            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        }
+        return $this->render("index");
+//        header("location:javascript://history.go(-1)");
     }
 
     private function createUniqueCategoryList($contents): array

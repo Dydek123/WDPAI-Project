@@ -77,6 +77,15 @@ class VersionRepository extends Repository
         return $result;
     }
 
+    public function deleteVersionFromID($versionId)
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            DELETE FROM "Versions" WHERE id_versions = :id
+        ');
+        $stmt->bindParam(':id', $versionId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     private function getContentID($name){
         $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public."Contents" WHERE title = :title

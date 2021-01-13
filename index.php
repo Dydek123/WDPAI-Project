@@ -21,5 +21,6 @@ Routing::post('forgotPassword','ResetPasswordController');
 Routing::post('addCategory', 'CategoryController');
 Routing::post('addContent', 'ContentController');
 Routing::post('search', 'ContentController');
+Routing::post('deleteVersion', 'ContentController');
 
 Routing::run($path);

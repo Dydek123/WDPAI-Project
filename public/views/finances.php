@@ -94,7 +94,7 @@
                             </div>
                             <?php if(isset($_COOKIE['user'])):?>
                                 <div class="nav__link nav__link-document">
-                                    <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
+                                    <a id="new-content-link" href="addContent"><span>Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
                                 </div>
                             <? endif; ?>
                         </form>
@@ -122,12 +122,17 @@
                                     </a>
 
                                     <h2>Poprzednie wersje</h2>
-                                    <div class="previous-version">
+                                    <div class="previous-version" >
                                     <?php foreach ($versions as $version): ?>
                                         <?php if(explode(';',$_GET['category'])[1] === $version->getDocument()): ?>
-                                            <a id="enable-to-download" href="public/uploads/Documents/<?= $version->getId()?>_<?= $version->getFile()?>" download>
-                                                <?= $version->getDatetime()?> (<?= $version->getAuthorName()?> <?= $version->getAuthorSurname()?>)
-                                            </a>
+                                            <form class="version-description" method="post" action="deleteVersion">
+                                                <a id="enable-to-download" href="public/uploads/Documents/<?= $version->getId()?>_<?= $version->getFile()?>" download>
+                                                    <?= $version->getDatetime()?> (<?= $version->getAuthorName()?> <?= $version->getAuthorSurname()?>)
+                                                </a>
+                                                <?php if ($user>1):?>
+                                                <button name="version" value="<?= $version->getId()?>"><i class="fas fa-minus"></i></button>
+                                                <?php endif; ?>
+                                            </form>
                                         <?php endif; ?>
                                     <? endforeach; ?>
                                 <?php }
