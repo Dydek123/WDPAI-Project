@@ -23,6 +23,7 @@
                         <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
                     </div>
 
+
                     <div class="nav-links-mobile-only">
                         <?php foreach ($categoryList as $category): ?>
                             <?php if(explode(';',$_GET['category'])[0] === $category): ?>

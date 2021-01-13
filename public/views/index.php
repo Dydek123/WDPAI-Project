@@ -4,6 +4,7 @@
         <?php include "public/components/head_template.php"?>
         <link rel="stylesheet" type="text/css" href="public/css/main-style.css">
         <script type="text/javascript" src="public/scripts/scroll.js" defer></script>
+        <script type="text/javascript" src="public/scripts/app.js" defer></script>
         <title>Cboard</title>
     </head>
 

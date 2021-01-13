@@ -57,7 +57,7 @@ h1{
     height: 8vh;
     background: rgba(18,35,46,0.8) 0% 0% no-repeat padding-box;
     display: grid;
-    grid-template-columns:  20% 65% 7% 7%;
+    grid-template-columns:  20% 50% 30%;
     grid-template-rows: 8vh;
     justify-items: center;
     align-items: center;
@@ -125,10 +125,16 @@ h1{
     font-size: 0.45em;
 }
 
-.change-language{
+.topnav_menu{
     grid-column: 3/4;
-    width: 10vw;
-    justify-self: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: flex-end;
+}
+
+.change-language{
+    width: 7vw;
     display: flex;
 }
 .change-language > #english_flag{
@@ -149,7 +155,6 @@ h1{
 }
 
 .logout_form{
-    grid-column: 4/5;
     width: 10vw;
     justify-self: start;
     display: flex;
@@ -161,7 +166,7 @@ h1{
     background: transparent;
     cursor: pointer;
     color: #cac5c5;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-family: 'Josefin Sans', sans-serif;
     transition: .3s;
 }
@@ -171,7 +176,6 @@ h1{
 }
 
 .topnav__login{
-    grid-column: 4/5;
     width: 10vw;
     justify-self: start;
     display: flex;
@@ -179,7 +183,6 @@ h1{
 
 .topnav__login{
     text-decoration: none;
-    background: transparent;
     color: #cac5c5;
     font-size: 1.3rem;
     font-family: 'Josefin Sans', sans-serif;
@@ -340,12 +343,23 @@ h1{
     }
     
     .topnav{
-        grid-template-columns: 25% 47% 14% 12%;
-        font-size: 50px;
+        grid-template-columns: 30% 20% 50%;
     }
     
     .logo img{
         width: 20vw;
+    }
+
+    .change-language {
+        width: 10vw;
+    }
+
+    .topnav__login {
+        width: 19vw;
+    }
+
+    .logout_form {
+        width: 15vw;
     }
 
     .search-button{
@@ -361,11 +375,6 @@ h1{
     .search-button button{
         width: 7vw;
         font-size: 0.5em;
-    }
-    
-    .change-language{
-        grid-column: 3/4;
-        width: 7vw;
     }
     
     .header-motto{
@@ -418,6 +427,28 @@ h1{
 
 }
 
+@media only screen and (max-device-width: 886px) {
+    .topnav {
+        grid-template-columns: 30% 5% 65%;
+    }
+
+    .change-language {
+        width: 19vw;
+    }
+
+    .topnav__login {
+        width: 23vw;
+    }
+
+    .logout_form {
+        width: 17vw;
+    }
+
+    .logo img {
+        width: 25vw;
+    }
+}
+
 @media only screen and (max-device-width: 512px) {
     #main-header{
         background-position: -82vw;
@@ -436,26 +467,6 @@ h1{
         font-size: 50px;
         z-index: 3;
         transition: 0.2s;
-    }
-
-    .logout-mobile-icon{
-        display: block;
-        grid-column: 1/2;
-        transform: rotate(180deg);
-        color: var(--light-white);
-        font-size: 2.5rem;
-    }
-
-    .logout__icon{
-        border: none;
-        outline: none;
-        background: none;
-        color: var(--light-white);
-        font-size: 2rem;
-    }
-
-    .logout_button{
-        display: none;
     }
 
     .hamburger{
@@ -493,18 +504,17 @@ h1{
         width: 30px;
     }
 
-    .nav-links-mobile-only{
+    .topnav_menu{
         position: fixed;
         background-color: var(--very-dark-blue);
         height: 100%;
         width: 100%;
         z-index: 3;
         display: flex;
+        flex-direction: column-reverse;
         justify-content: center;
-        padding: 2vh 0vh;
         align-items: center;
-        flex-direction: column;
-        /* display: none; */
+        padding: 2vh 0vh;
 
         clip-path: circle(100px at 100% -20%);
         -webkit-clip-path: circle(100px at 90% -20%);
@@ -512,13 +522,13 @@ h1{
         pointer-events: none;
     }
 
-    .nav-links-mobile-only.open{
+    .topnav_menu.open{
         clip-path: circle(1200px at 90% -20%);
         -webkit-clip-path: circle(1200px at 90% -20%);
         pointer-events: all;
     }
-    
-    .nav-links-mobile-only.close{
+
+    .topnav_menu.close{
         clip-path: circle(100px at 90% -20%);
         -webkit-clip-path: circle(100px at 90% -20%);
     }
@@ -569,9 +579,27 @@ h1{
     }
 
     .change-language{
-        width: 70%;
-        flex-direction: row;
+        width: 30vw;
         justify-content: space-around;
+    }
+
+    .topnav__login{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        border: 1px solid var(--light-white);
+        margin-bottom: 2rem;
+    }
+
+    .logout_form{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3rem;
+        border: 1px solid var(--light-white);
     }
     #navigation-change-language-mobile{
         display: flex;
@@ -1048,7 +1076,7 @@ hr {
     width: 100%;
     height: 60vh;
     background-image: url("../img/main-page/footer.jpg");
-    background-position: 0px -270px;
+    background-position: 0;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

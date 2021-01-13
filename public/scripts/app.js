@@ -1,5 +1,5 @@
 const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links-mobile-only');
+const navLinks = document.querySelector('.topnav_menu');
 const links = document.querySelectorAll('.nav-links-item');
 
 let changeIcon = false;
