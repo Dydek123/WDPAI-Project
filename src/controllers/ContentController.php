@@ -92,6 +92,20 @@ class ContentController extends AppController{
 //        header("location:javascript://history.go(-1)");
     }
 
+    public function subcategories(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if ($contentType === 'application/json') {
+            $content = (file_get_contents('php://input'));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->contentRepository->getContenstByCategory($decoded['category']));
+        }
+
+    }
+
     private function createUniqueCategoryList($contents): array
     {
         $categoryList = array();

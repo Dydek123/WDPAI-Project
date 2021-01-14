@@ -4,6 +4,7 @@
     <?php include "public/components/head_template.php"?>
     <link rel="stylesheet" type="text/css" href="public/css/upload.css">
     <script type="text/javascript" src="public/scripts/upload.js" defer></script>
+    <script type="text/javascript" src="public/scripts/show_uploads_categories.js" defer></script>
     <title>Cboard - upload document</title>
 </head>
 
@@ -18,15 +19,15 @@
                 <h2>Nowy dokument</h2>
 
                 <div class="select">
-                    <select name="category" id="slct" onchange="changeMe(this); showDocumentsType();">
+                    <select name="category" id="slct" onchange="changeMe(this);">
                         <option selected disabled>Wybierz kategorie</option>
-                        <option value="raports">Raporty</option>
-                        <option value="documentation">Dokumentacja</option>
-                        <option value="faq">FAQ</option>
+                        <option value="Raporty">Raporty</option>
+                        <option value="Dokumentacja">Dokumentacja</option>
+                        <option value="Faq">FAQ</option>
                     </select>
                 </div>
 
-                <div class="select select-new">
+                <div class="select select-subcategory">
                     <select name="document-type" id="slct" onchange="changeMe(this); ">
                         <option selected disabled>Wybierz podkategorie</option>
                         <option value="Obsługa podatku VAT">Obsługa podatku VAT</option>
@@ -34,12 +35,12 @@
                     </select>
                 </div>
 
-                <div class="select">
+                <div class="select select-document">
                     <select name="document-name" id="slct" class="slct-content" onchange="changeMe(this); checkNew();">
                         <option selected disabled>Wybierz dokument</option>
-                        <option value="Jak liczyć podatek VAT">Jak liczyć podatek VAT</option>
-                        <option value="Rozliczenia podatku">Rozliczenia podatku</option>
-                        <option value="new">Stwórz nowy dokument</option>
+<!--                        <option value="Jak liczyć podatek VAT">Jak liczyć podatek VAT</option>-->
+<!--                        <option value="Rozliczenia podatku">Rozliczenia podatku</option>-->
+<!--                        <option value="new">Stwórz nowy dokument</option>-->
                     </select>
                 </div>
 
@@ -80,3 +81,21 @@
     </div>
 </div>
 </body>
+
+<template id="label-option">
+    <select name="document-type" id="slct" onchange="changeMe(this); ">
+        <option selected disabled>Wybierz podkategorie</option>
+    </select>
+</template>
+
+<template id="select-option">
+    <option value="option">option</option>
+</template>
+
+<template id="disabled-option">
+    <option selected disabled>Wybierz dokument</option>
+</template>
+
+<template id="new-option">
+    <option value="new">Stwórz nowy dokument</option>
+</template>

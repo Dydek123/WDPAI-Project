@@ -29,6 +29,18 @@ class ContentRepository extends Repository
         );
     }
 
+    public function getContenstByCategory(string $category){
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
+            SELECT * FROM public.choose_document WHERE category=:category;
+        ');
+
+        $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function addNewContent(Content $content): void
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('

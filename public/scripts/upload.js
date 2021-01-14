@@ -26,7 +26,7 @@ function changeMe(sel){
 
 // Content
 function showDocumentsType(){
-	const newDocument = document.querySelector(".select-new");
+	const newDocument = document.querySelector(".select-subcategory");
 	newDocument.style.display = "flex";
 }
 

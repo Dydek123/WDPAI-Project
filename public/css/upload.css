@@ -288,7 +288,7 @@ select::-ms-expand {
 	color: var(--light-blue);
 }
 
-.select-new{
+.select-subcategory{
 	display: none;
 }
 
