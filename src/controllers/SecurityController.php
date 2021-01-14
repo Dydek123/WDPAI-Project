@@ -59,17 +59,8 @@ class SecurityController extends AppController{
 
     public function profile(){
         if (isset($_COOKIE['user'])) {
-            return $this->render('profile');
-        }
-        else{
-            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
-        }
-        return $this->render("login");
-    }
-
-    public function change_password_form(){
-        if (isset($_COOKIE['user'])) {
-            return $this->render('change_password');
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            return $this->render('profile', ['user' => $userRole]);
         }
         else{
             echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
@@ -79,21 +70,15 @@ class SecurityController extends AppController{
 
     public function change_password(){
         if (isset($_COOKIE['user'])) {
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if (!$this->isPost()){
+                return $this->render('change_password');
+            }
             if ($this->validatePassword($_POST['password'], $_POST['password-repeat'])) {
                 $this->userRepository->changePassword($_POST['password']);
-                return $this->render('profile', ['messages' => ['Poprawnie zmieniono hasło']]);
+                return $this->render('profile', ['messages' => ['Poprawnie zmieniono hasło'], 'status' => 'successful', 'user' => $userRole]);
             }
-            return $this->render('change_password', ['messages' => ['Wprowadzone hasłą nie są takie same']]);
-        }
-        else{
-            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
-        }
-        return $this->render("login");
-    }
-
-    public function change_email_form(){
-        if (isset($_COOKIE['user'])) {
-            return $this->render('change_email');
+            return $this->render('change_password', ['messages' => ['Wprowadzone hasłą nie są takie same'] ,'status' => 'error']);
         }
         else{
             echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
@@ -103,15 +88,44 @@ class SecurityController extends AppController{
 
     public function change_email(){
         if (isset($_COOKIE['user'])) {
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if (!$this->isPost()){
+                return $this->render('change_email');
+            }
             if (!$this->isValidEmail($_POST['email'])) {
-                return $this->render('change_email', ['messages' => ['Niepoprawna forma adresu email']]);
+                return $this->render('change_email', ['messages' => ['Niepoprawna forma adresu email'], 'status' => 'error']);
             }
             if (!$this->userRepository->isEmailUnique($_POST['email'])){
-                return $this->render('change_email', ['messages' => ['Taki adres email już istnieje']]);
+                return $this->render('change_email', ['messages' => ['Taki adres email już istnieje'], 'status' => 'error']);
             }
             $this->userRepository->changeEmail($_POST['email']);
             setcookie('user', md5($_POST['email']), time() + (60*60*8)); //expires after 8 hours
-            return $this->render('profile', ['messages' => ['Poprawnie zmieniono email']]);
+            return $this->render('profile', ['messages' => ['Poprawnie zmieniono email'], 'status' => 'successful', 'user' => $userRole]);
+        }
+        else{
+            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        }
+        return $this->render("login");
+    }
+
+
+    public function delete_user(){
+        if (isset($_COOKIE['user'])) {
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if($userRole->getRole()==='1'){
+                echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
+                return $this->render('index');
+            }
+            if ($this->isPost()) {
+                if (!$this->isValidEmail($_POST['email'])) {
+                    return $this->render('delete_user', ['messages' => ['Niepoprawna forma adresu email'], 'status' => 'error']);
+                }
+                if ($this->userRepository->deleteuserByAdmin($_POST['email'])){
+                    return $this->render('profile', ['messages' => ['Usunięto użytkownika'], 'status' => 'successful']);
+                }
+                return $this->render('delete_user', ['messages' => ['Nie udało się usunąć użytkownika'], 'status' => 'error']);
+            }
+            return $this->render('delete_user', ['messages' => $this->message]);
         }
         else{
             echo '<script>alert("Zaloguj się aby przejść dalej")</script>';

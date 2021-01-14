@@ -11,33 +11,26 @@
 <div class="upload-container">
     <div class="upload-box">
         <div class="login-content">
-            <form action="change_password" method="POST">
+            <form action="delete_user" method="POST">
                 <div class="logo">
                     <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                 </div>
-                <h2>Zmień hasło</h2>
+                <h2>Usuń użytkownika</h2>
 
 
                 <div class="input-div">
                     <div>
-                        <h5>Nowe hasło</h5>
-                        <input name="password"  type="password" class="input">
-                    </div>
-                </div>
-
-                <div class="input-div">
-                    <div>
-                        <h5>Zmień email</h5>
-                        <input name="password-repeat"  type="password" class="input">
+                        <h5>Wprowadź e-mail użytkownika, którego chcesz usunąć</h5>
+                        <input name="email"  type="email" class="file-upload input">
                     </div>
                 </div>
 
                 <?php if (isset($messages)): ?>
                     <div class="message-<?=$status?>">
                         <?php
-                            foreach ($messages as $message){
-                                echo $message;
-                            }
+                        foreach ($messages as $message){
+                            echo $message;
+                        }
                         ?>
                     </div>
                 <?php endif; ?>

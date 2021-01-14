@@ -15,20 +15,24 @@
                 <div class="logo">
                     <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                 </div>
-                <h2>Profil</h2>
+                <h2><?= $user->getName(); ?> <?= $user->getSurname(); ?></h2>
                 <div class="profile-links">
-                    <a href="change_password_form">Zmień hasło</a>
-                    <a href="change_email_form">Zmień email</a>
+                    <a href="change_password">Zmień hasło</a>
+                    <a href="change_email">Zmień email</a>
+                    <?php if ($user->getRole()>1):?>
+                        <a href="delete_user">Usuń użytkownika</a>
+                    <?php endif; ?>
                 </div>
 
-                <div class="message-successful">
-                    <?php if (isset($messages)) {
+                <?php if (isset($messages)): ?>
+                    <div class="message-<?=$status?>">
+                        <?php
                         foreach ($messages as $message){
                             echo $message;
                         }
-                    }
-                    ?>
-                </div>
+                        ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

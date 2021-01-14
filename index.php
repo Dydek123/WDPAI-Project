@@ -18,9 +18,9 @@ Routing::post('addUser','SecurityController');
 Routing::post('login_user', 'SecurityController');
 Routing::post('profile', 'SecurityController');
 Routing::post('change_password', 'SecurityController');
-Routing::post('change_password_form', 'SecurityController');
 Routing::post('change_email', 'SecurityController');
-Routing::post('change_email_form', 'SecurityController');
+Routing::post('delete_user', 'SecurityController');
+
 Routing::post('setNewPassword','ResetPasswordController');
 Routing::post('forgotPassword','ResetPasswordController');
 Routing::post('addCategory', 'CategoryController');

@@ -21,18 +21,19 @@
                 <div class="input-div">
                     <div>
                         <h5>E-mail</h5>
-                        <input name="email"  type="email" class="file-upload input">
+                        <input name="email"  type="email" class="input">
                     </div>
                 </div>
 
-                <div class="message-error">
-                    <?php if (isset($messages)) {
+                <?php if (isset($messages)): ?>
+                    <div class="message-<?=$status?>">
+                        <?php
                         foreach ($messages as $message){
                             echo $message;
                         }
-                    }
-                    ?>
-                </div>
+                        ?>
+                    </div>
+                <?php endif; ?>
 
                 <button type="submit" class="btn">Prześlij</button>
             </form>

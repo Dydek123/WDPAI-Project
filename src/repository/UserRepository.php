@@ -130,7 +130,8 @@ class UserRepository extends Repository
 
     private function checkUserDetails($name, $surname)
     {
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
             SELECT * FROM "Users_details" WHERE name=:name AND surname=:surname;
         ');
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -141,7 +142,7 @@ class UserRepository extends Repository
         $exist_user_details = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($exist_user_details == false) {
-            $stmt = Connection::getInstance()->getConnection()->prepare('
+            $stmt = $conn->prepare('
                 INSERT INTO "Users_details" (name, surname)
                 VALUES (?, ?)
             ');
@@ -151,7 +152,7 @@ class UserRepository extends Repository
             ]);
         }
 
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $stmt = $conn->prepare('
             SELECT * FROM "Users_details" WHERE name=:name AND surname=:surname;
         ');
         $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -161,6 +162,18 @@ class UserRepository extends Repository
 
         $exist_user_details = $stmt->fetch(PDO::FETCH_ASSOC);
         return $exist_user_details['id_users_details'];
+    }
+
+    public function deleteUserByAdmin(string $email) : bool {
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
+            DELETE FROM public.users WHERE email=:email AND id_role=1;
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $count = $stmt->rowCount();
+        return $count;
     }
 
     private function validateEmail($email) : bool{

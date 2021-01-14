@@ -158,6 +158,7 @@ h1{
     width: 10vw;
     justify-self: start;
     display: flex;
+    margin: 0;
 }
 
 .logout_button{
