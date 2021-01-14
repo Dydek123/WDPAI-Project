@@ -11,18 +11,18 @@
 <div class="upload-container">
     <div class="upload-box">
         <div class="login-content">
-            <div>
+            <form action="make_admin" method="POST">
                 <div class="logo">
                     <a href="index"><img src="public/img/login/logo-dark.svg"></a>
                 </div>
-                <h2><?= $user->getName(); ?> <?= $user->getSurname(); ?></h2>
-                <div class="profile-links">
-                    <a href="change_password">Zmień hasło</a>
-                    <a href="change_email">Zmień email</a>
-                    <?php if ($user->getRole()>1):?>
-                        <a href="delete_user">Usuń użytkownika</a>
-                        <a href="make_admin">Zmień użytkownika na admina</a>
-                    <?php endif; ?>
+                <h2>Zmień email</h2>
+
+
+                <div class="input-div">
+                    <div>
+                        <h5>Wprowadź email użytkownika, który ma stać się adminem</h5>
+                        <input name="email"  type="email" class="input">
+                    </div>
                 </div>
 
                 <?php if (isset($messages)): ?>
@@ -34,7 +34,9 @@
                         ?>
                     </div>
                 <?php endif; ?>
-            </div>
+
+                <button type="submit" class="btn">Prześlij</button>
+            </form>
         </div>
     </div>
 </div>

@@ -176,6 +176,18 @@ class UserRepository extends Repository
         return $count;
     }
 
+    public function changeUserToAdmin(string $email) : bool {
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
+            UPDATE public.users SET id_role = 2 WHERE email = :email AND id_role = 1;
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $count = $stmt->rowCount();
+        return $count;
+    }
+
     private function validateEmail($email) : bool{
         $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT count(email) FROM users WHERE email= :email

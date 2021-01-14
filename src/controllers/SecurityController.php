@@ -108,7 +108,6 @@ class SecurityController extends AppController{
         return $this->render("login");
     }
 
-
     public function delete_user(){
         if (isset($_COOKIE['user'])) {
             $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
@@ -121,11 +120,35 @@ class SecurityController extends AppController{
                     return $this->render('delete_user', ['messages' => ['Niepoprawna forma adresu email'], 'status' => 'error']);
                 }
                 if ($this->userRepository->deleteuserByAdmin($_POST['email'])){
-                    return $this->render('profile', ['messages' => ['Usunięto użytkownika'], 'status' => 'successful']);
+                    return $this->render('profile', ['messages' => ['Usunięto użytkownika'], 'status' => 'successful', 'user' => $userRole]);
                 }
                 return $this->render('delete_user', ['messages' => ['Nie udało się usunąć użytkownika'], 'status' => 'error']);
             }
             return $this->render('delete_user', ['messages' => $this->message]);
+        }
+        else{
+            echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        }
+        return $this->render("login");
+    }
+
+    public function make_admin(){
+        if (isset($_COOKIE['user'])) {
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+            if($userRole->getRole() === '1'){
+                echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
+                return $this->render('index');
+            }
+            if ($this->isPost()) {
+                if (!$this->isValidEmail($_POST['email'])) {
+                    return $this->render('make_admin', ['messages' => ['Niepoprawna forma adresu email'], 'status' => 'error']);
+                }
+                if ($this->userRepository->changeUserToAdmin($_POST['email'])){
+                    return $this->render('profile', ['messages' => ['Użytkownik stał się adminem'], 'status' => 'successful', 'user' => $userRole]);
+                }
+                return $this->render('make_admin', ['messages' => ['Nie udało się zmienić roli'], 'status' => 'error']);
+            }
+            return $this->render('make_admin', ['messages' => $this->message]);
         }
         else{
             echo '<script>alert("Zaloguj się aby przejść dalej")</script>';

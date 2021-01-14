@@ -20,6 +20,7 @@ Routing::post('profile', 'SecurityController');
 Routing::post('change_password', 'SecurityController');
 Routing::post('change_email', 'SecurityController');
 Routing::post('delete_user', 'SecurityController');
+Routing::post('make_admin', 'SecurityController');
 
 Routing::post('setNewPassword','ResetPasswordController');
 Routing::post('forgotPassword','ResetPasswordController');
