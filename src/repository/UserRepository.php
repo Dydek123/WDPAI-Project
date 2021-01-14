@@ -91,6 +91,43 @@ class UserRepository extends Repository
         }
     }
 
+    public function isEmailUnique(string $email) : bool {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT COUNT(*) FROM public.users WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return !$user['count'];
+    }
+
+    public function changePassword(string $password){
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
+            UPDATE public.users SET password = :password WHERE id = :id;
+        ');
+
+        $id = $this->getUserIDFromCookie($_COOKIE['user']);
+        $hashedPassword = md5(md5($password));
+        $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function changeEmail(string $email){
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
+            UPDATE public.users SET email = :email WHERE id = :id;
+        ');
+
+        $id = $this->getUserIDFromCookie($_COOKIE['user']);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
     private function checkUserDetails($name, $surname)
     {
         $stmt = Connection::getInstance()->getConnection()->prepare('

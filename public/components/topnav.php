@@ -16,7 +16,7 @@
         </div>
 
         <?php if(isset($_COOKIE['user'])):?>
-            <a href="#" class="topnav__login">Profil użytkownika</a>
+            <a href="profile" class="topnav__login">Profil użytkownika</a>
             <form class="logout_form" method="get" action="logout">
                 <button name="logout" value="true" class="logout_button">Wyloguj się</button>
             </form>

@@ -1498,7 +1498,7 @@ h5{
     font-size: 3.5rem;
     color: #2DCCC5;
     border: 4px solid #2DCCC5;
-
+    text-align: left;
     position: relative;
     top: -30px;
     left: -30px;
@@ -1521,6 +1521,7 @@ h5{
     line-height: 1.5rem;
     cursor: pointer;
     text-decoration: underline;
+    text-align: left;
 }
 
 .raports-comments{

@@ -26,7 +26,8 @@ class ResetPasswordRepository
     }
 
     public function setPassword($email, $newPassword){
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $conn = Connection::getInstance()->getConnection();
+        $stmt = $conn->prepare('
             UPDATE public.users SET password = :password WHERE email = :email;
         ');
         $password = md5(md5($newPassword));
@@ -34,7 +35,7 @@ class ResetPasswordRepository
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
-        $stmt = Connection::getInstance()->getConnection()->prepare('
+        $stmt = $conn->prepare('
             UPDATE public.password_reset SET status = :status WHERE email = :email;
         ');
         $status = 'done';

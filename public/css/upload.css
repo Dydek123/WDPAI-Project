@@ -299,3 +299,29 @@ select::-ms-expand {
 .public-select{
 	display: none;
 }
+
+.profile-links{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.message-successful{
+	color: lawngreen;
+	font-family: "Poppins", sans-serif;
+	font-size: 1.4rem;
+	padding-top: 1.5rem;
+}
+
+.message-error{
+	color: darkred;
+	font-family: "Poppins", sans-serif;
+	font-size: 1.4rem;
+	padding-top: 1.5rem;
+}
+
+.profile-links a{
+	text-align: center;
+	font-size: 1.3rem;
+}
