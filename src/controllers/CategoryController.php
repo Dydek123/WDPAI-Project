@@ -32,6 +32,8 @@ class CategoryController extends AppController{
             $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
         else
             $userRole = '0';
+//        var_dump($categories[0]);
+//        die();
         $this -> render('raports', ['categories' => $categories, 'links' => $links, 'role' => $userRole]);
     }
 

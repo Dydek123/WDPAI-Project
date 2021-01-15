@@ -60,7 +60,7 @@ class ContentRepository extends Repository
     {
         $result = [];
         $stmt = Connection::getInstance()->getConnection()->prepare('
-            SELECT  d.title as category, d.background, c.title as content, is_public FROM "Contents" c LEFT JOIN documents d on d.id_documents = c.id_raports;
+            SELECT id_documents as id, d.title as category, d.background, c.title as content, is_public FROM "Contents" c LEFT JOIN documents d on d.id_documents = c.id_raports;
         ');
         $stmt->execute();
         $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,7 +70,7 @@ class ContentRepository extends Repository
                 $document['category'],
                 $document['is_public'],
                 $document['content'],
-                $document['background']
+                $document['id'].'_'.$document['background']
             );
         }
 

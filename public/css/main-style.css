@@ -1345,7 +1345,7 @@ hr {
 
 /* ###################### FINANCES ############################ */
 #finances-header{
-    background-image: url("../img/coinsv2.jpg");
+    background-image: none;
     background-position:  left top ;
     background-repeat: no-repeat;
     background-size: 100% 80vh;
