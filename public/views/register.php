@@ -26,16 +26,34 @@
                             $listItems = $list->getInputList();
                             foreach ($list->getInputList() as $item):
                         ?>
+                            <?php if (isset($_POST[$item->getName()])): ?>
+                            <div class="input-div focus">
+                            <?php else: ?>
                             <div class="input-div">
+                            <?php endif; ?>
                                 <div class="i">
                                     <i class="fas fa-<?= $item->getIcon() ?>"></i>
                                 </div>
                                 <div class="div">
                                     <h5><?= $item->getHeader() ?></h5>
+                                    <?php if (isset($_POST[$item->getName()])): ?>
+                                    <input name='<?= $item->getName() ?>' type="<?= $item->getType() ?>" value="<?=$item->getName()?>" class="input">
+                                    <?php else: ?>
                                     <input name='<?= $item->getName() ?>' type="<?= $item->getType() ?>" class="input">
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
+                    <?php if (isset($messages)): ?>
+                        <div class="message">
+                            <?php
+                            foreach ($messages as $message){
+                                echo $message;
+                            }
+                            ?>
+                        </div>
+                    <?php endif; ?>
                     <input type="submit" class="btn" value="Zarejestruj się">
                 </form>
             </div>

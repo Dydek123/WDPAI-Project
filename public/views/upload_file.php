@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <div class="message">
+                    <div class="message-error">
                         <?php if (isset($messages)) {
                             foreach ($messages as $message){
                                 echo $message;

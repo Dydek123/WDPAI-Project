@@ -8,6 +8,7 @@ require_once __DIR__.'/../repository/LogsRepository.php';
 class SecurityController extends AppController{
     private $userRepository;
     private $logsRepository;
+    private $message = [];
 
     public function __construct()
     {
@@ -21,9 +22,7 @@ class SecurityController extends AppController{
         $userRepository = new UserRepository();
 
         if (isset($_COOKIE['user'])){
-            if (isset($_COOKIE['user'])){
-                header("location:javascript://history.go(-1)");
-            }
+            header("location:javascript://history.go(-1)");
         }
 
         if (!$this->isPost()) {
@@ -164,27 +163,52 @@ class SecurityController extends AppController{
     }
 
     public function addUser(){
-        if ($this->isPost() && $this->validatePassword($_POST['password'], $_POST['repeat-password'])){
-            $name = explode(' ', $_POST['name'])[0];
-            $surname = explode(' ', $_POST['name'])[1];
-            $newUser = new User($name, $surname, $_POST['password'], $_POST['email']);
-            $this->userRepository->addUser($newUser);
+        if ($this->isPost() && $this->validatePassword($_POST['password'], $_POST['repeat-password']) && $this->validName()){
+            if (!$this->userRepository->isEmailUnique($_POST['email'])){
+                $this->message[] = 'Użytkownik o podanym emailu już istnieje';
+            }
+            else{
+                $name = explode(' ', $_POST['name'])[0];
+                $surname = explode(' ', $_POST['name'])[1];
+                $newUser = new User($name, $surname, $_POST['password'], $_POST['email']);
+    //            $this->userRepository->addUser($newUser);
 
-            return $this->render("login");
+                return $this->render("login");
+            }
         }
 
-        return $this->render('register', ['messages' => 'Nieprawidłowe dane']);
+        return $this->render('register', ['messages' => $this->message]);
     }
 
 
     private function validatePassword($password1, $password2) : bool
     {
-        return $password1===$password2;
+        if ($password1 === $password2){
+            return true;
+        }
+        else
+        {
+            $this->message[] = 'Podane hasła nie są takie same';
+            return false;
+        }
     }
 
     private function isValidEmail(string $email)
     {
-        return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) ? FALSE : TRUE;
+        if ((!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email))){
+            $this->message[] = 'E-mail jest nieprawidłowy';
+            return false;
+        }
+        return true;
+    }
+
+    private function validName() : bool
+    {
+        if (!preg_match('/\S+\040+\S+/', $_POST['name'])) {
+            $this->message[] = 'Nieprawidłowa imię i nazwisko';
+            return false;
+        }
+        return true;
     }
 
 }

@@ -43,13 +43,13 @@ class CategoryController extends AppController{
                 return $this->render('index');
             }
             if ($this->isPost() && $this->validateData() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
-//                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
-//                $id = $this->documentRepository->addDocument($newCategory);
-//
-//                move_uploaded_file(
-//                    $_FILES['background']['tmp_name'],
-//                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'.$_FILES['background']['name']
-//                );
+                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
+                $id = $this->documentRepository->addDocument($newCategory);
+
+                move_uploaded_file(
+                    $_FILES['background']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'.$_FILES['background']['name']
+                );
 
                 return $this->render("index");
             }
@@ -99,10 +99,7 @@ class CategoryController extends AppController{
             $this->message[] = 'Wybierz ikonke';
             return false;
         }
-        if (!isset($_POST['file'])){
-            $this->message[] = 'Nie przesłano pliku';
-            return false;
-        }
+
         return true;
     }
 }
