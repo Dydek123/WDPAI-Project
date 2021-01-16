@@ -55,14 +55,23 @@ class ContentController extends AppController{
                 $user = $this->userRepository->getUserFromCookie($_COOKIE['user']);
 
                 $date = new DateTime();
-                if ($_POST['document-name'] === "new" || $this->contentValidate()) {
-                    $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title'], '');
-                    $this->contentRepository->addNewContent($newContent);
-                    $newVersion = new Version(0, $_POST['title'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
-                    $id = $this->versionRepository->addNewVersion($newVersion);
-                } else {
-                    $newVersion = new Version(0, $_POST['document-name'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
-                    $id = $this->versionRepository->addNewVersion($newVersion);
+                if ($_POST['document-name'] === "new") {
+                    if ($this->contentValidateNew()) {
+                        $newContent = new Content($_POST['document-type'], (int)$_POST['public'], $_POST['title'], '');
+                        $this->contentRepository->addNewContent($newContent);
+                        $newVersion = new Version(0, $_POST['title'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
+                        $id = $this->versionRepository->addNewVersion($newVersion);
+                    }
+                    else
+                        return $this->render('upload_content', ['messages' => $this->message]);
+                }
+                if ($_POST['document-name'] !== "new"){
+                    if ($this->contentValidate()) {
+                        $newVersion = new Version(0, $_POST['document-name'], $_FILES['file']['name'], $date->format('Y-m-d'), $user->getName(), $user->getSurname());
+                        $id = $this->versionRepository->addNewVersion($newVersion);
+                    }
+                    else
+                        return $this->render('upload_content', ['messages' => $this->message]);
                 }
 
                 move_uploaded_file(
@@ -134,9 +143,23 @@ class ContentController extends AppController{
         return true;
     }
 
-    private function contentValidate()
+    private function contentValidateNew() : bool
     {
-        if (!isset($_POST['public']) || !isset($_POST['category']) || !isset($_POST['document-type']) || !isset($_POST['title'])){
+        if (!isset($_POST['public']) || !isset($_POST['category']) || !isset($_POST['document-type']) || strlen($_POST['title'])<2){
+            $this->message[] = 'Nie wszystkie wartości zostały ustawione';
+            return false;
+        }
+        if (!$this->contentRepository->isUniqueTitle($_POST['title'])){
+            $this->message[] = 'Dokument o takim tytule już istnieje';
+            return false;
+        }
+        return true;
+    }
+
+    private function contentValidate() : bool
+    {
+        if (!isset($_POST['category']) || !isset($_POST['document-type']) || !isset($_POST['document-type'])){
+            $this->message[] = 'Nie wszystkie wartości zostały ustawione';
             return false;
         }
         return true;

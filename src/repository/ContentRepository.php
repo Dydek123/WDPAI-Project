@@ -88,6 +88,19 @@ class ContentRepository extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function isUniqueTitle($title)
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT COUNT(*) FROM public."Contents" WHERE title = :title;
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $title = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return !$title['count'];
+    }
+
     private function getDocumentID($name){
         $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public.documents WHERE title = :title

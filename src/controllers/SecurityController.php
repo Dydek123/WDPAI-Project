@@ -171,7 +171,7 @@ class SecurityController extends AppController{
                 $name = explode(' ', $_POST['name'])[0];
                 $surname = explode(' ', $_POST['name'])[1];
                 $newUser = new User($name, $surname, $_POST['password'], $_POST['email']);
-    //            $this->userRepository->addUser($newUser);
+                $this->userRepository->addUser($newUser);
 
                 return $this->render("login");
             }

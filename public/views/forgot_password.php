@@ -26,7 +26,11 @@
                 <div class="input-div">
                     <div>
                         <h5>Email</h5>
+                        <?php if (isset($_POST['email'])): ?>
+                        <input name="email" type="email" class="input" value="<?= $_POST['email'] ?>">
+                        <?php else: ?>
                         <input name="email" type="email" class="input">
+                        <?php endif; ?>
                     </div>
                 </div>
 
