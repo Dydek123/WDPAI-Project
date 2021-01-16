@@ -29,7 +29,10 @@ class ContentController extends AppController{
         $contents = $this->contentRepository->getContents();
         $versions = $this->versionRepository->getVersions();
         $categoryList = $this->createUniqueCategoryList($contents);
-        $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
+        if (isset($_COOKIE['user']))
+            $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
+        else
+            $userRole = 0;
         $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole]);
     }
 

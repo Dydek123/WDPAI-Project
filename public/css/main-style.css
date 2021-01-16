@@ -64,6 +64,7 @@ h1{
     z-index: 5;
     font-size: 50px;
     box-shadow: 0px 6px 20px rgba(18,35,46,0.91);
+    transition: .5s ease-in-out;
 }
 
 .logout-mobile-icon{
@@ -467,7 +468,6 @@ h1{
         align-items: center;
         font-size: 50px;
         z-index: 3;
-        transition: 0.2s;
     }
 
     .hamburger{
