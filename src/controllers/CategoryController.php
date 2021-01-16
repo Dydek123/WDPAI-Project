@@ -32,8 +32,6 @@ class CategoryController extends AppController{
             $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
         else
             $userRole = '0';
-//        var_dump($categories[0]);
-//        die();
         $this -> render('raports', ['categories' => $categories, 'links' => $links, 'role' => $userRole]);
     }
 
@@ -44,14 +42,14 @@ class CategoryController extends AppController{
                 echo '<script>alert("Nie masz odpowiednich uprawnień")</script>';
                 return $this->render('index');
             }
-            if ($this->isPost() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
-                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
-                $id = $this->documentRepository->addDocument($newCategory);
-
-                move_uploaded_file(
-                    $_FILES['background']['tmp_name'],
-                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'.$_FILES['background']['name']
-                );
+            if ($this->isPost() && $this->validateData() && is_uploaded_file($_FILES['background']['tmp_name']) && $this->validate($_FILES['background'])) {
+//                $newCategory = new Document($_POST['icon'], $_FILES['background']['name'], $_POST['title'], $_POST['description'], $_POST['category']);
+//                $id = $this->documentRepository->addDocument($newCategory);
+//
+//                move_uploaded_file(
+//                    $_FILES['background']['tmp_name'],
+//                    dirname(__DIR__) . self::UPLOAD_DIRECTORY .$id.'_'.$_FILES['background']['name']
+//                );
 
                 return $this->render("index");
             }
@@ -76,4 +74,35 @@ class CategoryController extends AppController{
             return false;
         }
         return true;
-    }}
+    }
+
+    private function validateData() : bool {
+        if (!strlen($_POST['title'])<1) {
+            if (!$this->documentRepository->isTitleUnique($_POST['title'])) {
+                $this->message[] = 'Tytuł jest zajęty';
+                return false;
+            }
+        }
+        else {
+            $this->message[] = 'Nadaj tytuł';
+            return false;
+        }
+        if (strlen($_POST['description'])<1){
+            $this->message[] = 'Dodaj opis';
+            return false;
+        }
+        if (!isset($_POST['category'])){
+            $this->message[] = 'Wybierz kategorie';
+            return false;
+        }
+        if (!isset($_POST['icon'])){
+            $this->message[] = 'Wybierz ikonke';
+            return false;
+        }
+        if (!isset($_POST['file'])){
+            $this->message[] = 'Nie przesłano pliku';
+            return false;
+        }
+        return true;
+    }
+}

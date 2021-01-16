@@ -77,6 +77,21 @@ class DocumentsRepository extends Repository
         return $result;
     }
 
+    public function isTitleUnique($title) : bool
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM public.documents WHERE lower(title) = lower(:title);
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $newTitle =  $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($newTitle == false){
+            return true;
+        }
+        return false;
+    }
+
     private function iconName($icon){
         switch ($icon){
             case 'dolar':
@@ -89,4 +104,5 @@ class DocumentsRepository extends Repository
                 return 'fa-book-open';
         }
     }
+
 }

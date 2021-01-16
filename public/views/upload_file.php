@@ -17,17 +17,33 @@
                     </div>
                     <h2>Utwórz nową kategorie</h2>
 
+                    <?php if (isset($_POST['title'])): ?>
+                    <div class="input-div focus">
+                    <?php else: ?>
                     <div class="input-div">
+                    <?php endif; ?>
                         <div>
                             <h5>Tytuł</h5>
-                            <input name="title" type="text" class="input">
+                            <?php if (isset($_POST['title'])): ?>
+                                <input name="title" type="text" class="input" maxlength="50" minlength="2" value="<?= $_POST['title'] ?>">
+                            <?php else: ?>
+                                <input name="title" type="text" class="input" maxlength="50" minlength="2">
+                            <?php endif; ?>
                         </div>
                     </div>
 
+                    <?php if (isset($_POST['description'])): ?>
+                    <div class="input-div focus">
+                    <?php else: ?>
                     <div class="input-div">
+                    <?php endif; ?>
                         <div>
                             <h5>Krótki opis</h5>
-                            <input name="description"  type="text" class="input">
+                            <?php if (isset($_POST['description'])): ?>
+                                <input name="description"  type="text" class="input" maxlength="200" minlength="2" value="<?= $_POST['description'] ?>">
+                            <?php else: ?>
+                                <input name="description"  type="text" class="input" maxlength="200" minlength="2">
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -42,10 +58,10 @@
                     <div class="select">
                         <select name="icon" id="slct2" onchange="changeMe(this)">
                             <option selected disabled>Wybierz ikonke</option>
-                            <option value="dolar">Dolar</option>
-                            <option value="user">Użytkownik</option>
-                            <option value="mail">Koperta</option>
-                            <option value="book">Książka</option>
+                                <option value="dolar">Dolar</option>
+                                <option value="user">Użytkownik</option>
+                                <option value="mail">Koperta</option>
+                                <option value="book">Książka</option>
                         </select>
                     </div>
 
