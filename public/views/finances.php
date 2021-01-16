@@ -12,64 +12,17 @@
     <body onload="setBackground('<?=explode(';',$_GET['category'])[2]?>')">
         <header id="finances-header">
             <div id="finances-header-shadow" class="main-header-shadow">
-
-                <nav id ="main-topnav" class="topnav">
-                    <div class="hamburger">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                    <div class="logo">
-                        <a href="index"><img alt="logo" src="public/img/main-page/logo-light.svg"></a>
-                    </div>
-
-
-                    <div class="nav-links-mobile-only">
-                        <?php foreach ($categoryList as $category): ?>
-                            <?php if(explode(';',$_GET['category'])[0] === $category): ?>
-                                <div class="nav__link">
-                                    <p class="collapse__link">
-                                        <span><?= $category?></span>
-                                        <i class="fas fa-caret-down"></i>
-                                    </p>
-                                    <ul class="collapse__menu">
-                                        <?php foreach ($contents as $content): ?>
-                                            <?php if($content->getCategory() === $category): ?>
-                                                <input type="submit" value="<?= $content->getTitle()?>" class="collapse__sublink">
-                                            <? endif; ?>
-                                        <? endforeach; ?>
-                                    </ul>
-                                </div>
-                            <? endif; ?>
-                        <? endforeach; ?>
-                        <div class="nav__link">
-                            <a id="new-content-link" href="addContent"><span >Dodaj nowy dokument <i class="fas fa-plus"></i></span></a>
-                        </div>
-
-                        <div id="search-button-mobile" class="search-button nav-links-item">
-                            <input type="text" placeholder="Szukaj.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="change-language">
-                        <img src="public/img/main-page/Polish_flag.png">
-                    </div>
-
-                    <?php if(isset($_COOKIE['user'])):?>
-                        <form class="logout_form" method="get" action="logout">
-                            <button name="logout" value="true" class="logout_button">Wyloguj się</button>
-                        </form>
-                    <?php else: ?>
-                        <a href="login" class="topnav__login">Zaloguj sie</a>
-                    <?php endif; ?>
-                </nav>
-
+                <?php include 'public/components/topnav.php'?>
             </div>
         </header>
 
         <section class="documentation-box">
             <h1><?php echo explode(';',$_GET['category'])[1] ?></h1>
+            <div class="sidemenu">
+                <div>
+                    >
+                </div>
+            </div>
             <div class="documentation-content">
                 <div class="menu">
                     <div>

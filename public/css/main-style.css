@@ -1804,124 +1804,6 @@ h5{
     font-weight: 500;
 }
 
-@media only screen and (max-device-width: 632px) {
-    #finances-header{
-        height: 79vh;
-    }
-    
-    .documentation-box{
-        top: -25vh;
-        font: normal normal normal 1.8em Segoe UI;
-    }
-    
-    .documentation-content{
-        margin-top: 4vh;
-        padding-bottom: 4vh;
-        width: 93%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-    
-    .documentation-menu{
-        display: none;
-    }
-    
-    .documentation-menu div{
-        margin: 0;
-        padding-right: 1vw;
-        top: 10vh;
-    }
-    
-    .documentation-menu a{
-        text-decoration: none;
-    }
-    
-    .documentation-text{
-        width: 90%;
-        font-size: 1rem;
-    }
-    
-    .documentation-text img{
-        margin-left: 1vw;
-        width: 100%;
-    }
-    
-    .previous-version a{
-        display: block;
-        color: var(--medium-blue);
-        padding-left: 1vw;
-        padding-top: 0.2vh;
-    }
-    
-    .previous-version a:first-child{
-        padding-top: 1vh;
-    }
-
-    .nav__link{
-        width: 100%;
-        text-align: center;
-        color: var(--light-white);
-        border-right: 0px;
-        border: 1px solid #425869;
-        font-size: 1.7rem;
-        margin-bottom: 3vh;
-    }
-      
-    .nav__link ul{
-        margin-bottom: 0rem;
-    }
-    
-    .nav__link:hover{
-        background-color: #314758;
-    }
-
-    .nav__link a{
-        text-decoration: none;
-        color: var(--light-white);
-    }
-      
-    .collapse__link{
-        justify-content: center;
-        margin: 1vh;
-    }
-    .fa-caret-down{
-        padding-top: 0.2rem;
-    }
-    .collapse__menu{
-        display: none;
-        padding: .75rem 1.25rem 0 .75rem;
-    }
-    
-    .collapse__sublink{
-        color: #929aab;
-        font-size: 1.3rem;
-        padding: 0.2rem 0;
-    }
-
-    .collapse__menu a{
-        color: #929aab;
-    }
-
-    .collapse__sublink:hover{
-        color: #6d747f;
-    }
-    
-    .showCollapse{
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-    }
-    
-    .rotate{
-        transform: rotate(180deg);
-        padding-right: 0.3rem;
-        padding-top: 0.1rem;
-        margin-right: -0.3rem;
-    }
-    
-}
-
 .search-btn{
     outline: none;
     background: transparent;
@@ -1965,4 +1847,164 @@ h5{
 
 #guest-information{
     padding-top: 5rem;
+}
+
+.sidemenu{
+    display: none;
+}
+
+@media only screen and (max-device-width: 632px) {
+    #finances-header{
+        height: 79vh;
+    }
+    
+    .documentation-box{
+        top: -25vh;
+        font: normal normal normal 1.8em Segoe UI;
+    }
+    
+    .documentation-content{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .documentation-menu div{
+        margin: 0;
+        padding-right: 0vw;
+        top: 10vh;
+    }
+    
+    .documentation-menu a{
+        text-decoration: none;
+    }
+    
+    .documentation-text{
+        width: 90%;
+        z-index: 2;
+        font-size: 1rem;
+        opacity: 1;
+        transition: all .5s ease-in-out;
+    }
+
+    .documentation-text.hide{
+        z-index: -1;
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    
+    .documentation-text img{
+        margin-left: 1vw;
+        width: 100%;
+    }
+    
+    .previous-version a{
+        display: block;
+        color: var(--medium-blue);
+        padding-left: 1vw;
+        padding-top: 0.2vh;
+    }
+    
+    .previous-version a:first-child{
+        padding-top: 1vh;
+    }
+
+    .menu{
+        width: 0%;
+        opacity: 0;
+        position: absolute;
+        transition: all .5s ease-in-out;
+        z-index: 1;
+    }
+
+    .menu.show{
+        position: static;
+        width: 100%;
+        opacity: 1;
+    }
+
+    .nav__link{
+        border: none;
+    }
+
+    #new-content-link{
+        text-align: center;
+    }
+
+    .search-btn{
+        width: 72%;
+        text-align: left;
+    }
+
+    .collapse__link{
+        justify-content: center;
+        margin: 1vh;
+    }
+    .fa-caret-down{
+        padding-top: 0.2rem;
+    }
+
+    .fa-search{
+        right: .7rem;
+    }
+
+    .collapse__menu{
+        display: none;
+        padding: .75rem 1.25rem 0 .75rem;
+    }
+    
+    .collapse__sublink{
+        color: #929aab;
+        font-size: 1.3rem;
+        padding: 0.2rem 0;
+        text-align: center;
+    }
+
+    .collapse__menu a{
+        color: #929aab;
+    }
+
+    .collapse__sublink:hover{
+        color: #6d747f;
+    }
+    
+    .showCollapse{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    
+    .rotate{
+        transform: rotate(180deg);
+        padding-right: 0.3rem;
+        padding-top: 0.1rem;
+        margin-right: -0.3rem;
+    }
+
+    .sidemenu{
+        position: sticky;
+        top: 10vh;
+        left: 0.5rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .sidemenu div{
+        position: absolute;
+        top: 3vh;
+        left: -2rem;
+        background: red;
+        width: 100%;
+        transition: .5s ease-in;
+    }
+
+    .sidemenu.change div{
+        transform: rotate(180deg);
+    }
+    
 }

@@ -63,6 +63,16 @@ search.addEventListener('keyup', function (event){
     }
 })
 
+const sidebarButton = document.querySelector('.sidemenu');
+const menu = document.querySelector('.menu');
+const content = document.querySelector('.documentation-text');
+
+sidebarButton.addEventListener('click', () => {
+    menu.classList.toggle("show");
+    content.classList.toggle("hide");
+    sidebarButton.classList.toggle("change");
+});
+
 const background = document.querySelector('#finances-header');
 
 function setBackground(image){
