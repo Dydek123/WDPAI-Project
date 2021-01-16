@@ -1991,20 +1991,66 @@ h5{
         display: flex;
         justify-content: center;
         align-items: center;
-
+        cursor: pointer;
     }
 
     .sidemenu div{
         position: absolute;
         top: 3vh;
-        left: -2rem;
-        background: red;
+        left: -1.9rem;
+        border-radius: 8px 0 0 8px;
+        background: var(--light-white);
         width: 100%;
-        transition: .5s ease-in;
+        height: 2.5rem;
+        transition: .5s ease-in-out;
+        cursor: pointer;
     }
 
     .sidemenu.change div{
         transform: rotate(180deg);
+        border-radius: 0 8px 8px 0;
     }
-    
+
+    #cta .arrow{left: 30%;}
+    .arrow {position: absolute; bottom: 0;  margin-left:0px; width: 12px; height: 12px; background-size: contain; top:15px;}
+    .segunda{margin-left: 8px;}
+    .next {
+        background-image: url('../img/arrow.png');
+    }
+
+    @keyframes bounceAlpha {
+        0% {opacity: 1; transform: translateX(0px) scale(1);}
+        25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+        26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+        55% {opacity: 1; transform: translateX(0px) scale(1);}
+    }
+
+    .bounceAlpha {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    .arrow.primera.bounceAlpha {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    .sidemenu .arrow{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+    .sidemenu .arrow.primera{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
 }
