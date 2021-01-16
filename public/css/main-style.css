@@ -1853,7 +1853,9 @@ h5{
     display: none;
 }
 
-@media only screen and (max-device-width: 632px) {
+
+
+@media only screen and (max-device-width: 832px) {
     #finances-header{
         height: 79vh;
     }
@@ -1927,6 +1929,10 @@ h5{
 
     .nav__link{
         border: none;
+    }
+
+    #nav__sticky{
+        position: static;
     }
 
     #new-content-link{
