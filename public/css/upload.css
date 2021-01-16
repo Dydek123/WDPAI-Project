@@ -8,7 +8,6 @@
 body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
 }
 
 input:-webkit-autofill,
@@ -33,7 +32,7 @@ input:-webkit-autofill:focus{
 
 .upload-box{
     width: 80vw;
-    height: 90vh;
+    min-height: 90vh;
     background: var(--light-white) 0% 0% no-repeat padding-box;
     border-radius: 20px;
     box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.38);
@@ -209,38 +208,6 @@ a:hover{
 }
 
 
-@media screen and (max-width: 1130px){
-	form {
-		width: 80%;
-	}
-
-	.login-content h2{
-        font-size: 1.5rem;
-        margin: 8px 0;
-	}
-}
-
-@media screen and (max-width: 660px){
-	.upload-box{
-        width: 90vw;
-        height: 90vh;
-	}
-	
-	form {
-		width: 90%;
-	}
-
-	.login-content h2{
-        font-size: 1.2rem;
-        margin: 0;
-	}
-
-	.login-content .input-div {
-		margin: 0.5rem 0;
-		padding: 5px 0;
-	}
-}
-
 select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -324,4 +291,67 @@ select::-ms-expand {
 .profile-links a{
 	text-align: center;
 	font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1130px){
+	form {
+		width: 80%;
+	}
+
+	.login-content h2{
+        font-size: 1.5rem;
+        margin: 8px 0;
+	}
+}
+
+@media screen and (max-width: 660px){
+	.upload-box{
+        width: 90vw;
+        min-height: 90vh;
+	}
+	
+	form {
+		width: 90%;
+	}
+
+	select{
+		font-size: 0.8rem;
+	}
+
+	.select{
+		height: 2rem;
+		line-height: 2;
+		margin: 1rem 0;
+	}
+
+	.login-content{
+		padding: 1rem 0;
+	}
+
+	.login-content h2{
+        font-size: 1.2rem;
+        margin: 0;
+	}
+
+	.login-content .input-div {
+		margin: 0.5rem 0;
+		padding: 5px 0;
+	}
+
+	.input-div > div{
+		height: 2rem;
+	}
+
+	.input-div > div > h5 {
+		top: -20%;
+		font-size: 0.8rem;
+	}
+
+	.input-div.focus > div > h5 {
+		font-size: 0.8rem;
+	}
+
+	.input-div > div > input {
+		font-size: 0.8rem;
+	}
 }
