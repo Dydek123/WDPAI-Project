@@ -5,11 +5,12 @@ class DocxConversion
 {
     private $file;
     private $indexes = [ ];
-    /** Local directory name where images will be saved */
+
     const UPLOAD_DIRECTORY = '/../public/uploads/docimages/';
     public function __construct( $filePath ) {
         $this->file = $filePath;
     }
+
     function extractImages() {
         $ZipArchive = new ZipArchive;
         if ( true === $ZipArchive->open( $this->file ) ) {
@@ -74,17 +75,18 @@ class DocxConversion
 
     function saveAllImages() {
         $i = 0;
+        $imgList = [];
         if ( count( $this->indexes ) == 0 ) {
             return 0;
         }
         foreach ( $this->indexes as $key => $index ) {
             $zip = new ZipArchive;
-            if ( true === $zip->open( $this->file ) ) {
+            if ( true === $zip->open( $this->file ) )
+                $imgList[] = $key;
                 file_put_contents( dirname(__DIR__) . self::UPLOAD_DIRECTORY . $key, $zip->getFromIndex( $index ) );
                 $i++;
             }
             $zip->close();
-        }
-        return $i;
+        return $imgList;
     }
 }

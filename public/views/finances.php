@@ -67,15 +67,15 @@
                                         <p><?php echo $text; ?></p>
                                     <?php endforeach; ?>
 
-                                    <?php for($i = 1 ; $i <= $docImg ; $i++): ?>
-                                        <a href="#img<?= $i ?>-active">
-                                            <img src="public/uploads/docimages/image<?= $i ?>.jpeg" id="img<?= $i ?>" alt="<?= $i ?>">
+                                    <?php foreach($docImg as $img): ?>
+                                        <a href="#img<?= $img ?>-active">
+                                            <img src="public/uploads/docimages/<?= $img ?>" id="img<?= $img ?>" alt="<?= $img ?>">
                                         </a>
 
-                                        <a href="#img<?= $i ?>" class="lightbox" id="img<?= $i ?>-active">
-                                            <span style="background-image: url('public/uploads/docimages/image<?= $i ?>.jpeg')"></span>
+                                        <a href="#img<?= $img ?>" class="lightbox" id="img<?= $img ?>-active">
+                                            <span style="background-image: url('public/uploads/docimages/<?= $img ?>')"></span>
                                         </a>
-                                    <?php endfor; ?>
+                                    <?php endforeach; ?>
 
                                     <h2>Poprzednie wersje</h2>
                                     <div class="previous-version" >

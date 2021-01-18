@@ -19,9 +19,11 @@
                 <div class="profile-links">
                     <a href="change_password">Zmień hasło</a>
                     <a href="change_email">Zmień email</a>
+                    <a href="addContent">Prześlij plik</a>
                     <?php if ($user->getRole()>1):?>
                         <a href="delete_user">Usuń użytkownika</a>
                         <a href="make_admin">Zmień użytkownika na admina</a>
+                        <a href="addCategory">Stwórz nową kategorię</a>
                     <?php endif; ?>
                 </div>
 

@@ -38,10 +38,10 @@ class ContentController extends AppController{
 
         $path = 'public/uploads/Documents/'.$versions[0]->getId().'_'.$versions[0]->getFile();
         $docObj = new DocxConversion($path);
-        $imgNumber = $docObj->extractImages();
+        $docImgs = $docObj->extractImages();
         $docText = $docObj->convertToText();
 
-        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole, 'docImg' => $imgNumber, 'docText' =>$docText]);
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole, 'docImg' => $docImgs, 'docText' =>$docText]);
     }
 
     public function search(){

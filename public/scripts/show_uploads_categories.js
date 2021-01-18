@@ -23,7 +23,6 @@ function loadSubcategories(subcategories) {
     subcategorySelect.style.display = "flex";
     subcategorySelect.appendChild(clone);
     subcategories.forEach(subcategory => {
-        console.log(subcategory);
         createSubcategories(subcategory);
     })
 }
