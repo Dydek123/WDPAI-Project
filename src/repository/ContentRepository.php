@@ -101,6 +101,10 @@ class ContentRepository extends Repository
         return !$title['count'];
     }
 
+    public function getFileByTitle($title){
+
+    }
+
     private function getDocumentID($name){
         $stmt = Connection::getInstance()->getConnection()->prepare('
             SELECT * FROM public.documents WHERE title = :title

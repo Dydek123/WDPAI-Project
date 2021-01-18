@@ -97,4 +97,29 @@ class VersionRepository extends Repository
         return $tmp['id_contents'];
     }
 
+    public function getVersionsFromTitle($title): array
+    {
+        $result = [];
+
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM public.version_details WHERE title =:title ORDER BY id_versions DESC ;
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_INT);
+        $stmt->execute();
+        $versions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($versions as $version){
+            $result[] = new Version(
+                $version['id_versions'],
+                $version['title'],
+                $version['file'],
+                $version['datetime'],
+                $version['name'],
+                $version['surname']
+            );
+        }
+
+        return $result;
+    }
+
 }

@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Content.php';
+require_once __DIR__.'/../models/DocxConversion.php';
 require_once __DIR__.'/../repository/ContentRepository.php';
 require_once __DIR__.'/../repository/VersionRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
@@ -26,14 +27,21 @@ class ContentController extends AppController{
     }
 
     public function finances() {
+        $category = explode(';',$_GET['category']);
         $contents = $this->contentRepository->getContents();
-        $versions = $this->versionRepository->getVersions();
+        $versions = $this->versionRepository->getVersionsFromTitle($category[1]);
         $categoryList = $this->createUniqueCategoryList($contents);
         if (isset($_COOKIE['user']))
             $userRole = $this->userRepository->getUserFromCookie($_COOKIE['user'])->getRole();
         else
             $userRole = 0;
-        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole]);
+
+        $path = 'public/uploads/Documents/'.$versions[0]->getId().'_'.$versions[0]->getFile();
+        $docObj = new DocxConversion($path);
+        $imgNumber = $docObj->extractImages();
+        $docText = $docObj->convertToText();
+
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole, 'docImg' => $imgNumber, 'docText' =>$docText]);
     }
 
     public function search(){
@@ -115,6 +123,19 @@ class ContentController extends AppController{
 
             echo json_encode($this->contentRepository->getContenstByCategory($decoded['category']));
         }
+
+    }
+
+    public function docx(){
+        $path = 'public/uploads/Documents/Dok1.docx';
+        $docObj = new DocxConversion($path);
+        echo $docObj->extractImages();
+        $docText = $docObj->convertToText();
+        echo $docText[0];
+//        foreach ($docText as $x){
+//            echo $x;
+//        }
+        die();
 
     }
 
