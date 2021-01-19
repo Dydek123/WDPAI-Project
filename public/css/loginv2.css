@@ -5,24 +5,15 @@
     --light-blue: #4DA8DA;
     --input-color: #EEFBFB;
 }
-
 body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{
-    background-color: transparent;
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
 .login-container{
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0%;
     background: transparent radial-gradient(closest-side at 50% 50%, #4DA8DA42 0%, var(--light-blue) 100%) 0% 0% no-repeat padding-box;
 
@@ -81,8 +72,7 @@ form{
 	margin: 1rem 0;
 	color: #333;
 	text-transform: uppercase;
-    font-family: 'Josefin Sans',sans-serif;
-    font-size: 1.5rem;
+	font-size: 1.6rem;
 }
 
 #login-content{
@@ -135,7 +125,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	border-bottom: 2px solid var(--medium-blue);
+	background-color: var(--light-blue);
 	transition: .4s;
 }
 
@@ -149,7 +139,6 @@ form{
 
 .input-div.focus:before, .input-div.focus:after{
 	width: 50%;
-    border-bottom: 2px solid var(--medium-blue);
 }
 
 .input-div.focus > div > h5{
@@ -160,21 +149,6 @@ form{
 
 .input-div.focus > .i > i{
 	color: var(--light-blue);
-}
-
-.input-div.no-valid:before, .input-div.no-valid:after{
-    width: 50%;
-    border-bottom: 2px solid red;
-}
-
-.input-div.no-valid > div > h5{
-    top: -23px;
-    font-size: 1.1rem;
-    color: red;
-}
-
-.input-div.no-valid > .i > i{
-    color: indianred;
 }
 
 .input-div > div > input{
@@ -255,13 +229,14 @@ a:hover{
 .login-img-shadow{
     position: relative;
     z-index: 2;
-    top: -1px;
     width: 40%;
-    height: calc(100% + 1px);
+    height: 100%;
+
     background: var(--dark-blue) 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 20px 0px 0px 20px;
     opacity: 0.81;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -277,8 +252,7 @@ a:hover{
     opacity: 1;
     width: 80%;
     text-align: center;
-    font-size: 1.6rem;
-    font-family: 'Lato', sans-serif;
+    font: normal normal normal 1.6em Segoe UI;
     color: #FFFFFF;
 }
 
@@ -293,8 +267,7 @@ a:hover{
     border: 5px solid var(--medium-blue);
     border-radius: 20px;
     text-align: center;
-    font-family: 'Lato',sans-serif;
-    font-size: 1.3rem;
+    font: normal normal bold 1.5rem Segoe UI;
     text-decoration: none;
     color: var(--light-white);
     font-weight: 700;
@@ -321,15 +294,6 @@ a:hover{
 
 
 }
-
-#login-to-signup-text-mobile{
-    display: none;
-}
-
-#signup-to-login-text-mobile{
-    display: none;
-}
-
 .login-flags{
     display: flex;
     flex-direction: row;
@@ -352,18 +316,6 @@ a:hover{
 }
 
 @media only screen and (max-device-width: 953px) {
-    .login-container{
-        width: 100vw;
-        height: 100vh;
-        margin: 0%;
-        background: transparent radial-gradient(closest-side at 50% 50%, #4DA8DA42 0%, var(--light-blue) 100%) 0% 0% no-repeat padding-box;
-    
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-    }    
-
     .login-img{
         display: none;
     }
@@ -375,14 +327,6 @@ a:hover{
 		display: none;
 	}
 
-    #login-to-signup-text-mobile{
-        display: block;
-    }
-
-    #signup-to-login-text-mobile{
-        display: block;
-    }
-    
     .login-flags-mobile{
         width: 60vw;
         display: flex;
@@ -394,19 +338,6 @@ a:hover{
 }
 
 @media only screen and (max-device-width: 550px) {
-    .login-box{
-        width: 90vw;
-        height: 85vh;
-    }
-
-    .login-flags-mobile{
-        margin-bottom: 0.5em;
-        margin-top: 1em;
-    }
-
-    form{
-        width: 90%;
-    }
 	.content h2 {
 		margin: 0;
 		font-size: 1.2rem;
@@ -416,9 +347,4 @@ a:hover{
 		margin: 0.5rem 0;
 		padding: 5px 0;
 	}
-}
-
-.message{
-    color: darkred;
-    font-size: 1.1rem;
 }
