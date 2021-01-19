@@ -51,5 +51,7 @@
                 <?php endif; ?>
             </div>
         </article>
+
+        <?php include 'public/components/footer.php' ?>
     </body>
 </html>
