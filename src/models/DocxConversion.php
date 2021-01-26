@@ -47,10 +47,12 @@ class DocxConversion
 
         zip_close($zip);
 
-        $content = str_replace('</w:r></w:p>', "/paragraph/", $content);
+        $content = str_replace('</w:p>', "/paragraph/", $content);
 //        $content = str_replace('binData', "/image/", $content);
-//        $content = str_replace('<w:bCs/>', "/header/", $content);
+        $content = str_replace('<w:bookmarkStart w:id="0" w:name="_GoBack"/><w:proofErr w:type="spellStart"/>', "<span>", $content);
+        $content = str_replace('<w:bookmarkEnd w:id="0"/>', "</span>", $content);
         $striped_content = strip_tags($content);
+
 
 
         $contentTable = explode('/paragraph/', $content);

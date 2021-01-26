@@ -128,14 +128,14 @@ class ContentController extends AppController{
     }
 
     public function docx(){
-        $path = 'public/uploads/Documents/Dok1.docx';
+        $path = 'public/uploads/Documents/Test.docx';
         $docObj = new DocxConversion($path);
-        echo $docObj->extractImages();
+//        echo $docObj->extractImages();
         $docText = $docObj->convertToText();
-        echo $docText[0];
-//        foreach ($docText as $x){
-//            echo $x;
-//        }
+//        echo $docText[0];
+        foreach ($docText as $x){
+            echo $x;
+        }
         die();
     }
 
