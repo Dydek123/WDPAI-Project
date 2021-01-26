@@ -93,6 +93,25 @@
                                             </form>
                                         <?php endif; ?>
                                     <? endforeach; ?>
+                                    </div>
+                                    <h4>Komentarze</h4>
+                                    <form method="POST" action="newComment" class="new-comment">
+                                        <textarea name="new-comment" id="comment" placeholder="Dodaj nowy komentarz..." minlength="1" required></textarea>
+                                        <input name="category" value="<?=explode(';',$_GET['category'])[1]?>" class="invisible">
+                                        <button class="new-comment-button" type="submit">Dodaj</button>
+                                    </form>
+
+                                    <div class="comments-section">
+                                        <?php foreach ($comments as $comment): ?>
+                                        <div class="one-comment">
+                                            <div class="comments-heading">
+                                                <span class="comments-author"><?= $comment->getAuthorName()?> <?= $comment->getAuthorSurname()?></span>
+                                                <span class="comments-date"><?= $comment->getDate()?></span>
+                                            </div>
+                                            <div class="comment-content"><?= $comment->getComment()?></div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    </div>
                                 <?php }
                                 else{
                                     echo '<h2 id="guest-information">Dokument dostępny tylko dla zalogowanych użytkowników</h2>';
@@ -101,7 +120,6 @@
                             }
                         }
                     ?>
-                    </div>
                 </div>
             </div>
         </section>

@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Content.php';
 require_once __DIR__.'/../models/DocxConversion.php';
+require_once __DIR__.'/../models/Comment.php';
 require_once __DIR__.'/../repository/ContentRepository.php';
 require_once __DIR__.'/../repository/VersionRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
@@ -41,7 +42,8 @@ class ContentController extends AppController{
         $docImgs = $docObj->extractImages();
         $docText = $docObj->convertToText();
 
-        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole, 'docImg' => $docImgs, 'docText' =>$docText]);
+        $comments = $this->contentRepository->getComments(explode(';',$_GET['category'])[1]);
+        $this -> render('finances', ['contents'=>$contents, 'categoryList'=>$categoryList, 'versions'=>$versions, 'user' =>$userRole, 'docImg' => $docImgs, 'docText' =>$docText, 'comments' => $comments]);
     }
 
     public function search(){
@@ -109,7 +111,6 @@ class ContentController extends AppController{
             echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
         }
         return $this->render("index");
-//        header("location:javascript://history.go(-1)");
     }
 
     public function subcategories(){
@@ -136,7 +137,25 @@ class ContentController extends AppController{
 //            echo $x;
 //        }
         die();
+    }
 
+    public function newComment(){
+        if (isset($_COOKIE['user'])) {
+            if ($this->isPost()) {
+                $user = $this->userRepository->getUserFromCookie($_COOKIE['user']);
+                $userID = $this->userRepository->getUserIDFromCookie($_COOKIE['user']);
+                $documentID = $this->contentRepository->getIdByName($_POST['category']);
+                $date = new DateTime();
+                $newComment = new Comment($user->getName(), $user->getSurname(), $_POST['new-comment'], $date->format('Y-m-d'));
+                $this->contentRepository->addComment($newComment, $userID, $documentID);
+
+                return $this->render("index");
+            }
+
+            header("location:javascript://history.go(-1)");
+        }
+        echo '<script>alert("Zaloguj się aby przejść dalej")</script>';
+        return $this->render("login");
     }
 
     private function createUniqueCategoryList($contents): array

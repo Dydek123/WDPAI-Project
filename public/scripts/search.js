@@ -79,3 +79,13 @@ function setBackground(image){
     const url = "url('public/uploads/Category/" + image + "')";
     background.style.backgroundImage = url;
 }
+
+// Add New Comment auto resize textarea
+const tx = document.querySelector('textarea');
+tx.setAttribute('style', 'height:' + (tx.scrollHeight) + 'px;overflow-y:hidden;');
+tx.addEventListener("input", OnInput, false);
+
+function OnInput(e) {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+}
