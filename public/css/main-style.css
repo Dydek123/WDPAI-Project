@@ -1767,7 +1767,7 @@ textarea:focus{
 
 .comments-section{
    padding-left: 1vw;
-   padding-top: 1vw;
+   padding-top: 1vh;
 }
 
 .one-comment{
@@ -1786,7 +1786,7 @@ textarea:focus{
 
 .comment-content{
     font-size: 1.1rem;
-    padding-top: .3rem;
+    padding-top: .4rem;
 }
 
 #nav__sticky{
@@ -1986,6 +1986,14 @@ textarea:focus{
     
     .previous-version a:first-child{
         padding-top: 1vh;
+    }
+
+    .new-comment-button{
+        align-self: center;
+    }
+
+    .comments-section{
+        padding-top: 5vh;
     }
 
     .menu{
