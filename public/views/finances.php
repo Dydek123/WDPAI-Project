@@ -67,15 +67,17 @@
                                         <p><?php echo $text; ?></p>
                                     <?php endforeach; ?>
 
-                                    <?php foreach($docImg as $img): ?>
-                                        <a href="#img<?= $img ?>-active">
-                                            <img src="public/uploads/docimages/<?= $img ?>" id="img<?= $img ?>" alt="<?= $img ?>">
-                                        </a>
+                                    <?php if ($docImg): ?>
+                                        <?php foreach($docImg as $img): ?>
+                                            <a href="#img<?= $img ?>-active">
+                                                <img src="public/uploads/docimages/<?= $img ?>" id="img<?= $img ?>" alt="<?= $img ?>">
+                                            </a>
 
-                                        <a href="#img<?= $img ?>" class="lightbox" id="img<?= $img ?>-active">
-                                            <span style="background-image: url('public/uploads/docimages/<?= $img ?>')"></span>
-                                        </a>
-                                    <?php endforeach; ?>
+                                            <a href="#img<?= $img ?>" class="lightbox" id="img<?= $img ?>-active">
+                                                <span style="background-image: url('public/uploads/docimages/<?= $img ?>')"></span>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
 
                                     <h2>Poprzednie wersje</h2>
                                     <div class="previous-version" >
@@ -91,6 +93,25 @@
                                             </form>
                                         <?php endif; ?>
                                     <? endforeach; ?>
+                                    </div>
+                                    <h4>Komentarze</h4>
+                                    <form method="POST" action="newComment" class="new-comment">
+                                        <textarea name="new-comment" id="comment" placeholder="Dodaj nowy komentarz..." minlength="1" required></textarea>
+                                        <input name="category" value="<?=explode(';',$_GET['category'])[1]?>" class="invisible">
+                                        <button class="new-comment-button" type="submit">Dodaj</button>
+                                    </form>
+
+                                    <div class="comments-section">
+                                        <?php foreach ($comments as $comment): ?>
+                                        <div class="one-comment">
+                                            <div class="comments-heading">
+                                                <div class="comments-author"><?= $comment->getAuthorName()?> <?= $comment->getAuthorSurname()?></div>
+                                                <div class="comments-date"><?= $comment->getDate()?></div>
+                                            </div>
+                                            <div class="comment-content"><?= $comment->getComment()?></div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    </div>
                                 <?php }
                                 else{
                                     echo '<h2 id="guest-information">Dokument dostępny tylko dla zalogowanych użytkowników</h2>';
@@ -99,7 +120,6 @@
                             }
                         }
                     ?>
-                    </div>
                 </div>
             </div>
         </section>

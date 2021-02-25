@@ -2,6 +2,7 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Content.php';
+require_once __DIR__.'/../models/Comment.php';
 require_once __DIR__.'/../../Connection.php';
 
 class ContentRepository extends Repository
@@ -101,8 +102,51 @@ class ContentRepository extends Repository
         return !$title['count'];
     }
 
-    public function getFileByTitle($title){
+    public function addComment(Comment $comment, int $id, int $documentID): void
+    {
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            INSERT INTO comments (id_user, comment, date, id_content)
+            VALUES (?, ?, ?, ?)
+        ');
+        $stmt->execute([
+            $id,
+            $comment->getComment(),
+            $comment->getDate(),
+            $documentID
+        ]);
+    }
 
+    public function getComments($title) : array{
+        $result = [];
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM allcomments WHERE title=:title;
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+        $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($comments as $comment){
+            $result[] = new Comment(
+                $comment['name'],
+                $comment['surname'],
+                $comment['comment'],
+                $comment['date']
+            );
+        }
+
+        return $result;
+    }
+
+
+    public function getIdByName($name) :int{
+        $stmt = Connection::getInstance()->getConnection()->prepare('
+            SELECT * FROM "Contents" WHERE title = :title
+        ');
+        $stmt->bindParam(':title', $name, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $tmp['id_contents'];
     }
 
     private function getDocumentID($name){

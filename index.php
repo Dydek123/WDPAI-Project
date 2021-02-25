@@ -30,5 +30,6 @@ Routing::post('subcategories', 'ContentController');
 Routing::post('search', 'ContentController');
 Routing::post('deleteVersion', 'ContentController');
 Routing::post('docx', 'ContentController');
+Routing::post('newComment', 'ContentController');
 
 Routing::run($path);
