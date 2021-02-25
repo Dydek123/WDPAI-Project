@@ -1708,6 +1708,7 @@ h5{
     border: none;
     outline: none;
     background: transparent;
+    cursor: pointer;
 }
 
 .version-description i {
@@ -1780,6 +1781,10 @@ textarea:focus{
     padding-bottom: 1rem;
 }
 
+.comments-heading{
+    display: flex;
+    flex-direction: row;
+}
 .comments-author{
     font-size: 1rem;
     font-weight: 600;
@@ -1787,6 +1792,7 @@ textarea:focus{
 
 .comments-date{
     font-size: 1rem;
+    padding-left: 1rem;
 }
 
 .comment-content{

@@ -105,8 +105,8 @@
                                         <?php foreach ($comments as $comment): ?>
                                         <div class="one-comment">
                                             <div class="comments-heading">
-                                                <span class="comments-author"><?= $comment->getAuthorName()?> <?= $comment->getAuthorSurname()?></span>
-                                                <span class="comments-date"><?= $comment->getDate()?></span>
+                                                <div class="comments-author"><?= $comment->getAuthorName()?> <?= $comment->getAuthorSurname()?></div>
+                                                <div class="comments-date"><?= $comment->getDate()?></div>
                                             </div>
                                             <div class="comment-content"><?= $comment->getComment()?></div>
                                         </div>
