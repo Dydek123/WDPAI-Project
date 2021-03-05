@@ -17,10 +17,9 @@ A webapp to uploads raports for document site, display the newest one on the web
 * Docker
 
 ## Setup
-<p align="center">
-  The page was rewritten into the Nodejs + Express [(live)](https://xd.adobe.com/view/463c1fb7-e10d-4e67-80e2-675263b31d0e-136f/specs/)
-</p>
-Run on local machine
+The page was rewritten into the Nodejs + Express [LIVE](https://documentation-raports.herokuapp.com/)
+
+Or run this project on local machine
 
 ```
 $ docker-compose up
